@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../blocs/auth_bloc.dart';
-import '../blocs/auth_state.dart';
-import '../ui/screens/auth_screen.dart';
-import '../ui/screens/home_screen.dart';
+import './blocs/auth_bloc.dart';
+import './blocs/auth_state.dart';
+import './ui/screens/auth_screen.dart';
+import './ui/screens/home_screen.dart';
+import './ui/screens/categories_screen.dart';
+import './ui/screens/favorites_screen.dart';
+import './ui/screens/profile_screen.dart';
+import './ui/screens/search_screen.dart';
+import './ui/main_scaffold.dart';
 
 class AppRouter {
   final AuthBloc authBloc;
@@ -12,11 +17,65 @@ class AppRouter {
   AppRouter(this.authBloc);
 
   late final GoRouter router = GoRouter(
-    routes: <GoRoute>[
-      GoRoute(
-        path: '/',
-        builder: (BuildContext context, GoRouterState state) => const HomeScreen(),
+    initialLocation: '/login',
+    routes: <RouteBase>[
+      // The main app navigation shell
+      StatefulShellRoute.indexedStack(
+        builder: (context, state, navigationShell) {
+          return MainScaffold(navigationShell: navigationShell);
+        },
+        branches: <StatefulShellBranch>[
+          // Branch for the Home tab
+          StatefulShellBranch(
+            routes: <RouteBase>[
+              GoRoute(
+                path: '/',
+                builder: (BuildContext context, GoRouterState state) =>
+                    const HomeScreen(),
+                routes: <RouteBase>[
+                  // Add search screen as a sub-route of home
+                  GoRoute(
+                    path: 'search',
+                    builder: (BuildContext context, GoRouterState state) =>
+                        const SearchScreen(),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          // Branch for the Categories tab
+          StatefulShellBranch(
+            routes: <RouteBase>[
+              GoRoute(
+                path: '/categories',
+                builder: (BuildContext context, GoRouterState state) =>
+                    const CategoriesScreen(),
+              ),
+            ],
+          ),
+          // Branch for the Favorites tab
+          StatefulShellBranch(
+            routes: <RouteBase>[
+              GoRoute(
+                path: '/favorites',
+                builder: (BuildContext context, GoRouterState state) =>
+                    const FavoritesScreen(),
+              ),
+            ],
+          ),
+          // Branch for the Profile tab
+          StatefulShellBranch(
+            routes: <RouteBase>[
+              GoRoute(
+                path: '/profile',
+                builder: (BuildContext context, GoRouterState state) =>
+                    const ProfileScreen(),
+              ),
+            ],
+          ),
+        ],
       ),
+      // The login screen, which is not part of the shell
       GoRoute(
         path: '/login',
         builder: (BuildContext context, GoRouterState state) => const AuthScreen(),
