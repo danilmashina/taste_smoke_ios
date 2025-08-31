@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "751259560292",
+    "project_id": "tastesmoketest",
+    "storage_bucket": "tastesmoketest.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:751259560292:android:9455d7ba90a123522cf271",
+        "android_client_info": {
+          "package_name": "com.example.taste_smoke_ios"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "751259560292-8modukd9blottautq55gos60r0p0vp2i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkNvVP4ZuS2cB7hOcgouKCxnhnEcwcIIQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "751259560292-8modukd9blottautq55gos60r0p0vp2i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "751259560292-1koui73pq5qftkv2081npl5sud9gags1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tastesmokeios"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:751259560292:android:3cdd746873b20d722cf271",
+        "android_client_info": {
+          "package_name": "com.example.tastesmoke"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "751259560292-5vqvfl8d7lnb446rj06n68t2cndhkh39.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tastesmoke",
+            "certificate_hash": "03a9ebe35ef04f1784b816dd0c16bf1b0156e19e"
+          }
+        },
+        {
+          "client_id": "751259560292-j6qjsr2js2sklclu5l7ai4b9jjdkb7cq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tastesmoke",
+            "certificate_hash": "a8a88301230f745fc7de8ae8044dddcf660e8d01"
+          }
+        },
+        {
+          "client_id": "751259560292-8modukd9blottautq55gos60r0p0vp2i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkNvVP4ZuS2cB7hOcgouKCxnhnEcwcIIQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "751259560292-8modukd9blottautq55gos60r0p0vp2i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "751259560292-1koui73pq5qftkv2081npl5sud9gags1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tastesmokeios"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
