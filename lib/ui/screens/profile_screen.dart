@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import '../../blocs/profile_bloc.dart';
 import '../../blocs/profile_event.dart';
 import '../../blocs/profile_state.dart';
@@ -52,17 +53,26 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 32),
                     ElevatedButton(
-                      onPressed: () { /* TODO */ },
+                      onPressed: () {
+                        context.go('/create-mix');
+                      },
                       child: const Text('Создать микс'),
                     ),
                     const SizedBox(height: 12),
                     ElevatedButton(
-                      onPressed: () { /* TODO */ },
+                      onPressed: () {
+                        context.go('/my-mixes');
+                      },
                       child: const Text('Мои миксы'),
                     ),
                     const SizedBox(height: 12),
                     ElevatedButton(
-                      onPressed: () { /* TODO */ },
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) => const AdditionalInfoDialog(),
+                        );
+                      },
                       child: const Text('Дополнительная информация'),
                     ),
                     const SizedBox(height: 32),

@@ -9,6 +9,9 @@ import './ui/screens/categories_screen.dart';
 import './ui/screens/favorites_screen.dart';
 import './ui/screens/profile_screen.dart';
 import './ui/screens/search_screen.dart';
+import './ui/screens/category_detail_screen.dart';
+import './ui/screens/create_mix_screen.dart';
+import './ui/screens/my_mixes_screen.dart';
 import './ui/main_scaffold.dart';
 
 class AppRouter {
@@ -50,6 +53,15 @@ class AppRouter {
                 path: '/categories',
                 builder: (BuildContext context, GoRouterState state) =>
                     const CategoriesScreen(),
+                routes: <RouteBase>[
+                  GoRoute(
+                    path: ':categoryName',
+                    builder: (BuildContext context, GoRouterState state) {
+                      final categoryName = state.pathParameters['categoryName']!;
+                      return CategoryDetailScreen(categoryName: categoryName);
+                    },
+                  ),
+                ],
               ),
             ],
           ),
@@ -79,6 +91,14 @@ class AppRouter {
       GoRoute(
         path: '/login',
         builder: (BuildContext context, GoRouterState state) => const AuthScreen(),
+      ),
+      GoRoute(
+        path: '/create-mix',
+        builder: (BuildContext context, GoRouterState state) => const CreateMixScreen(),
+      ),
+      GoRoute(
+        path: '/my-mixes',
+        builder: (BuildContext context, GoRouterState state) => const MyMixesScreen(),
       ),
     ],
     redirect: (BuildContext context, GoRouterState state) {

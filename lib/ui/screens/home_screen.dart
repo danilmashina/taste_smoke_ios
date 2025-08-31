@@ -101,11 +101,13 @@ class CategoriesSection extends StatelessWidget {
                     final category = state.categories[index];
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                      child: RawChip(
+                      child:                       child: RawChip(
                         label: Text(category.name),
                         onPressed: () {
-                          // TODO: Navigate to category detail screen
+                          context.go('/categories/${category.name}');
                         },
+                        shape: const StadiumBorder(),
+                        side: BorderSide(color: Theme.of(context).colorScheme.primary),
                       ),
                     );
                   },
@@ -188,33 +190,41 @@ class PopularMixesSection extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   itemBuilder: (context, index) {
                     final mix = state.mixes[index];
-                    return Card(
-                      margin: const EdgeInsets.all(8.0),
-                      child: SizedBox(
-                        width: 150,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            if (mix.image != null)
-                              Expanded(
-                                child: Center(
-                                  child: Image.network(
-                                    mix.image!,
-                                    fit: BoxFit.cover,
-                                    width: double.infinity,
+                    return GestureDetector(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (_) => MixDetailDialog(mix: mix),
+                        );
+                      },
+                      child: Card(
+                        margin: const EdgeInsets.all(8.0),
+                        child: SizedBox(
+                          width: 150,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              if (mix.image != null)
+                                Expanded(
+                                  child: Center(
+                                    child: Image.network(
+                                      mix.image!,
+                                      fit: BoxFit.cover,
+                                      width: double.infinity,
+                                    ),
                                   ),
                                 ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  mix.name,
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(fontWeight: FontWeight.bold),
+                                ),
                               ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                mix.name,
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     );
