@@ -31,8 +31,8 @@ ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/acto
 ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/actool --version --output-format xml1
 ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
 ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
-Build description signature: 16ffa022dd77f2cb7f0b27769463f346
-Build description path: /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/XCBuildData/16ffa022dd77f2cb7f0b27769463f346.xcbuilddata
+Build description signature: bd9e517353bec1c9f53a0bb853f69926
+Build description path: /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/XCBuildData/bd9e517353bec1c9f53a0bb853f69926.xcbuilddata
 CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Products
     cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios
     builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Products
@@ -42,21 +42,21 @@ CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gx
 ClangStatCache /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache
     cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios
     /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -o /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache
-WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Runner.build/Release-iphoneos/Runner-18c1723432283e0cc55f10a6dcfd9e02-VFS-iphoneos/all-product-headers.yaml
-    cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios
-    write-file /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Runner.build/Release-iphoneos/Runner-18c1723432283e0cc55f10a6dcfd9e02-VFS-iphoneos/all-product-headers.yaml
 CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Products/Release-iphoneos
     cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios
     builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Products/Release-iphoneos
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Runner.build/Release-iphoneos/Runner-18c1723432283e0cc55f10a6dcfd9e02-VFS-iphoneos/all-product-headers.yaml
+    cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Runner.build/Release-iphoneos/Runner-18c1723432283e0cc55f10a6dcfd9e02-VFS-iphoneos/all-product-headers.yaml
 CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/EagerLinkingTBDs/Release-iphoneos
     cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios
     builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/EagerLinkingTBDs/Release-iphoneos
-WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Runner.build/Release-iphoneos/Runner.build/Script-3B06AD1E1E4923F5004D2608.sh (in target 'Runner' from project 'Runner')
-    cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios
-    write-file /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Runner.build/Release-iphoneos/Runner.build/Script-3B06AD1E1E4923F5004D2608.sh
 WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Runner.build/Release-iphoneos/Runner.build/Script-9740EEB61CF901F6004384FC.sh (in target 'Runner' from project 'Runner')
     cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios
     write-file /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Runner.build/Release-iphoneos/Runner.build/Script-9740EEB61CF901F6004384FC.sh
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Runner.build/Release-iphoneos/Runner.build/Script-3B06AD1E1E4923F5004D2608.sh (in target 'Runner' from project 'Runner')
+    cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Runner.build/Release-iphoneos/Runner.build/Script-3B06AD1E1E4923F5004D2608.sh
 WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Runner.build/Release-iphoneos/Runner.build/Runner.hmap (in target 'Runner' from project 'Runner')
     cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios
     write-file /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Runner.build/Release-iphoneos/Runner.build/Runner.hmap
@@ -679,9 +679,13 @@ warning: Your Flutter project is currently configured for debug mode. Please run
 ** BUILD FAILED **
 Error: Couldn't resolve the package 'url_launcher' in 'package:url_launcher/url_launcher.dart'.
 lib/ui/components/additional_info_dialog.dart:2:8: Error: Not found: 'package:url_launcher/url_launcher.dart'
+The following build commands failed:
 import 'package:url_launcher/url_launcher.dart';
+	PhaseScriptExecution Run\ Script /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Runner.build/Release-iphoneos/Runner.build/Script-9740EEB61CF901F6004384FC.sh (in target 'Runner' from project 'Runner')
        ^
+	Building workspace Runner with scheme Runner and configuration Release
 lib/ui/components/additional_info_dialog.dart:31:45: Error: Not a constant expression.
+(2 failures)
                 builder: (context) => const TermsDialogContent(),
                                             ^^^^^^^^^^^^^^^^^^
 lib/ui/components/additional_info_dialog.dart:42:45: Error: Not a constant expression.
@@ -690,16 +694,11 @@ lib/ui/components/additional_info_dialog.dart:42:45: Error: Not a constant expre
 lib/ui/components/additional_info_dialog.dart:53:45: Error: Not a constant expression.
                 builder: (context) => const HelpBottomSheetContent(),
                                             ^^^^^^^^^^^^^^^^^^^^^^
-lib/ui/components/additional_info_dialog.dart:17:25: Error: The method 'canLaunchUrl' isn't defined for the type 'AdditionalInfoDialog'.
- - 'AdditionalInfoDialog' is from 'package:taste_smoke_ios/ui/components/additional_info_dialog.dart' ('lib/ui/components/additional_info_dialog.dart').
-Try correcting the name to the name of an existing method, or defining a method named 'canLaunchUrl'.
-              if (await canLaunchUrl(url)) {
-                        ^^^^^^^^^^^^
-lib/ui/components/additional_info_dialog.dart:18:23: Error: The method 'launchUrl' isn't defined for the type 'AdditionalInfoDialog'.
+lib/ui/components/additional_info_dialog.dart:17:25: Error: The method 'launchUrl' isn't defined for the type 'AdditionalInfoDialog'.
  - 'AdditionalInfoDialog' is from 'package:taste_smoke_ios/ui/components/additional_info_dialog.dart' ('lib/ui/components/additional_info_dialog.dart').
 Try correcting the name to the name of an existing method, or defining a method named 'launchUrl'.
-                await launchUrl(url);
-                      ^^^^^^^^^
+              if (await launchUrl(url)) {
+                        ^^^^^^^^^
 Unhandled exception:
 FileSystemException(uri=org-dartlang-untranslatable-uri:package%3Aurl_launcher%2Furl_launcher.dart; message=StandardFileSystem only supports file:* and data:* URIs)
 #0      StandardFileSystem.entityForUri (package:front_end/src/api_prototype/standard_file_system.dart:45)
@@ -718,8 +717,4 @@ Command PhaseScriptExecution failed with a nonzero exit code
 note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'Runner' from project 'Runner')
 note: Run script build phase 'Run Script' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'Runner' from project 'Runner')
 note: Run script build phase 'Thin Binary' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'Runner' from project 'Runner')
-The following build commands failed:
-	PhaseScriptExecution Run\ Script /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Runner.build/Release-iphoneos/Runner.build/Script-9740EEB61CF901F6004384FC.sh (in target 'Runner' from project 'Runner')
-	Building workspace Runner with scheme Runner and configuration Release
-(2 failures)
 Error: Process completed with exit code 65.

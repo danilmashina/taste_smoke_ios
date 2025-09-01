@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import './about_dialog.dart';
+import './terms_dialog.dart';
+import './help_bottom_sheet.dart';
 
 class AdditionalInfoDialog extends StatelessWidget {
   const AdditionalInfoDialog({super.key});
