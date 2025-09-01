@@ -32,6 +32,10 @@ target 'Runner' do
   use_modular_headers!
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+  
+  # Explicit version constraints to resolve conflicts
+  pod 'AppAuth', '~> 1.7.4'
+  pod 'GoogleUtilities', '~> 8.0'
 end
 
 post_install do |installer|
