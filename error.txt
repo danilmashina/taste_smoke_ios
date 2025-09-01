@@ -1,46 +1,39 @@
-[!] CocoaPods could not find compatible versions for pod "AppAuth":
-    In Podfile:
-      google_sign_in_ios (from `.symlinks/plugins/google_sign_in_ios/darwin`) was resolved to 0.0.1, which depends on
-        AppAuth (>= 1.7.4)
+Сборка снова не прошла из-за конфликта зависимостей CocoaPods:
 
-      google_sign_in_ios (from `.symlinks/plugins/google_sign_in_ios/darwin`) was resolved to 0.0.1, which depends on
-        GoogleSignIn (~> 8.0) was resolved to 8.0.0, which depends on
-          AppAuth (< 2.0, >= 1.7.3)
-Вторая ошибка по зависимостям:
+Ошибка: несовместимые версии pod GoogleUtilities/Environment
 
-text
-[!] CocoaPods could not find compatible versions for pod "GoogleUtilities/Environment":
-    In Podfile:
-      firebase_core (from `.symlinks/plugins/firebase_core/ios`) was resolved to 2.32.0, which depends on
-        Firebase/CoreOnly (= 10.25.0) was resolved to 10.25.0, which depends on
-          FirebaseCore (= 10.25.0) was resolved to 10.25.0, which depends on
-            GoogleUtilities/Environment (~> 7.12)
+Вот подробности из лога:
 
-      firebase_remote_config (from `.symlinks/plugins/firebase_remote_config/ios`) was resolved to 4.4.7, which depends on
-        Firebase/RemoteConfig (= 10.25.0) was resolved to 10.25.0, which depends on
-          FirebaseRemoteConfig (~> 10.25.0) was resolved to 10.25.0, which depends on
-            GoogleUtilities/Environment (~> 7.8)
+firebase_core требует GoogleUtilities/Environment (~> 7.12)
 
-      google_sign_in_ios (from `.symlinks/plugins/google_sign_in_ios/darwin`) был резолвнут до 0.0.1, который зависит от
-        GoogleSignIn (~> 8.0) был резолвнут до 8.0.0, который зависит от
-          AppCheckCore (~> 11.0) был резолвнут до 11.2.0, который зависит от
-            GoogleUtilities/Environment (~> 8.0)
-Трассировка (stack trace):
+firebase_remote_config требует GoogleUtilities/Environment (~> 7.8)
+
+google_sign_in_ios (через GoogleSignIn → AppCheckCore) требует GoogleUtilities/Environment (~> 8.0)
+
+Из-за этого CocoaPods не может подобрать одну версию для всех:
 
 text
-/opt/homebrew/lib/ruby/gems/3.3.0/gems/molinillo-0.8.0/lib/molinillo/resolution.rb:317:in `raise_error_unless_state'
-/opt/homebrew/lib/ruby/gems/3.3.0/gems/molinillo-0.8.0/lib/molinillo/resolution.rb:299:in `block in unwind_for_conflict'
-/opt/homebrew/lib/ruby/gems/3.3.0/gems/molinillo-0.8.0/lib/molinillo/resolution.rb:297:in `unwind_for_conflict'
-/opt/homebrew/lib/ruby/gems/3.3.0/gems/molinillo-0.8.0/lib/molinillo/resolution.rb:700:in `attempt_to_filter_existing_spec'
+CocoaPods could not find compatible versions for pod "GoogleUtilities/Environment":
+firebase_core ... GoogleUtilities/Environment (~> 7.12)
+firebase_remote_config ... GoogleUtilities/Environment (~> 7.8)
+google_sign_in_ios ... GoogleSignIn (~> 8.0) ... AppCheckCore (~> 11.0) ... GoogleUtilities/Environment (~> 8.0)
+Stack trace (коротко):
+
+text
 ...
-/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-1.16.2/lib/cocoapods/installer.rb:422:in `analyze'
-/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-1.16.2/lib/cocoapods/installer.rb:244:in `block in resolve_dependencies'
-/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-1.16.2/lib/cocoapods/installer.rb:243:in `resolve_dependencies'
-/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-1.16.2/lib/cocoapods/installer.rb:162:in `install!'
-/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-1.16.2/lib/cocoapods/command/install.rb:52:in `run'
-/opt/homebrew/lib/ruby/gems/3.3.0/gems/claide-1.1.0/lib/claide/command.rb:334:in `run'
-/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-1.16.2/lib/cocoapods/command.rb:52:in `run'
-/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-1.16.2/bin/pod:55:in `<top (required)>'
-/opt/homebrew/Cellar/ruby@3.3/3.3.9/lib/ruby/3.3.0/rubygems.rb:319:in `load'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/molinillo-0.8.0/lib/molinillo/resolution.rb:317:in `raise_error_unless_state'
+...
+❌ Failed to fix iOS dependencies. Check the output above for errors.
+💡 Try running: pod install --verbose --repo-update
+Error:  
+Process completed with exit code 1.
 Причина:
-Проблема с несовместимыми версиями подов (AppAuth и GoogleUtilities/Environment). Требуется вручную проверить зависимости в Podfile и убедиться, что версии не конфликтуют.
+Часть плагинов требует старую ветку GoogleUtilities, другая — новую, пересечь их нельзя.
+
+Решение:
+
+Проверь обновления всех зависимостей — возможно, новый релиз firebase_core и firebase_remote_config поддерживает новее GoogleUtilities.
+
+Если обновить нельзя — попробуй откатить google_sign_in до более старой версии, в которой GoogleSignIn не тянет AppCheckCore или GoogleUtilities ~> 8.0.
+
+Альтернативно — временно удаляй конфликтующие плагины (например, remote_config или google_sign_in) для теста успешной сборки.
