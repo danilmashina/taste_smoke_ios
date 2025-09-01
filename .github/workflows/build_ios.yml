@@ -23,6 +23,9 @@ jobs:
         flutter clean
         flutter pub get
 
+    - name: Print Podfile content for debugging
+      run: cat taste_smoke_ios/ios/Podfile
+
     - name: Install CocoaPods dependencies
       run: |
         # Make script executable
