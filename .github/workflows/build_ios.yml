@@ -20,8 +20,45 @@ jobs:
     - name: Install dependencies
       run: flutter pub get
 
-    - name: Build IPA
-      run: flutter build ipa --release
+    - name: Build iOS App (unsigned for AltStore)
+      run: |
+        cd ios
+        xcodebuild \
+          -workspace Runner.xcworkspace \
+          -scheme Runner \
+          -configuration Release \
+          -sdk iphoneos \
+          CODE_SIGNING_ALLOWED=NO \
+          CODE_SIGNING_REQUIRED=NO \
+          CODE_SIGNING_IDENTITY="" \
+          DEVELOPMENT_TEAM="" \
+          build
+        cd ..
+
+    - name: Create IPA for AltStore
+      run: |
+        echo "📦 Creating IPA for AltStore"
+        mkdir -p build/ios/ipa
+        mkdir -p build/ios/ipa/Payload
+        
+        APP_PATH="ios/build/Build/Products/Release-iphoneos/Runner.app"
+        if [ ! -d "$APP_PATH" ]; then
+          echo "❌ .app file not found at: $APP_PATH"
+          exit 1
+        fi
+        
+        cp -r "$APP_PATH" build/ios/ipa/Payload/
+        echo "✅ .app copied to Payload"
+        
+        cd build/ios/ipa
+        zip -r "../TasteSmoke-AltStore.ipa" Payload/
+        
+        if [ -f "../TasteSmoke-AltStore.ipa" ]; then
+          echo "✅ IPA created successfully: TasteSmoke-AltStore.ipa"
+        else
+          echo "❌ Failed to create IPA"
+          exit 1
+        fi
 
     - name: Upload IPA artifact
       uses: actions/upload-artifact@v4
