@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import '../../data/tobacco_ingredient.dart';
 
 abstract class MyMixesEvent extends Equatable {
   const MyMixesEvent();

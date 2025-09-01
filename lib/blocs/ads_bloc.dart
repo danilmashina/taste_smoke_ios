@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import './ads_event.dart';
 import './ads_state.dart';
+import '../../data/ad_banner.dart';
 
 class AdsBloc extends Bloc<AdsEvent, AdsState> {
   final FirebaseFirestore _firestore;

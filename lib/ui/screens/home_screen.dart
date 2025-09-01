@@ -12,6 +12,7 @@ import '../../blocs/ads_state.dart';
 import '../../blocs/categories_bloc.dart';
 import '../../blocs/categories_event.dart';
 import '../../blocs/categories_state.dart';
+import '../components/mix_detail_dialog.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -33,6 +34,7 @@ class HomeScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Миксы для кальяна'),
+          centerTitle: false, // To match original app
           actions: [
             IconButton(
               icon: const Icon(Icons.logout),
@@ -43,7 +45,7 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
         body: ListView(
-          children: const [
+          children: [
             // Search Bar
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
@@ -59,11 +61,11 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-            CategoriesSection(),
-            SizedBox(height: 12),
-            AdsSection(),
-            SizedBox(height: 12),
-            PopularMixesSection(),
+            const CategoriesSection(),
+            const SizedBox(height: 12),
+            const AdsSection(),
+            const SizedBox(height: 12),
+            const PopularMixesSection(),
           ],
         ),
         // TODO: Add BottomNavigationBar
@@ -101,7 +103,7 @@ class CategoriesSection extends StatelessWidget {
                     final category = state.categories[index];
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                      child:                       child: RawChip(
+                      child: RawChip(
                         label: Text(category.name),
                         onPressed: () {
                           context.go('/categories/${category.name}');
@@ -225,24 +227,6 @@ class PopularMixesSection extends StatelessWidget {
                               ),
                             ],
                           ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              );
-            }
-            if (state is PopularMixesError) {
-              return Center(child: Text(state.message));
-            }
-            return const SizedBox.shrink(); // Initial state
-          },
-        ),
-      ],
-    );
-  }
-}
-            ],
                         ),
                       ),
                     );

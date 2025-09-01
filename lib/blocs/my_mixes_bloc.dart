@@ -65,7 +65,7 @@ class MyMixesBloc extends Bloc<MyMixesEvent, MyMixesState> {
           .update({
             'name': event.newText,
             'description': event.newText, // Assuming name and description are the same
-            'ingredients': event.newIngredients.map((i) => i.toJson()).toList(),
+            'ingredients': event.newIngredients.map((i) => (i as TobaccoIngredient).toJson()).toList(),
             'strength': event.newStrength,
           });
     } catch (e) {

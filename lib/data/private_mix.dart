@@ -57,4 +57,24 @@ class PrivateMix extends Equatable {
       'timestamp': timestamp,
     };
   }
+
+  PrivateMix copyWith({
+    String? id,
+    String? name,
+    String? description,
+    List<TobaccoIngredient>? ingredients,
+    String? image,
+    String? strength,
+    int? timestamp,
+  }) {
+    return PrivateMix(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      description: description ?? this.description,
+      ingredients: ingredients ?? this.ingredients,
+      image: image ?? this.image,
+      strength: strength ?? this.strength,
+      timestamp: timestamp ?? this.timestamp,
+    );
+  }
 }

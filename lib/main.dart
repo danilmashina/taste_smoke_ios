@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import './blocs/auth_bloc.dart';
 import './app_router.dart';
 import './blocs/auth_event.dart';
 import './ui/theme.dart';

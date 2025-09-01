@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../blocs/mixes_by_category_bloc.dart';
 import '../../blocs/mixes_by_category_event.dart';
 import '../../blocs/mixes_by_category_state.dart';
-
 import '../components/mix_detail_dialog.dart';
 
 class CategoryDetailScreen extends StatelessWidget {
@@ -41,7 +40,10 @@ class CategoryDetailScreen extends StatelessWidget {
                     title: Text(mix.name),
                     subtitle: Text(mix.author),
                     onTap: () {
-                      // TODO: Navigate to mix detail screen
+                      showDialog(
+                        context: context,
+                        builder: (_) => MixDetailDialog(mix: mix),
+                      );
                     },
                   );
                 },
@@ -51,13 +53,6 @@ class CategoryDetailScreen extends StatelessWidget {
               return Center(child: Text(state.message));
             }
             return const SizedBox.shrink();
-          },
-        ),
-      ),
-    );
-  }
-}
-ox.shrink();
           },
         ),
       ),
