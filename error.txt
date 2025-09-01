@@ -1,39 +1,18 @@
-Сборка снова не прошла из-за конфликта зависимостей CocoaPods:
+Проект на Flutter с минимальной версией платформы iOS 14.0.
+В pubspec.yaml используются плагины:  
+- firebase_core  
+- firebase_remote_config  
+- google_sign_in  
 
-Ошибка: несовместимые версии pod GoogleUtilities/Environment
+Сейчас CocoaPods не может собрать проект для iOS из-за конфликта версий пода "GoogleUtilities/Environment":  
+— firebase_core требует ~> 7.12  
+— firebase_remote_config требует ~> 7.8  
+— google_sign_in через GoogleSignIn тянет ~> 8.0
 
-Вот подробности из лога:
+Задача:  
+1. Подбери такие конкретные версии пакетов firebase_core, firebase_remote_config и google_sign_in для pubspec.yaml, чтобы не было конфликта по GoogleUtilities/Environment и сборка iOS проходила.
+2. Приведи итоговый пример секции dependencies для pubspec.yaml.
+3. Кратко объясни порядок действий по обновлению (flutter pub get, pod install и т.п.).
+4. (Опционально: если это невозможно в текущих версиях, укажи альтернативы или временный обходной путь).
 
-firebase_core требует GoogleUtilities/Environment (~> 7.12)
-
-firebase_remote_config требует GoogleUtilities/Environment (~> 7.8)
-
-google_sign_in_ios (через GoogleSignIn → AppCheckCore) требует GoogleUtilities/Environment (~> 8.0)
-
-Из-за этого CocoaPods не может подобрать одну версию для всех:
-
-text
-CocoaPods could not find compatible versions for pod "GoogleUtilities/Environment":
-firebase_core ... GoogleUtilities/Environment (~> 7.12)
-firebase_remote_config ... GoogleUtilities/Environment (~> 7.8)
-google_sign_in_ios ... GoogleSignIn (~> 8.0) ... AppCheckCore (~> 11.0) ... GoogleUtilities/Environment (~> 8.0)
-Stack trace (коротко):
-
-text
-...
-/opt/homebrew/lib/ruby/gems/3.3.0/gems/molinillo-0.8.0/lib/molinillo/resolution.rb:317:in `raise_error_unless_state'
-...
-❌ Failed to fix iOS dependencies. Check the output above for errors.
-💡 Try running: pod install --verbose --repo-update
-Error:  
-Process completed with exit code 1.
-Причина:
-Часть плагинов требует старую ветку GoogleUtilities, другая — новую, пересечь их нельзя.
-
-Решение:
-
-Проверь обновления всех зависимостей — возможно, новый релиз firebase_core и firebase_remote_config поддерживает новее GoogleUtilities.
-
-Если обновить нельзя — попробуй откатить google_sign_in до более старой версии, в которой GoogleSignIn не тянет AppCheckCore или GoogleUtilities ~> 8.0.
-
-Альтернативно — временно удаляй конфликтующие плагины (например, remote_config или google_sign_in) для теста успешной сборки.
+Отвечай четко, только по делу — дай итоговые рабочие номера версий!
