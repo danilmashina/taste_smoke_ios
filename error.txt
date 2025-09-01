@@ -1,8 +1,8 @@
 Run # Make script executable
 🔧 Fixing iOS dependencies for taste_smoke_ios...
 🧹 Cleaning Flutter...
-Cleaning Xcode workspace...                                         5.8s
-Cleaning Xcode workspace...                                         5.6s
+Cleaning Xcode workspace...                                      2,452ms
+Cleaning Xcode workspace...                                         3.3s
 Deleting .dart_tool...                                               0ms
 Deleting ephemeral...                                                0ms
 Deleting Generated.xcconfig...                                       0ms
@@ -28,13 +28,13 @@ Try `flutter pub outdated` for more information.
   Preparing
 Updating local specs repositories
 Adding spec repo `trunk` with CDN `https://cdn.cocoapods.org/`
-  CDN: trunk Relative path downloaded: CocoaPods-version.yml, save ETag: "68b5cbd9-38"
+  CDN: trunk Relative path downloaded: CocoaPods-version.yml, save ETag: "68b5ce2b-38"
   CDN: trunk Relative path: CocoaPods-version.yml exists! Returning local because checking is only performed in repo update
 Updating spec repo `trunk`
-  CDN: trunk Relative path downloaded: deprecated_podspecs.txt, save ETag: W/"68b5cbd9-d15cd"
+  CDN: trunk Relative path downloaded: deprecated_podspecs.txt, save ETag: W/"68b5ce2b-d15cd"
   CDN: trunk Going to update 1 files
-  CDN: trunk Relative path: CocoaPods-version.yml, has ETag? "68b5cbd9-38"
-  CDN: trunk Relative path not modified: CocoaPods-version.yml
+  CDN: trunk Relative path: CocoaPods-version.yml, has ETag? "68b5ce2b-38"
+  CDN: trunk Relative path downloaded: CocoaPods-version.yml, save ETag: "68b5cbd9-38"
 Analyzing dependencies
 Inspecting targets to integrate
   Using `ARCHS` setting to build architectures of target `Pods-Runner`: (``)
