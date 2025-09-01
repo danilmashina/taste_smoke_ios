@@ -38,7 +38,7 @@ target 'Runner' do
   
   # Explicit version constraints to resolve GoogleUtilities conflicts
   pod 'GoogleUtilities', '~> 7.8'
-endend
+end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
