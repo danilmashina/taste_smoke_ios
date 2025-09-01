@@ -3,6 +3,7 @@ name: Build iOS
 on:
   push:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -17,8 +18,14 @@ jobs:
       with:
         flutter-version: '3.35.2'
 
-    - name: Install dependencies
+    - name: Install Flutter dependencies
       run: flutter pub get
+
+    - name: Install CocoaPods dependencies
+      run: |
+        cd ios
+        pod install --repo-update
+        cd ..
 
     - name: Build iOS App (unsigned for AltStore)
       run: |
