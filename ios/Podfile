@@ -37,12 +37,8 @@ target 'Runner' do
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
   
   # Explicit version constraints to resolve GoogleUtilities conflicts
-  pod 'GoogleUtilities', '~> 7.12.0'
-  
-  # Ensure compatible Firebase SDK versions
-  pod 'FirebaseCore', '~> 10.25.0'
-  pod 'FirebaseAuth', '~> 10.25.0'
-end
+  pod 'GoogleUtilities', '~> 7.8'
+endend
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|

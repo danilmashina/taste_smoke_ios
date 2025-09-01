@@ -5,6 +5,11 @@
 
 echo "🔧 Fixing iOS dependencies for taste_smoke_ios..."
 
+# Clean Flutter first
+echo "🧹 Cleaning Flutter..."
+flutter clean
+flutter pub get
+
 # Navigate to iOS directory
 cd "$(dirname "$0")/../ios" || exit 1
 
