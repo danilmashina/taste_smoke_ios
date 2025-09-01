@@ -31,26 +31,26 @@ ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/acto
 ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/actool --version --output-format xml1
 ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
 ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
-Build description signature: 0a9de0adccd8c244397dc2f48dffb1f1
-Build description path: /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/XCBuildData/0a9de0adccd8c244397dc2f48dffb1f1.xcbuilddata
-CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex
-    cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios
-    builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex
+Build description signature: c7ff49118d4bae72edb3e4b8c8712153
+Build description path: /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/XCBuildData/c7ff49118d4bae72edb3e4b8c8712153.xcbuilddata
 CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Products
     cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios
     builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Products
+CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex
+    cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios
+    builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex
 ClangStatCache /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache
     cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios
     /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -o /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache
 WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Runner.build/Release-iphoneos/Runner-18c1723432283e0cc55f10a6dcfd9e02-VFS-iphoneos/all-product-headers.yaml
     cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios
     write-file /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Runner.build/Release-iphoneos/Runner-18c1723432283e0cc55f10a6dcfd9e02-VFS-iphoneos/all-product-headers.yaml
-CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/EagerLinkingTBDs/Release-iphoneos
-    cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios
-    builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/EagerLinkingTBDs/Release-iphoneos
 CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Products/Release-iphoneos
     cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios
     builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Products/Release-iphoneos
+CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/EagerLinkingTBDs/Release-iphoneos
+    cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios
+    builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/EagerLinkingTBDs/Release-iphoneos
 WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Runner.build/Release-iphoneos/Runner.build/Script-9740EEB61CF901F6004384FC.sh (in target 'Runner' from project 'Runner')
     cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios
     write-file /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Runner.build/Release-iphoneos/Runner.build/Script-9740EEB61CF901F6004384FC.sh
@@ -575,12 +575,17 @@ PhaseScriptExecution Run\ Script /Users/runner/Library/Developer/Xcode/DerivedDa
     export SWIFT_COMPILATION_MODE\=wholemodule
     export SWIFT_EMIT_LOC_STRINGS\=NO
     export SWIFT_OBJC_BRIDGING_HEADER\=Runner/Runner-Bridging-Header.h
+** BUILD FAILED **
     export SWIFT_OPTIMIZATION_LEVEL\=-O
     export SWIFT_PLATFORM_TARGET_PREFIX\=ios
     export SWIFT_RESPONSE_FILE_PATH_normal_arm64\=/Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Runner.build/Release-iphoneos/Runner.build/Objects-normal/arm64/Runner.SwiftFileList
+The following build commands failed:
     export SWIFT_VERSION\=5.0
+	PhaseScriptExecution Run\ Script /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Runner.build/Release-iphoneos/Runner.build/Script-9740EEB61CF901F6004384FC.sh (in target 'Runner' from project 'Runner')
     export SYMROOT\=/Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Products
+	Building workspace Runner with scheme Runner and configuration Release
     export SYSTEM_ADMIN_APPS_DIR\=/Applications/Utilities
+(2 failures)
     export SYSTEM_APPS_DIR\=/Applications
     export SYSTEM_CORE_SERVICES_DIR\=/System/Library/CoreServices
     export SYSTEM_DEMOS_DIR\=/Applications/Extras
@@ -676,287 +681,16 @@ PhaseScriptExecution Run\ Script /Users/runner/Library/Developer/Xcode/DerivedDa
     export variant\=normal
     /bin/sh -c /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Runner.build/Release-iphoneos/Runner.build/Script-9740EEB61CF901F6004384FC.sh
 warning: Your Flutter project is currently configured for debug mode. Please run `flutter build ios --config-only --release` in your Flutter project to update your settings.
-lib/ui/screens/home_screen.dart:245:13: Error: Expected a declaration, but got ']'.
-            ],
-            ^
-lib/ui/screens/home_screen.dart:245:14: Error: Expected a declaration, but got ','.
-            ],
-             ^
-lib/ui/screens/home_screen.dart:246:25: Error: Expected a declaration, but got ')'.
-                        ),
-                        ^
-lib/ui/screens/home_screen.dart:246:26: Error: Expected a declaration, but got ','.
-                        ),
-                         ^
-lib/ui/screens/home_screen.dart:247:23: Error: Expected a declaration, but got ')'.
-                      ),
-                      ^
-lib/ui/screens/home_screen.dart:247:24: Error: Expected a declaration, but got ','.
-                      ),
-                       ^
-lib/ui/screens/home_screen.dart:248:21: Error: Expected a declaration, but got ')'.
-                    );
-                    ^
-lib/ui/screens/home_screen.dart:248:22: Error: Unexpected token ';'.
-                    );
-                     ^
-lib/ui/screens/home_screen.dart:249:19: Error: Expected a declaration, but got '}'.
-                  },
-                  ^
-lib/ui/screens/home_screen.dart:249:20: Error: Expected a declaration, but got ','.
-                  },
-                   ^
-lib/ui/screens/home_screen.dart:250:17: Error: Expected a declaration, but got ')'.
-                ),
-                ^
-lib/ui/screens/home_screen.dart:250:18: Error: Expected a declaration, but got ','.
-                ),
-                 ^
-lib/ui/screens/home_screen.dart:251:15: Error: Expected a declaration, but got ')'.
-              );
-              ^
-lib/ui/screens/home_screen.dart:251:16: Error: Unexpected token ';'.
-              );
-               ^
-lib/ui/screens/home_screen.dart:252:13: Error: Expected a declaration, but got '}'.
-            }
-            ^
-lib/ui/screens/home_screen.dart:253:13: Error: 'if' can't be used as an identifier because it's a keyword.
-Try renaming this to be an identifier that isn't a keyword.
-            if (state is PopularMixesError) {
-            ^^
-lib/ui/screens/home_screen.dart:253:23: Error: Expected ')' before this.
-            if (state is PopularMixesError) {
-                      ^^
-lib/ui/screens/home_screen.dart:256:13: Error: Variables must be declared using the keywords 'const', 'final', 'var' or a type name.
-Try adding the name of the type of the variable or the keyword 'var'.
-            return const SizedBox.shrink(); // Initial state
-            ^^^^^^
-lib/ui/screens/home_screen.dart:256:13: Error: 'return' can't be used as an identifier because it's a keyword.
-Try renaming this to be an identifier that isn't a keyword.
-            return const SizedBox.shrink(); // Initial state
-            ^^^^^^
-lib/ui/screens/home_screen.dart:256:13: Error: Expected ';' after this.
-            return const SizedBox.shrink(); // Initial state
-            ^^^^^^
-lib/ui/screens/home_screen.dart:256:20: Error: Can't have modifier 'const' here.
-Try removing 'const'.
-            return const SizedBox.shrink(); // Initial state
-                   ^^^^^
-lib/ui/screens/home_screen.dart:256:26: Error: A function declaration needs an explicit list of parameters.
-Try adding a parameter list to the function declaration.
-            return const SizedBox.shrink(); // Initial state
-                         ^^^^^^^^
-lib/ui/screens/home_screen.dart:256:34: Error: Expected '{' before this.
-            return const SizedBox.shrink(); // Initial state
-                                 ^
-lib/ui/screens/home_screen.dart:256:34: Error: Expected a declaration, but got '.'.
-            return const SizedBox.shrink(); // Initial state
-                                 ^
-lib/ui/screens/home_screen.dart:256:43: Error: Expected a function body or '=>'.
-Try adding {}.
-            return const SizedBox.shrink(); // Initial state
-                                          ^
-lib/ui/screens/home_screen.dart:257:11: Error: Expected a declaration, but got '}'.
-          },
-          ^
-lib/ui/screens/home_screen.dart:257:12: Error: Expected a declaration, but got ','.
-          },
-           ^
-lib/ui/screens/home_screen.dart:258:9: Error: Expected a declaration, but got ')'.
-        ),
-        ^
-lib/ui/screens/home_screen.dart:258:10: Error: Expected a declaration, but got ','.
-        ),
-         ^
-lib/ui/screens/home_screen.dart:259:7: Error: Expected a declaration, but got ']'.
-      ],
-      ^
-lib/ui/screens/home_screen.dart:259:8: Error: Expected a declaration, but got ','.
-      ],
-       ^
-lib/ui/screens/home_screen.dart:260:5: Error: Expected a declaration, but got ')'.
-    );
-    ^
-lib/ui/screens/home_screen.dart:260:6: Error: Unexpected token ';'.
-    );
-     ^
-lib/ui/screens/home_screen.dart:261:3: Error: Expected a declaration, but got '}'.
-  }
-  ^
-lib/ui/screens/home_screen.dart:262:1: Error: Expected a declaration, but got '}'.
-}
-^
-lib/ui/screens/category_detail_screen.dart:60:1: Error: A function declaration needs an explicit list of parameters.
-Try adding a parameter list to the function declaration.
-ox.shrink();
-^^
-lib/ui/screens/category_detail_screen.dart:60:3: Error: Expected '{' before this.
-ox.shrink();
-  ^
-lib/ui/screens/category_detail_screen.dart:60:3: Error: Expected a declaration, but got '.'.
-ox.shrink();
-  ^
-lib/ui/screens/category_detail_screen.dart:60:12: Error: Expected a function body or '=>'.
-Try adding {}.
-ox.shrink();
-           ^
-lib/ui/screens/category_detail_screen.dart:61:11: Error: Expected a declaration, but got '}'.
-          },
-          ^
-lib/ui/screens/category_detail_screen.dart:61:12: Error: Expected a declaration, but got ','.
-          },
-           ^
-lib/ui/screens/category_detail_screen.dart:62:9: Error: Expected a declaration, but got ')'.
-        ),
-        ^
-lib/ui/screens/category_detail_screen.dart:62:10: Error: Expected a declaration, but got ','.
-        ),
-         ^
-lib/ui/screens/category_detail_screen.dart:63:7: Error: Expected a declaration, but got ')'.
-      ),
-      ^
-lib/ui/screens/category_detail_screen.dart:63:8: Error: Expected a declaration, but got ','.
-      ),
-       ^
-lib/ui/screens/category_detail_screen.dart:64:5: Error: Expected a declaration, but got ')'.
-    );
-    ^
-lib/ui/screens/category_detail_screen.dart:64:6: Error: Unexpected token ';'.
-    );
-     ^
-lib/ui/screens/category_detail_screen.dart:65:3: Error: Expected a declaration, but got '}'.
-  }
-  ^
-lib/ui/screens/category_detail_screen.dart:66:1: Error: Expected a declaration, but got '}'.
-}
-^
-lib/main.dart:24:14: Error: Type 'AuthBloc' not found.
-  late final AuthBloc _authBloc;
-             ^^^^^^^^
-lib/app_router.dart:134:14: Error: Type 'StreamSubscription' not found.
-  late final StreamSubscription<dynamic> _subscription;
-             ^^^^^^^^^^^^^^^^^^
-lib/blocs/my_mixes_event.dart:15:14: Error: Type 'TobaccoIngredient' not found.
-  final List<TobaccoIngredient> newIngredients;
-             ^^^^^^^^^^^^^^^^^
-lib/ui/theme.dart:50:14: Error: The argument type 'CardTheme' can't be assigned to the parameter type 'CardThemeData?'.
- - 'CardTheme' is from 'package:flutter/src/material/card_theme.dart' ('../../../hostedtoolcache/flutter/stable-3.35.2-arm64/packages/flutter/lib/src/material/card_theme.dart').
- - 'CardThemeData' is from 'package:flutter/src/material/card_theme.dart' ('../../../hostedtoolcache/flutter/stable-3.35.2-arm64/packages/flutter/lib/src/material/card_theme.dart').
-  cardTheme: CardTheme(
-             ^
-lib/main.dart:24:14: Error: 'AuthBloc' isn't a type.
-  late final AuthBloc _authBloc;
-             ^^^^^^^^
-lib/main.dart:30:17: Error: The method 'AuthBloc' isn't defined for the type '_MyAppState'.
- - '_MyAppState' is from 'package:taste_smoke_ios/main.dart' ('lib/main.dart').
-Try correcting the name to the name of an existing method, or defining a method named 'AuthBloc'.
-    _authBloc = AuthBloc()..add(CheckAuthStatus()); // Initial auth check
-                ^^^^^^^^
-lib/app_router.dart:134:14: Error: 'StreamSubscription' isn't a type.
-  late final StreamSubscription<dynamic> _subscription;
-             ^^^^^^^^^^^^^^^^^^
-lib/ui/screens/home_screen.dart:51:30: Error: Not a constant expression.
-                onTap: () => context.go('/search'),
-                             ^^^^^^^
-lib/ui/screens/home_screen.dart:51:38: Error: Method invocation is not a constant expression.
-                onTap: () => context.go('/search'),
-                                     ^^
-lib/ui/screens/home_screen.dart:51:24: Error: Not a constant expression.
-                onTap: () => context.go('/search'),
-                       ^^
-lib/ui/screens/home_screen.dart:50:22: Error: Cannot invoke a non-'const' constructor where a const expression is expected.
-Try using a constructor or factory that is 'const'.
-              child: GestureDetector(
-                     ^^^^^^^^^^^^^^^
-lib/ui/screens/home_screen.dart:63:13: Error: Method invocation is not a constant expression.
-            SizedBox(height: 12),
-            ^^^^^^^^
-lib/ui/screens/home_screen.dart:65:13: Error: Method invocation is not a constant expression.
-            SizedBox(height: 12),
-            ^^^^^^^^
-lib/ui/screens/home_screen.dart:90:15: Error: Couldn't find constructor 'SizedBox'.
-        const SizedBox(height: 8),
-              ^^^^^^^^
-lib/ui/screens/home_screen.dart:104:57: Error: Expected ')' before this.
-                      child:                       child: RawChip(
-                                                        ^
-lib/ui/screens/home_screen.dart:95:17: Error: No named parameter with the name 'height'.
-                height: 44,
-                ^^^^^^
-lib/ui/screens/home_screen.dart:256:26: Context: Found this candidate, but the arguments don't match.
-            return const SizedBox.shrink(); // Initial state
-                         ^^^^^^^^
-lib/ui/screens/home_screen.dart:117:26: Error: Couldn't find constructor 'SizedBox.shrink'.
-            return const SizedBox.shrink(); // Initial or loading state
-                         ^^^^^^
-lib/ui/screens/home_screen.dart:136:47: Error: Couldn't find constructor 'SizedBox.shrink'.
-          if (state.ads.isEmpty) return const SizedBox.shrink();
-                                              ^^^^^^
-lib/ui/screens/home_screen.dart:138:13: Error: No named parameter with the name 'height'.
-            height: 150,
-            ^^^^^^
-lib/ui/screens/home_screen.dart:256:26: Context: Found this candidate, but the arguments don't match.
-            return const SizedBox.shrink(); // Initial state
-                         ^^^^^^^^
-lib/ui/screens/home_screen.dart:155:22: Error: Couldn't find constructor 'SizedBox.shrink'.
-        return const SizedBox.shrink(); // Initial state
-                     ^^^^^^
-lib/ui/screens/home_screen.dart:203:27: Error: No named parameter with the name 'width'.
-                          width: 150,
-                          ^^^^^
-lib/ui/screens/home_screen.dart:256:26: Context: Found this candidate, but the arguments don't match.
-            return const SizedBox.shrink(); // Initial state
-                         ^^^^^^^^
-lib/ui/screens/home_screen.dart:186:17: Error: No named parameter with the name 'height'.
-                height: 200,
-                ^^^^^^
-lib/ui/screens/home_screen.dart:256:26: Context: Found this candidate, but the arguments don't match.
-            return const SizedBox.shrink(); // Initial state
-                         ^^^^^^^^
-lib/ui/screens/home_screen.dart:238:26: Error: Couldn't find constructor 'SizedBox.shrink'.
-            return const SizedBox.shrink(); // Initial state
-                         ^^^^^^
 lib/ui/screens/profile_screen.dart:73:55: Error: Not a constant expression.
                           builder: (context) => const AdditionalInfoDialog(),
                                                       ^^^^^^^^^^^^^^^^^^^^
-lib/blocs/ads_bloc.dart:23:25: Error: The getter 'AdBanner' isn't defined for the type 'AdsBloc'.
- - 'AdsBloc' is from 'package:taste_smoke_ios/blocs/ads_bloc.dart' ('lib/blocs/ads_bloc.dart').
-Try correcting the name to the name of an existing getter, or defining a getter or field named 'AdBanner'.
-          .map((doc) => AdBanner.fromJson(doc.data() as Map<String, dynamic>))
-                        ^^^^^^^^
-lib/blocs/ads_bloc.dart:25:22: Error: The argument type 'List<dynamic>' can't be assigned to the parameter type 'List<AdBanner>'.
- - 'List' is from 'dart:core'.
- - 'AdBanner' is from 'package:taste_smoke_ios/data/ad_banner.dart' ('lib/data/ad_banner.dart').
-      emit(AdsLoaded(ads));
-                     ^
-lib/blocs/my_mixes_bloc.dart:43:83: Error: The method 'copyWith' isn't defined for the type 'PrivateMix'.
- - 'PrivateMix' is from 'package:taste_smoke_ios/data/private_mix.dart' ('lib/data/private_mix.dart').
-Try correcting the name to the name of an existing method, or defining a method named 'copyWith'.
-            .map((doc) => PrivateMix.fromJson(doc.data() as Map<String, dynamic>).copyWith(id: doc.id))
-                                                                                  ^^^^^^^^
-lib/blocs/my_mixes_bloc.dart:45:28: Error: The argument type 'List<dynamic>' can't be assigned to the parameter type 'List<PrivateMix>'.
- - 'List' is from 'dart:core'.
- - 'PrivateMix' is from 'package:taste_smoke_ios/data/private_mix.dart' ('lib/data/private_mix.dart').
-        emit(MyMixesLoaded(mixes));
-                           ^
-lib/blocs/my_mixes_bloc.dart:68:62: Error: The method 'toJson' isn't defined for the type 'Object?'.
- - 'Object' is from 'dart:core'.
-Try correcting the name to the name of an existing method, or defining a method named 'toJson'.
-            'ingredients': event.newIngredients.map((i) => i.toJson()).toList(),
-                                                             ^^^^^^
-lib/blocs/my_mixes_event.dart:15:14: Error: 'TobaccoIngredient' isn't a type.
-  final List<TobaccoIngredient> newIngredients;
-             ^^^^^^^^^^^^^^^^^
+lib/blocs/my_mixes_bloc.dart:68:66: Error: 'TobaccoIngredient' isn't a type.
+            'ingredients': event.newIngredients.map((i) => (i as TobaccoIngredient).toJson()).toList(),
+                                                                 ^^^^^^^^^^^^^^^^^
 Target kernel_snapshot_program failed: Exception
 Failed to package /Users/runner/work/taste_smoke_ios/taste_smoke_ios.
 Command PhaseScriptExecution failed with a nonzero exit code
 note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'Runner' from project 'Runner')
 note: Run script build phase 'Run Script' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'Runner' from project 'Runner')
 note: Run script build phase 'Thin Binary' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'Runner' from project 'Runner')
-** BUILD FAILED **
-The following build commands failed:
-	PhaseScriptExecution Run\ Script /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Runner.build/Release-iphoneos/Runner.build/Script-9740EEB61CF901F6004384FC.sh (in target 'Runner' from project 'Runner')
-	Building workspace Runner with scheme Runner and configuration Release
-(2 failures)
 Error: Process completed with exit code 65.

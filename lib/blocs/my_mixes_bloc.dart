@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import './my_mixes_event.dart';
 import './my_mixes_state.dart';
 import '../../data/private_mix.dart';
+import '../../data/tobacco_ingredient.dart';
 
 class MyMixesBloc extends Bloc<MyMixesEvent, MyMixesState> {
   final FirebaseAuth _firebaseAuth;
