@@ -35,6 +35,7 @@ target 'Runner' do
   
   # Explicit version constraints to resolve conflicts
   pod 'GoogleSignIn', '~> 7.0'
+  pod 'GoogleUtilities', '~> 7.11'
 end
 
 post_install do |installer|
