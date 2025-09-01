@@ -35,7 +35,7 @@ target 'Runner' do
   
   # Explicit version constraints to resolve conflicts
   pod 'AppAuth', '~> 1.7.5'
-  pod 'GoogleUtilities/Environment', '~> 7.12'
+  pod 'GoogleUtilities', '~> 7.12'
 end
 
 post_install do |installer|
