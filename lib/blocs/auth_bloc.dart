@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../core/auth/google_auth_service.dart';
+import '../core/auth/auth_service_interface.dart';
 import './auth_event.dart';
 import './auth_state.dart';
 
@@ -102,26 +103,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         return;
       }
       
-      final googleAuth = await _googleAuthService.signIn();
-      if (googleAuth != null) {
-        // При наличии ID токена - создаем Firebase credential
-        if (googleAuth['idToken'] != null) {
-          final credential = GoogleAuthProvider.credential(
-            accessToken: googleAuth['accessToken'],
-            idToken: googleAuth['idToken'],
-          );
-          final userCredential = await _firebaseAuth.signInWithCredential(credential);
-          if (userCredential.user != null) {
-            emit(Authenticated(userCredential.user!));
-          } else {
-            emit(AuthFailure('Ошибка аутентификации'));
-          }
-        } else {
-          emit(AuthFailure('Не удалось получить токен'));
-        }
-      } else {
-        emit(UnAuthenticated());
-      }
+      // Поскольку Google Sign-In недоступен, сразу показываем ошибку
+      emit(GoogleSignInUnavailable('Google Sign-In временно недоступен. Используйте Email/пароль.'));
     } catch (e) {
       emit(AuthFailure('Ошибка Google Sign-In: ${e.toString()}'));
     }
