@@ -33,3 +33,22 @@ class AuthFailure extends AuthState {
 }
 
 class PasswordResetEmailSent extends AuthState {}
+
+// Добавляем состояния для Google Sign-In
+class GoogleSignInAvailable extends AuthState {
+  final bool isAvailable;
+
+  const GoogleSignInAvailable(this.isAvailable);
+
+  @override
+  List<Object?> get props => [isAvailable];
+}
+
+class GoogleSignInUnavailable extends AuthState {
+  final String reason;
+
+  const GoogleSignInUnavailable(this.reason);
+
+  @override
+  List<Object?> get props => [reason];
+}

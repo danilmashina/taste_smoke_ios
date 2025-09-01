@@ -39,3 +39,9 @@ class PasswordResetRequested extends AuthEvent {
   @override
   List<Object> get props => [email];
 }
+
+// Добавляем события для Google Sign-In
+class GoogleSignInRequested extends AuthEvent {}
+
+// Событие для проверки доступности Google Sign-In
+class CheckGoogleSignInAvailability extends AuthEvent {}

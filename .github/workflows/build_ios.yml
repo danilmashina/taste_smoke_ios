@@ -28,10 +28,10 @@ jobs:
 
     - name: Install CocoaPods dependencies
       run: |
-        # Make script executable
-        chmod +x scripts/fix_ios_dependencies.sh
-        # Run dependency fix script
-        ./scripts/fix_ios_dependencies.sh
+        # Make full clean script executable
+        chmod +x scripts/full_clean_rebuild.sh
+        # Run full clean and rebuild
+        ./scripts/full_clean_rebuild.sh
     - name: Build iOS App (unsigned for AltStore)
       run: |
         cd ios
