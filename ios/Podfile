@@ -4,6 +4,9 @@ platform :ios, '13.0'
 # CocoaPods analytics sends network stats synchronously affecting flutter build latency.
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
+# Add repo source for better dependency resolution
+source 'https://cdn.cocoapods.org/'
+
 project 'Runner', {
   'Debug' => :debug,
   'Profile' => :release,
@@ -33,13 +36,26 @@ target 'Runner' do
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
   
-  # Explicit version constraints to resolve conflicts
-  pod 'AppAuth', '~> 1.7.4'
-  pod 'GoogleUtilities', '~> 8.0'
+  # Explicit version constraints to resolve GoogleUtilities conflicts
+  pod 'GoogleUtilities', '~> 7.12.0'
+  
+  # Ensure compatible Firebase SDK versions
+  pod 'FirebaseCore', '~> 10.25.0'
+  pod 'FirebaseAuth', '~> 10.25.0'
 end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     flutter_additional_ios_build_settings(target)
+    target.build_configurations.each do |config|
+      # Ensure iOS 13.0 deployment target everywhere
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+      # Ensure modules are enabled for Swift interop
+      config.build_settings['CLANG_ENABLE_MODULES'] = 'YES'
+      # Fix for GoogleUtilities dependency issues
+      config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= [
+        '$(inherited)',
+      ]
+    end
   end
 end

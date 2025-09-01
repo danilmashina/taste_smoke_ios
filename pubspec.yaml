@@ -31,9 +31,9 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # Firebase
-  firebase_core: ^2.32.0
-  firebase_auth: ^4.20.0
+  # Firebase - Updated to latest compatible versions
+  firebase_core: ^2.34.0
+  firebase_auth: ^4.21.0
   cloud_firestore: ^4.17.5
   firebase_storage: ^11.7.7
   firebase_remote_config: ^4.4.7
