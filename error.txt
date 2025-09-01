@@ -1,10 +1,11 @@
+14s
 Run # Make script executable
 🔧 Fixing iOS dependencies for taste_smoke_ios...
 🧹 Cleaning Flutter...
-Cleaning Xcode workspace...                                         4.5s
-Cleaning Xcode workspace...                                         4.5s
+Cleaning Xcode workspace...                                      2,199ms
+Cleaning Xcode workspace...                                         3.4s
 Deleting .dart_tool...                                               0ms
-Deleting ephemeral...                                                0ms
+Deleting ephemeral...                                                1ms
 Deleting Generated.xcconfig...                                       0ms
 Deleting flutter_export_environment.sh...                            0ms
 Deleting ephemeral...                                                0ms
@@ -28,18 +29,16 @@ Try `flutter pub outdated` for more information.
   Preparing
 Updating local specs repositories
 Adding spec repo `trunk` with CDN `https://cdn.cocoapods.org/`
-  CDN: trunk Relative path downloaded: CocoaPods-version.yml, save ETag: "68b5d180-38"
+  CDN: trunk Relative path downloaded: CocoaPods-version.yml, save ETag: "68b5d388-38"
   CDN: trunk Relative path: CocoaPods-version.yml exists! Returning local because checking is only performed in repo update
 Updating spec repo `trunk`
-  CDN: trunk Relative path downloaded: deprecated_podspecs.txt, save ETag: W/"68b5d180-d15cd"
-[!] Automatically assigning platform `iOS` with version `13.0` on target `Runner` because no platform was specified. Please specify a platform for this target in your Podfile. See `https://guides.cocoapods.org/syntax/podfile.html#platform`.
+  CDN: trunk Relative path downloaded: deprecated_podspecs.txt, save ETag: W/"68b5d389-d15cd"
   CDN: trunk Going to update 1 files
-  CDN: trunk Relative path: CocoaPods-version.yml, has ETag? "68b5d180-38"
+  CDN: trunk Relative path: CocoaPods-version.yml, has ETag? "68b5d388-38"
   CDN: trunk Relative path not modified: CocoaPods-version.yml
 Analyzing dependencies
 Inspecting targets to integrate
   Using `ARCHS` setting to build architectures of target `Pods-Runner`: (``)
-  Using `ARCHS` setting to build architectures of target `Pods-RunnerTests`: (``)
 Fetching external sources
 -> Fetching podspec for `Flutter` from `Flutter`
 -> Fetching podspec for `cloud_firestore` from `.symlinks/plugins/cloud_firestore/ios`
