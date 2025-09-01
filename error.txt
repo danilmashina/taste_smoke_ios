@@ -1,8 +1,8 @@
 Run # Make script executable
 🔧 Fixing iOS dependencies for taste_smoke_ios...
 🧹 Cleaning Flutter...
-Cleaning Xcode workspace...                                      1,263ms
-Cleaning Xcode workspace...                                      1,951ms
+Cleaning Xcode workspace...                                      2,103ms
+Cleaning Xcode workspace...                                      2,617ms
 Deleting .dart_tool...                                               0ms
 Deleting ephemeral...                                                0ms
 Deleting Generated.xcconfig...                                       0ms
@@ -31,7 +31,7 @@ Adding spec repo `trunk` with CDN `https://cdn.cocoapods.org/`
   CDN: trunk Relative path downloaded: CocoaPods-version.yml, save ETag: "68b5c60f-38"
   CDN: trunk Relative path: CocoaPods-version.yml exists! Returning local because checking is only performed in repo update
 Updating spec repo `trunk`
-  CDN: trunk Relative path downloaded: deprecated_podspecs.txt, save ETag: W/"68b5c60f-d15cd"
+  CDN: trunk Relative path downloaded: deprecated_podspecs.txt, save ETag: W/"68b5c3b5-d15cd"
   CDN: trunk Going to update 1 files
   CDN: trunk Relative path: CocoaPods-version.yml, has ETag? "68b5c60f-38"
   CDN: trunk Relative path not modified: CocoaPods-version.yml
@@ -56,157 +56,6 @@ firebase_storage: Using Firebase SDK version '12.2.0' defined in 'firebase_core'
 -> Fetching podspec for `sqflite_darwin` from `.symlinks/plugins/sqflite_darwin/darwin`
 -> Fetching podspec for `url_launcher_ios` from `.symlinks/plugins/url_launcher_ios/ios`
 Resolving dependencies of `Podfile`
-  CDN: trunk URL couldn't be downloaded: https://cdn.cocoapods.org/all_pods_versions_0_8_4.txt Response: Error in the HTTP2 framing layer, retries: 4
-  CDN: trunk Relative path downloaded: all_pods_versions_0_8_4.txt, save ETag: W/"68b5c3b5-45f"
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/1.0.1/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/1.0.1/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/1.1.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/1.1.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/1.2.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/1.2.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/1.3.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/1.3.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/1.3.1/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/1.3.1/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/1.3.2/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/1.3.2/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/5.1.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/5.1.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/5.2.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/5.2.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/5.2.1/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/5.2.1/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/5.2.2/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/5.2.2/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/5.2.3/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/5.2.3/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/5.3.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/5.3.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/5.3.1/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/5.3.1/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/5.3.2/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/5.3.2/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/5.3.3/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/5.3.3/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/5.3.4/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/5.3.4/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/5.3.6/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/5.3.6/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/5.3.5/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/5.3.5/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/5.3.7/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/5.3.7/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/5.4.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/5.4.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/5.4.1/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/5.4.1/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/5.5.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/5.5.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/5.6.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/5.6.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/5.7.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/5.7.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/5.8.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/5.8.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/6.0.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/6.0.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/6.1.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/6.1.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/6.2.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/6.2.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/6.2.1/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/6.2.1/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/6.2.2/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/6.2.2/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/6.2.3/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/6.2.3/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/6.2.4/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/6.2.4/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/6.2.5/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/6.2.5/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/6.3.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/6.3.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/6.3.2/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/6.3.2/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/6.3.1/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/6.3.1/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/6.4.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/6.4.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/6.5.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/6.5.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/6.5.1/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/6.5.1/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/6.5.2/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/6.5.2/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/6.6.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/6.6.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/6.7.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/6.7.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/6.7.1/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/6.7.1/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/6.7.2/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/6.7.2/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/7.0.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/7.0.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/7.1.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/7.1.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/7.1.1/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/7.1.1/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/7.10.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/7.10.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/7.11.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/7.11.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/7.11.1/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/7.11.1/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/7.12.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/7.12.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/7.11.4/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/7.11.4/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/7.11.5/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/7.11.5/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/7.11.6/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/7.11.6/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/7.13.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/7.13.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/7.13.2/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/7.13.2/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/7.2.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/7.2.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/7.13.3/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/7.13.3/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/7.2.2/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/7.2.2/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/7.3.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/7.3.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/7.3.1/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/7.3.1/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/7.4.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/7.4.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/7.4.1/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/7.4.1/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/7.4.3/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/7.4.3/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/7.5.2/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/7.5.2/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/7.5.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/7.5.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/7.5.1/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/7.5.1/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/7.6.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/7.6.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/8.0.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/8.0.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/7.7.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/7.7.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/8.0.2/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/8.0.2/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/7.8.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/7.8.0/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/8.0.1/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/8.0.1/GoogleUtilities.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/0/8/4/GoogleUtilities/8.1.0/GoogleUtilities.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/0/8/4/GoogleUtilities/8.1.0/GoogleUtilities.podspec.json
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/1.0.1/GoogleUtilities.podspec.json, save ETag: W/"58a-40dc1NRRNCIdLz82JglaHEm2IEE"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/1.1.0/GoogleUtilities.podspec.json, save ETag: W/"5fd-jtkTTevhFxkJeIFxFGR1KQBmjxA"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/1.2.0/GoogleUtilities.podspec.json, save ETag: W/"694-hfitayUVRChqlxYxM9BC7JX4icU"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/1.3.2/GoogleUtilities.podspec.json, save ETag: W/"380-i7xzMhiq0mMG+dSiU4I5hhEOM1g"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/5.1.0/GoogleUtilities.podspec.json, save ETag: W/"e8c-x69jNoeJxonMf7qBX8CPdhuXeoQ"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/1.3.1/GoogleUtilities.podspec.json, save ETag: W/"39d-VsWsBbeqXcQXobuFIhqVFuBNcDI"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/1.3.0/GoogleUtilities.podspec.json, save ETag: W/"68b-XGU/ffLu3wzg79/lr+T4MfN1/Xo"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/5.2.2/GoogleUtilities.podspec.json, save ETag: W/"ec1-BrZvlWd2mnlY2yCpLwEosoQ+SdU"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/5.3.2/GoogleUtilities.podspec.json, save ETag: W/"100e-gvBK7/hCYwnb28dfbIrM0eWEpdo"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/5.2.0/GoogleUtilities.podspec.json, save ETag: W/"e8c-JvYL/btd0Z16jrXZ5s07atiEj0Y"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/5.2.1/GoogleUtilities.podspec.json, save ETag: W/"e8c-jZ+gAkjEdbYG/SC1YiQgYKIBF6I"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/5.2.3/GoogleUtilities.podspec.json, save ETag: W/"ec1-b2geJwUMXhMDJeifoDFt/Kgm+VQ"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/5.3.1/GoogleUtilities.podspec.json, save ETag: W/"100e-4Yv93rnpNBmgSGXU8BcixNWwFNk"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/5.3.3/GoogleUtilities.podspec.json, save ETag: W/"100e-ggiu4+l6Guk9RMV+lsR2paOwPwo"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/5.3.4/GoogleUtilities.podspec.json, save ETag: W/"100e-q7CS0sEugX+j4OeydJh91y+4bsM"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/5.3.0/GoogleUtilities.podspec.json, save ETag: W/"100e-dgzLU7fH9A+cAtjCQfdvhBp6YWI"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/5.3.7/GoogleUtilities.podspec.json, save ETag: W/"100e-ERoBL0w6KcnnyVTAgvr9buPJmcA"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/6.0.0/GoogleUtilities.podspec.json, save ETag: W/"100e-8fqvwDPqIDrfF4POAK9FW7mdDls"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/5.3.6/GoogleUtilities.podspec.json, save ETag: W/"100e-lZlr6nx9m4+4EbdQdmmkqHYvgMc"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/5.7.0/GoogleUtilities.podspec.json, save ETag: W/"100e-Jz5nAw4N4xPnME9tz6lvxSFPbCM"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/5.5.0/GoogleUtilities.podspec.json, save ETag: W/"100e-ZIHmMYxfyrqqhRPvgSDzKQVdfBA"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/6.1.0/GoogleUtilities.podspec.json, save ETag: W/"100e-hN9WfHbKhPZ7e7QOdp/dSsx0ahA"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/5.3.5/GoogleUtilities.podspec.json, save ETag: W/"100e-u2/1owLJegvJgg2td1UFd4xaJnY"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/5.4.1/GoogleUtilities.podspec.json, save ETag: W/"fce-HiWCPL9GVAtChPbvjhezpo7hK7w"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/5.8.0/GoogleUtilities.podspec.json, save ETag: W/"100e-BPzjS81WIMHudvt5FyEFx0pN8zU"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/5.4.0/GoogleUtilities.podspec.json, save ETag: W/"fce-+naK0EsmS+JQ7p7fnzeK0Ab3pWA"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/5.6.0/GoogleUtilities.podspec.json, save ETag: W/"100e-9EsGjfAhldoQQJ9BW9jJhDnNcPo"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/6.2.0/GoogleUtilities.podspec.json, save ETag: W/"119a-mW4NsHFTZ0/RtUsiD9o6PcNUfLo"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/6.3.0/GoogleUtilities.podspec.json, save ETag: W/"1319-nCxUQgIwERCyn3l0qC53/c8Sv1E"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/6.4.0/GoogleUtilities.podspec.json, save ETag: W/"124b-Kb0Nj4UO+9KM/22Z6LfaH40ja88"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/6.2.1/GoogleUtilities.podspec.json, save ETag: W/"119a-x6Cwi9o7+Ai+gj7RUfDiisaGbnE"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/6.2.2/GoogleUtilities.podspec.json, save ETag: W/"119a-3d0NW2D3W70zjadlh9b2Z+w1OyM"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/6.2.4/GoogleUtilities.podspec.json, save ETag: W/"1267-ZLXjmCsbAb2iZxKv/VxSPvMlY88"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/6.3.1/GoogleUtilities.podspec.json, save ETag: W/"1319-+JX95Xl3304CM+3aDb6sSQ43A7Y"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/6.5.0/GoogleUtilities.podspec.json, save ETag: W/"146f-+N5934xwb1jptAXVPji72qJzHlo"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/6.2.3/GoogleUtilities.podspec.json, save ETag: W/"119a-0rDid6lZYuCbsn9c1C9fC2pQbH0"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/6.3.2/GoogleUtilities.podspec.json, save ETag: W/"1319-VHqGc1xvDuMK0X6U30/CH2Frccs"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/6.2.5/GoogleUtilities.podspec.json, save ETag: W/"1267-59w3A5sZ33/lQ0edPkoCrI0Ru2k"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/7.10.0/GoogleUtilities.podspec.json, save ETag: W/"14f8-utcss2OAkBWx9/Gb6x8c0jxYn5U"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/6.5.2/GoogleUtilities.podspec.json, save ETag: W/"14fd-rQ87aRxnkJ0DozJ8wgUiKrj0Lg4"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/6.6.0/GoogleUtilities.podspec.json, save ETag: W/"1555-OVMLwK2YBTApjpxK+FSemR/QM7E"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/6.7.0/GoogleUtilities.podspec.json, save ETag: W/"1696-I61deXlLje0ZVEZtW+b49pTT9/M"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/6.7.2/GoogleUtilities.podspec.json, save ETag: W/"1690-fy9aB/iIzbFFEB1gQrxEIvV+cLM"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/6.7.1/GoogleUtilities.podspec.json, save ETag: W/"1696-4SGjhnRJzhaw413fF5fqejif/fI"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/7.0.0/GoogleUtilities.podspec.json, save ETag: W/"142d-/7L0FZ8siXxuiZK9f7ze+KMAWJw"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/7.11.1/GoogleUtilities.podspec.json, save ETag: W/"14f8-mqCtWnvBcfi64BYwC/z6P7hCV0k"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/6.5.1/GoogleUtilities.podspec.json, save ETag: W/"14fd-ButTu1ee/nCZFSc1kA3QS/CecnU"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/7.11.0/GoogleUtilities.podspec.json, save ETag: W/"14f8-wr3EzyznhsTS5rO8/VmaJcp48G8"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/7.1.0/GoogleUtilities.podspec.json, save ETag: W/"1470-9zTaVUqt6Mx5KKMcLzMRiXkzob0"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/7.1.1/GoogleUtilities.podspec.json, save ETag: W/"1470-PcT/DV5IQOL6ju8IiWIOjDPUIYw"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/7.12.0/GoogleUtilities.podspec.json, save ETag: W/"153e-B1nRpX67lTllwt/gukyC6VzMLjQ"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/7.3.0/GoogleUtilities.podspec.json, save ETag: W/"1463-q9pF9Rm8QHOqEXHS+HQhCN70YBc"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/7.11.4/GoogleUtilities.podspec.json, save ETag: W/"14f8-xjaRmJvzYroFBVB9oA7rMmGS6D4"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/7.11.6/GoogleUtilities.podspec.json, save ETag: W/"153e-IC56n1EorM0RFg+5wZYS3hkRqhk"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/7.13.0/GoogleUtilities.podspec.json, save ETag: W/"17de-0FPZAqjtqpkE4b0Aw3U1OFuO0VI"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/7.13.2/GoogleUtilities.podspec.json, save ETag: W/"17de-xWQwrvUaGqV7Jdp4w/g5flIsZ7c"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/7.2.0/GoogleUtilities.podspec.json, save ETag: W/"1470-2GaDRHLxMk0IBJa8Z6s85dDUYCc"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/7.13.3/GoogleUtilities.podspec.json, save ETag: W/"17de-6pY8Nwo4qAacxfe6TKhJpgttfRU"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/7.2.2/GoogleUtilities.podspec.json, save ETag: W/"1463-McWwH5eKcMbP8q/GJys/GSFhS0M"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/7.3.1/GoogleUtilities.podspec.json, save ETag: W/"1495-4dntTlRPwyqT4A5yFADLw/N3IA0"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/7.4.0/GoogleUtilities.podspec.json, save ETag: W/"1495-KEzdx//8FK4ZB++294q5XB/Mrtw"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/7.4.1/GoogleUtilities.podspec.json, save ETag: W/"14e3-+KQxCLOKaO6+izVA4fTy0ohDziA"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/7.4.3/GoogleUtilities.podspec.json, save ETag: W/"14e3-RduySn81HWnQpgFIKzmtbDLjDas"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/7.5.2/GoogleUtilities.podspec.json, save ETag: W/"14f6-jeKpehfhW2uY446HcOLRKaV8AEA"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/7.5.0/GoogleUtilities.podspec.json, save ETag: W/"14f6-7qlw9KOJljljv/6Nj6vkNUBni5w"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/7.5.1/GoogleUtilities.podspec.json, save ETag: W/"14f6-PfGePCT3u8KR2LWAmqaw1B5kJDc"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/7.6.0/GoogleUtilities.podspec.json, save ETag: W/"14f6-aE7nkKJPc+uy0dlm6XEcID8qQjc"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/8.0.0/GoogleUtilities.podspec.json, save ETag: W/"164c-eDFlPy6VhC9S2SDFvy7eYxY3ASk"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/7.7.0/GoogleUtilities.podspec.json, save ETag: W/"14f6-4JExSfawYltVPXDa4StJ/GKRT9E"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/8.0.2/GoogleUtilities.podspec.json, save ETag: W/"164c-JqOr7wAbZTPPZ40+s4/T9hS3hy0"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/7.8.0/GoogleUtilities.podspec.json, save ETag: W/"14f6-HSCmrZfvRvZ7vewVjOAFY6Zx67c"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/8.0.1/GoogleUtilities.podspec.json, save ETag: W/"164c-UvZ3tSsNK+0k57nJRFWx9zU6Cfg"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/8.1.0/GoogleUtilities.podspec.json, save ETag: W/"164c-AMiLmoYGbvd/DaL6sF9l13aO2OE"
-  CDN: trunk Relative path downloaded: Specs/0/8/4/GoogleUtilities/7.11.5/GoogleUtilities.podspec.json, save ETag: W/"14f8-E+LGft5xa4dBx5ieJok9FRsrIIQ"
-  CDN: trunk Relative path: Specs/0/8/4/GoogleUtilities/8.1.0/GoogleUtilities.podspec.json modified during this run! Returning local
 [!] CocoaPods could not find compatible versions for pod "cloud_firestore":
   In Podfile:
     cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
