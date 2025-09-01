@@ -14,10 +14,10 @@ class AdditionalInfoDialog extends StatelessWidget {
           ElevatedButton(
             onPressed: () async {
               final url = Uri.parse('https://danilmashina.github.io/Mysite/mobile-app.html');
-              if (await canLaunchUrl(url)) {
-                await launchUrl(url);
+              if (await launchUrl(url)) {
+                // Launched successfully
               } else {
-                // Handle error
+                // Handle error, e.g., show a SnackBar
               }
             },
             child: const Text('Официальный сайт'),
