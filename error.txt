@@ -1,3 +1,90 @@
-Run cat taste_smoke_ios/ios/Podfile
-cat: taste_smoke_ios/ios/Podfile: No such file or directory
+Run # Make script executable
+🔧 Fixing iOS dependencies for taste_smoke_ios...
+🧹 Cleaning Flutter...
+Cleaning Xcode workspace...                                      2,352ms
+Cleaning Xcode workspace...                                         3.1s
+Deleting .dart_tool...                                               0ms
+Deleting ephemeral...                                                0ms
+Deleting Generated.xcconfig...                                       0ms
+Deleting flutter_export_environment.sh...                            0ms
+Deleting ephemeral...                                                0ms
+Deleting ephemeral...                                                0ms
+Deleting ephemeral...                                                0ms
+Deleting .flutter-plugins-dependencies...                            0ms
+Resolving dependencies...
+Downloading packages...
+  characters 1.4.0 (1.4.1 available)
+  material_color_utilities 0.11.1 (0.13.0 available)
+  meta 1.16.0 (1.17.0 available)
+  test_api 0.7.6 (0.7.7 available)
+Got dependencies!
+4 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+📁 Current directory: /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios
+🧹 Cleaning previous installations...
+📦 Updating CocoaPods repository...
+🗑️ Cleaning CocoaPods cache...
+⚙️ Installing CocoaPods dependencies...
+  Preparing
+Updating local specs repositories
+Adding spec repo `trunk` with CDN `https://cdn.cocoapods.org/`
+  CDN: trunk Relative path downloaded: CocoaPods-version.yml, save ETag: "68b5c8e0-38"
+  CDN: trunk Relative path: CocoaPods-version.yml exists! Returning local because checking is only performed in repo update
+Updating spec repo `trunk`
+  CDN: trunk Relative path downloaded: deprecated_podspecs.txt, save ETag: W/"68b5c8e0-d15cd"
+  CDN: trunk Going to update 1 files
+  CDN: trunk Relative path: CocoaPods-version.yml, has ETag? "68b5c8e0-38"
+  CDN: trunk Relative path not modified: CocoaPods-version.yml
+Analyzing dependencies
+Inspecting targets to integrate
+  Using `ARCHS` setting to build architectures of target `Pods-Runner`: (``)
+Fetching external sources
+-> Fetching podspec for `Flutter` from `Flutter`
+-> Fetching podspec for `cloud_firestore` from `.symlinks/plugins/cloud_firestore/ios`
+cloud_firestore: Using Firebase SDK version '12.2.0' defined in 'firebase_core'
+-> Fetching podspec for `firebase_auth` from `.symlinks/plugins/firebase_auth/ios`
+firebase_auth: Using Firebase SDK version '12.2.0' defined in 'firebase_core'
+-> Fetching podspec for `firebase_core` from `.symlinks/plugins/firebase_core/ios`
+firebase_core: Using Firebase SDK version '12.2.0' defined in 'firebase_core'
+-> Fetching podspec for `firebase_remote_config` from `.symlinks/plugins/firebase_remote_config/ios`
+firebase_remote_config: Using Firebase SDK version '12.2.0' defined in 'firebase_core'
+-> Fetching podspec for `firebase_storage` from `.symlinks/plugins/firebase_storage/ios`
+firebase_storage: Using Firebase SDK version '12.2.0' defined in 'firebase_core'
+-> Fetching podspec for `google_sign_in_ios` from `.symlinks/plugins/google_sign_in_ios/darwin`
+-> Fetching podspec for `path_provider_foundation` from `.symlinks/plugins/path_provider_foundation/darwin`
+-> Fetching podspec for `shared_preferences_foundation` from `.symlinks/plugins/shared_preferences_foundation/darwin`
+-> Fetching podspec for `sqflite_darwin` from `.symlinks/plugins/sqflite_darwin/darwin`
+-> Fetching podspec for `url_launcher_ios` from `.symlinks/plugins/url_launcher_ios/ios`
+Resolving dependencies of `Podfile`
+[!] CocoaPods could not find compatible versions for pod "cloud_firestore":
+  In Podfile:
+    cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
+Specs satisfying the `cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)` dependency were found, but they required a higher minimum deployment target.
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/molinillo-0.8.0/lib/molinillo/resolution.rb:317:in `raise_error_unless_state'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/molinillo-0.8.0/lib/molinillo/resolution.rb:299:in `block in unwind_for_conflict'
+<internal:kernel>:90:in `tap'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/molinillo-0.8.0/lib/molinillo/resolution.rb:297:in `unwind_for_conflict'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/molinillo-0.8.0/lib/molinillo/resolution.rb:682:in `attempt_to_activate'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/molinillo-0.8.0/lib/molinillo/resolution.rb:254:in `process_topmost_state'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/molinillo-0.8.0/lib/molinillo/resolution.rb:182:in `resolve'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/molinillo-0.8.0/lib/molinillo/resolver.rb:43:in `resolve'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-1.16.2/lib/cocoapods/resolver.rb:94:in `resolve'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-1.16.2/lib/cocoapods/installer/analyzer.rb:1082:in `block in resolve_dependencies'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-1.16.2/lib/cocoapods/user_interface.rb:64:in `section'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-1.16.2/lib/cocoapods/installer/analyzer.rb:1080:in `resolve_dependencies'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-1.16.2/lib/cocoapods/installer/analyzer.rb:125:in `analyze'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-1.16.2/lib/cocoapods/installer.rb:422:in `analyze'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-1.16.2/lib/cocoapods/installer.rb:244:in `block in resolve_dependencies'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-1.16.2/lib/cocoapods/user_interface.rb:64:in `section'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-1.16.2/lib/cocoapods/installer.rb:243:in `resolve_dependencies'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-1.16.2/lib/cocoapods/installer.rb:162:in `install!'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-1.16.2/lib/cocoapods/command/install.rb:52:in `run'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/claide-1.1.0/lib/claide/command.rb:334:in `run'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-1.16.2/lib/cocoapods/command.rb:52:in `run'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-1.16.2/bin/pod:55:in `<top (required)>'
+/opt/homebrew/Cellar/ruby@3.3/3.3.9/lib/ruby/3.3.0/rubygems.rb:319:in `load'
+/opt/homebrew/Cellar/ruby@3.3/3.3.9/lib/ruby/3.3.0/rubygems.rb:319:in `activate_and_load_bin_path'
+/opt/homebrew/lib/ruby/gems/3.3.0/bin/pod:25:in `<main>'
+❌ Failed to fix iOS dependencies. Check the output above for errors.
+💡 Try running: pod install --verbose --repo-update
 Error: Process completed with exit code 1.
