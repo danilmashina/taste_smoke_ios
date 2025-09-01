@@ -36,8 +36,7 @@ target 'Runner' do
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
   
-  # Explicit version constraints to resolve GoogleUtilities conflicts
-  pod 'GoogleUtilities', '~> 7.8'
+  
 end
 
 post_install do |installer|
