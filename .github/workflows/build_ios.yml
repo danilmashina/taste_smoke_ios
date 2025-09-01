@@ -24,7 +24,7 @@ jobs:
         flutter pub get
 
     - name: Print Podfile content for debugging
-      run: cat taste_smoke_ios/ios/Podfile
+      run: cat ios/Podfile
 
     - name: Install CocoaPods dependencies
       run: |
