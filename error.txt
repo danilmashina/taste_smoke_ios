@@ -31,23 +31,23 @@ ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/acto
 ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/actool --version --output-format xml1
 ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
 ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
-Build description signature: 5a4f0a59bb7366c8a0c7ca25fe4a4965
-Build description path: /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/XCBuildData/5a4f0a59bb7366c8a0c7ca25fe4a4965.xcbuilddata
+Build description signature: f8794b4fe741cb027aec6556cfa54c01
+Build description path: /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/XCBuildData/f8794b4fe741cb027aec6556cfa54c01.xcbuilddata
 CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Products
     cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios
     builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Products
-ClangStatCache /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache
-    cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios
-    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -o /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache
 CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex
     cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios
     builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex
-CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Products/Release-iphoneos
+ClangStatCache /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache
     cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios
-    builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Products/Release-iphoneos
+    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -o /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache
 WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Runner.build/Release-iphoneos/Runner-18c1723432283e0cc55f10a6dcfd9e02-VFS-iphoneos/all-product-headers.yaml
     cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios
     write-file /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Runner.build/Release-iphoneos/Runner-18c1723432283e0cc55f10a6dcfd9e02-VFS-iphoneos/all-product-headers.yaml
+CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Products/Release-iphoneos
+    cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios
+    builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Products/Release-iphoneos
 CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/EagerLinkingTBDs/Release-iphoneos
     cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios
     builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/EagerLinkingTBDs/Release-iphoneos
@@ -685,7 +685,6 @@ import 'package:url_launcher/url_launcher.dart';
        ^
 	Building workspace Runner with scheme Runner and configuration Release
 lib/ui/components/additional_info_dialog.dart:20:25: Error: The method 'launchUrl' isn't defined for the type 'AdditionalInfoDialog'.
-(2 failures)
  - 'AdditionalInfoDialog' is from 'package:taste_smoke_ios/ui/components/additional_info_dialog.dart' ('lib/ui/components/additional_info_dialog.dart').
 Try correcting the name to the name of an existing method, or defining a method named 'launchUrl'.
               if (await launchUrl(url)) {
@@ -705,6 +704,7 @@ FileSystemException(uri=org-dartlang-untranslatable-uri:package%3Aurl_launcher%2
 Target kernel_snapshot_program failed: Exception
 Failed to package /Users/runner/work/taste_smoke_ios/taste_smoke_ios.
 Command PhaseScriptExecution failed with a nonzero exit code
+(2 failures)
 note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'Runner' from project 'Runner')
 note: Run script build phase 'Run Script' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'Runner' from project 'Runner')
 note: Run script build phase 'Thin Binary' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'Runner' from project 'Runner')
