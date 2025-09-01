@@ -6,6 +6,7 @@ import '../../blocs/profile_event.dart';
 import '../../blocs/profile_state.dart';
 import '../../blocs/auth_bloc.dart';
 import '../../blocs/auth_event.dart';
+import '../components/additional_info_dialog.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
