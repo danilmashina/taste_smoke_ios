@@ -3,53 +3,93 @@ name: Flutter iOS Build for AltStore
 on:
   push:
     branches:
-      - main # Убедись, что это имя твоей основной ветки (например, master)
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+  workflow_dispatch: # Позволяет запускать вручную
 
 jobs:
   build:
     runs-on: macos-latest
+    timeout-minutes: 60
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - uses: subosito/flutter-action@v2
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.35.2'
+          flutter-version: '3.24.3'
           channel: 'stable'
+          cache: true
 
-      - name: Get Flutter dependencies
-        run: flutter pub get
+      - name: Flutter Doctor
+        run: flutter doctor -v
 
-      - name: Hard clean iOS build caches
+      - name: Clean project thoroughly
         run: |
-          cd ios
-          rm -rf Pods Podfile.lock
-          cd ..
-          rm -rf build
-          rm -rf ios/Flutter/Flutter.framework
-          rm -rf ios/.symlinks
-          rm -rf ~/Library/Developer/Xcode/DerivedData/*
+          echo "🧹 Полная очистка проекта..."
           flutter clean
-          flutter pub get # <-- Эту строку я добавлю
-          cd ios
-          pod install --repo-update --verbose
-
-      - name: Check for outdated Flutter dependencies
-        run: flutter pub outdated
-
-      - name: Check for outdated CocoaPods dependencies
+          rm -rf build
+          rm -rf ios/Pods 
+          rm -rf ios/Podfile.lock
+          rm -rf ios/.symlinks
+          rm -rf ios/Flutter/Flutter.framework
+          rm -rf ~/Library/Developer/Xcode/DerivedData/*
+          
+      - name: Get Flutter dependencies
         run: |
+          echo "📦 Установка Flutter зависимостей..."
+          flutter pub get
+
+      - name: Analyze Flutter code
+        run: |
+          echo "🔍 Анализ кода..."
+          flutter analyze --no-fatal-infos
+
+      - name: Setup CocoaPods
+        run: |
+          echo "🍎 Настройка CocoaPods..."
           cd ios
-          pod outdated
+          # Обновляем репозиторий CocoaPods
+          pod repo update
+          # Устанавливаем зависимости с полной очисткой
+          pod install --repo-update --verbose --clean-install
 
-      - name: Enable verbose output
-        run: export NSUnbufferedIO=YES
+      - name: Check dependencies status
+        run: |
+          echo "📊 Проверка зависимостей..."
+          flutter pub outdated || true
+          cd ios && pod outdated || true
 
-      - name: Flutter build iOS (unsigned)
-        run: flutter build ipa --release --no-codesign
+      - name: Build iOS IPA (unsigned for AltStore)
+        run: |
+          echo "🔨 Сборка IPA для AltStore..."
+          flutter build ipa --release --no-codesign --verbose
+          
+      - name: Verify IPA creation
+        run: |
+          echo "✅ Проверка созданного IPA..."
+          ls -la build/ios/ipa/
+          file build/ios/ipa/*.ipa
 
       - name: Upload IPA artifact
         uses: actions/upload-artifact@v4
         with:
-          name: app-release-ipa
+          name: taste-smoke-ios-altstore
           path: build/ios/ipa/*.ipa
+          retention-days: 30
+
+      - name: Upload build logs (on failure)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-logs
+          path: |
+            ios/Pods/
+            build/
+          retention-days: 7
