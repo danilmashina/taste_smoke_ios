@@ -1,20 +1,26 @@
-У меня при сборке Flutter-проекта для iOS в CI ломается build с ошибкой:
+Помоги разобраться с ошибкой CocoaPods при сборке Flutter-проекта на CI:
+
+Я получаю сообщение:
 
 text
-Error (Xcode): unsupported option '-G' for target 'arm64-apple-ios14.0'
-Encountered error while archiving for device.
-Error: Process completed with exit code 1.
-Подскажи, пожалуйста:
+[!] CocoaPods could not find compatible versions for pod "cloud_firestore":
+  Specs satisfying the `cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)` dependency were found, but they required a higher minimum deployment target.
+Однако у меня в файле ios/Podfile уже стоит:
 
-Как определить, какой pod, xcconfig или Flutter-плагин добавляет этот невалидный флаг -G?
+text
+platform :ios, '14.0'
+Я не работаю на Mac, поэтому не могу вручную выполнить pod install --repo-update или другие pod-команды — всё это делает GitHub Actions.
 
-Каким образом быстро найти его во всех конфиг-файлах, podspec, .xcconfig, Podfile и build-скриптах проекта?
+Что ещё можно проверить/сделать:
 
-Есть ли стандартные подходы для удаления или игнорирования недопустимых опций компиляции в iOS (clang/arm64)?
+Какие дополнительные файлы и конфиги могут влиять на deployment target для Pods, помимо Podfile?
 
-Может ли это быть результатом несовместимости версии pod или Flutter-плагина и что делать в таком случае (например, обновлять, фиксировать, заменять)?
+Как убедиться, что изменения в Podfile учитываются на раннере CI?
 
-Как построить workflow, чтобы подобные ошибки с флагами или невалидными build-параметрами предотвращать на этапе CI?
+Какие шаги вне pod install можно предпринять, чтобы избежать ошибок кэша или несовместимости версий Flutter-плагинов?
 
-Детально объясни, как минимизировать риск подобных флагов в будущем — возможно, через lock версий или правильное оформление pubspec/podspec.
+Могут ли другие плагины или .xcconfig файлы занижать минимальный deployment target, даже если в Podfile он выше?
 
+Как правильно структурировать CI workflow и проект для гарантированного применения нового deployment target на Mac runner?
+
+Дай подробную инструкцию для Windows-разработчика, у которого всё обновление и сборка происходят только через GitHub Actions или аналогичный CI.
