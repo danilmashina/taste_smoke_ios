@@ -30,6 +30,7 @@ jobs:
           rm -rf ios/.symlinks
           rm -rf ~/Library/Developer/Xcode/DerivedData/*
           flutter clean
+          flutter pub get # <-- Эту строку я добавлю
           cd ios
           pod install --repo-update --verbose
 

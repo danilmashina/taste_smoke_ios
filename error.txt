@@ -1,36 +1,36 @@
-Run flutter pub get
+Run cd ios
   
-  ╔════════════════════════════════════════════════════════════════════════════╗
-  ║                 Welcome to Flutter! - https://flutter.dev                  ║
-  ║                                                                            ║
-  ║ The Flutter tool uses Google Analytics to anonymously report feature usage ║
-  ║ statistics and basic crash reports. This data is used to help improve      ║
-  ║ Flutter tools over time.                                                   ║
-  ║                                                                            ║
-  ║ Flutter tool analytics are not sent on the very first run. To disable      ║
-  ║ reporting, type 'flutter config --no-analytics'. To display the current    ║
-  ║ setting, type 'flutter config'. If you opt out of analytics, an opt-out    ║
-  ║ event will be sent, and then no further information will be sent by the    ║
-  ║ Flutter tool.                                                              ║
-  ║                                                                            ║
-  ║ By downloading the Flutter SDK, you agree to the Google Terms of Service.  ║
-  ║ The Google Privacy Policy describes how data is handled in this service.   ║
-  ║                                                                            ║
-  ║ Moreover, Flutter includes the Dart SDK, which may send usage metrics and  ║
-  ║ crash reports to Google.                                                   ║
-  ║                                                                            ║
-  ║ Read about data we send with crash reports:                                ║
-  ║ https://flutter.dev/docs/reference/crash-reporting                         ║
-  ║                                                                            ║
-  ║ See Google's privacy policy:                                               ║
-  ║ https://policies.google.com/privacy                                        ║
-  ║                                                                            ║
-  ║ To disable animations in this tool, use                                    ║
-  ║ 'flutter config --no-cli-animations'.                                      ║
-  ╚════════════════════════════════════════════════════════════════════════════╝
-Resolving dependencies...
-The current Dart SDK version is 3.4.0.
-Because taste_smoke_ios requires SDK version ^3.9.0, version solving failed.
-You can try the following suggestion to make the pubspec resolve:
-* Try using the Flutter SDK version: 3.35.2. 
+Cleaning Xcode workspace...                                         5.0s
+Cleaning Xcode workspace...                                         3.4s
+Deleting .dart_tool...                                               0ms
+Deleting ephemeral...                                                0ms
+Deleting Generated.xcconfig...                                       0ms
+Deleting flutter_export_environment.sh...                            0ms
+Deleting ephemeral...                                                0ms
+Deleting ephemeral...                                                0ms
+Deleting ephemeral...                                                0ms
+Deleting .flutter-plugins-dependencies...                            0ms
+[!] Invalid `Podfile` file: Generated.xcconfig must exist. If you're running pod install manually, make sure flutter pub get is executed first.
+ #  from /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios/Podfile:16
+ #  -------------------------------------------
+ #    unless File.exist?(generated_xcode_build_settings_path)
+ >      raise "Generated.xcconfig must exist. If you're running pod install manually, make sure flutter pub get is executed first"
+ #    end
+ #  -------------------------------------------
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-core-1.16.2/lib/cocoapods-core/podfile.rb:335:in `rescue in block in from_ruby'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-core-1.16.2/lib/cocoapods-core/podfile.rb:329:in `block in from_ruby'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-core-1.16.2/lib/cocoapods-core/podfile.rb:50:in `instance_eval'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-core-1.16.2/lib/cocoapods-core/podfile.rb:50:in `initialize'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-core-1.16.2/lib/cocoapods-core/podfile.rb:327:in `new'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-core-1.16.2/lib/cocoapods-core/podfile.rb:327:in `from_ruby'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-core-1.16.2/lib/cocoapods-core/podfile.rb:293:in `from_file'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-1.16.2/lib/cocoapods/config.rb:206:in `podfile'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-1.16.2/lib/cocoapods/command.rb:160:in `verify_podfile_exists!'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-1.16.2/lib/cocoapods/command/install.rb:46:in `run'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/claide-1.1.0/lib/claide/command.rb:334:in `run'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-1.16.2/lib/cocoapods/command.rb:52:in `run'
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-1.16.2/bin/pod:55:in `<top (required)>'
+/opt/homebrew/Cellar/ruby@3.3/3.3.9/lib/ruby/3.3.0/rubygems.rb:319:in `load'
+/opt/homebrew/Cellar/ruby@3.3/3.3.9/lib/ruby/3.3.0/rubygems.rb:319:in `activate_and_load_bin_path'
+/opt/homebrew/lib/ruby/gems/3.3.0/bin/pod:25:in `<main>'
 Error: Process completed with exit code 1.
