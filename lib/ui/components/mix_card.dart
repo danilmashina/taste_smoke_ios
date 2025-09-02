@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import '../../data/private_mix.dart';
 
 class MixCard extends StatelessWidget {

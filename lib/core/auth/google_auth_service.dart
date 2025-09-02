@@ -1,6 +1,5 @@
 // lib/core/auth/google_auth_service.dart
 // Условный импорт в зависимости от платформы
-import 'dart:io' show Platform;
 import 'auth_service_interface.dart';
 
 // Условные импорты

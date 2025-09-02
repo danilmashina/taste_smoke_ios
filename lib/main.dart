@@ -5,8 +5,6 @@ import './blocs/auth_bloc.dart';
 import './app_router.dart';
 import './blocs/auth_event.dart';
 import './ui/theme.dart';
-import './app_router.dart';
-import './blocs/auth_event.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
