@@ -1,55 +1,16 @@
- Все стадии pod install (path_provider_foundation, shared_preferences_foundation, sqflite_darwin, url_launcher_ios и т.д.) прошли успешно, pod'ы установились. Билд падает на этапе Xcode build с exit code 65, не оставляя стек-трейса или сообщения о причинах!
+У меня в GitHub Actions для Flutter проекта присутствуют три job'а в пайплайне iOS-сборки:
 
-Почему так происходит?
-Проблема случается на этапе встроенных build phase Pod'ов (Pods targets), а не в твоем коде.
+Build iOS
 
-Нет явных строк с “Missing file”, “Undefined symbols”, “CodeSign”, “Permission denied”. Это косвенно указывает на внутренний баг runner, сбойную работу симлинков или race condition во временных build-артефактах Pods/DerivedData.
+Flutter iOS Build for AltStore
 
-Подобные проблемы на GitHub Actions случаются из-за остаточных файлов, ошибок workspace/PBXProj, некорректной синхронизации pod'ов или переполнения build-артефактов у бесплатных раннеров.
+iOS Build
 
-PROMPT/Рекомендации по исправлению (GitHub Actions)
-1. Удаляй не только Pods и DerivedData, но и весь build Flutter/Pods:
+Какую роль обычно выполняет каждый из них и для чего могут понадобиться сразу три job-а, если задача — собрать unsigned .ipa для установки через AltStore?
 
-text
-- name: Hard clean iOS build caches
-  run: |
-    cd ios
-    rm -rf Pods Podfile.lock
-    cd ..
-    rm -rf build
-    rm -rf ios/Flutter/Flutter.framework
-    rm -rf ios/.symlinks
-    rm -rf ~/Library/Developer/Xcode/DerivedData
-    flutter clean
-    cd ios
-    pod install --repo-update --verbose
-2. После чистки — бей билд только флагом --no-codesign:
+Может ли одновременное или последовательное выполнение нескольких подобных job-ов вызывать проблемы с Pods/DerivedData или конфликт файлов (например, из-за чистки build- и temp-папок)?
 
-text
-- name: Build iOS app (no codesign)
-  run: flutter build ios --no-codesign --verbose
-3. Если не поможет — увеличь подробность логов (выше добавить):
+Как правильно строить workflow, чтобы избежать конкуренции между job-ами и не получать ошибку exit code 65/Xcode build failed, особенно если нужен unsigned билд только для AltStore?
 
-text
-- name: Enable verbose output
-  run: export NSUnbufferedIO=YES
-4. Пробуй запускать другой тип runner (например, с другим региональным сервером), так как Github macOS-раннер иногда падает на pod-этапе из-за перегрузки.
-
-Пояснение
-90% exit code 65 — это баг работы pod build phase в GitHub Actions/macOS, ошибка корневой структуры build-артефактов, а не твоего кода.
-
-Тебе надо максимально вычищать build/temp, DerivedData, Pods, .symlinks и всегда делать полный чистый pod install.
-
-Если ошибка повторяется даже после чистки — нужно ловить строку (обычно появляется на 10–100 строк выше Process completed with exit code 65) с описанием, например:
-
-file not found
-
-permission denied
-
-undefined symbols
-
-script phase failed
-
-Вывод:
-Сделай жесткую чистку перед билдом, добавь подробный лог, при следующем падении зафиксируй, какая именно строка идет перед exit code 65 и пришли ее — по ней можно уже найти точную причину!
+Укажи best practice для iOS CI/CD с подобной структурой workflows.
 
