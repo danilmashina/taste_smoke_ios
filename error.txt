@@ -1,17 +1,36 @@
-У меня в GitHub Actions для Flutter проекта присутствуют три job'а в пайплайне iOS-сборки:
-
-Build iOS
-
-Flutter iOS Build for AltStore
-
-iOS Build
-
-Какую роль обычно выполняет каждый из них и для чего могут понадобиться сразу три job-а, если задача — собрать unsigned .ipa для установки через AltStore?
-
-Может ли одновременное или последовательное выполнение нескольких подобных job-ов вызывать проблемы с Pods/DerivedData или конфликт файлов (например, из-за чистки build- и temp-папок)?
-
-Как правильно строить workflow, чтобы избежать конкуренции между job-ами и не получать ошибку exit code 65/Xcode build failed, особенно если нужен unsigned билд только для AltStore?
-
-Укажи best practice для iOS CI/CD с подобной структурой workflows.
-
-.
+Run flutter pub get
+  
+  ╔════════════════════════════════════════════════════════════════════════════╗
+  ║                 Welcome to Flutter! - https://flutter.dev                  ║
+  ║                                                                            ║
+  ║ The Flutter tool uses Google Analytics to anonymously report feature usage ║
+  ║ statistics and basic crash reports. This data is used to help improve      ║
+  ║ Flutter tools over time.                                                   ║
+  ║                                                                            ║
+  ║ Flutter tool analytics are not sent on the very first run. To disable      ║
+  ║ reporting, type 'flutter config --no-analytics'. To display the current    ║
+  ║ setting, type 'flutter config'. If you opt out of analytics, an opt-out    ║
+  ║ event will be sent, and then no further information will be sent by the    ║
+  ║ Flutter tool.                                                              ║
+  ║                                                                            ║
+  ║ By downloading the Flutter SDK, you agree to the Google Terms of Service.  ║
+  ║ The Google Privacy Policy describes how data is handled in this service.   ║
+  ║                                                                            ║
+  ║ Moreover, Flutter includes the Dart SDK, which may send usage metrics and  ║
+  ║ crash reports to Google.                                                   ║
+  ║                                                                            ║
+  ║ Read about data we send with crash reports:                                ║
+  ║ https://flutter.dev/docs/reference/crash-reporting                         ║
+  ║                                                                            ║
+  ║ See Google's privacy policy:                                               ║
+  ║ https://policies.google.com/privacy                                        ║
+  ║                                                                            ║
+  ║ To disable animations in this tool, use                                    ║
+  ║ 'flutter config --no-cli-animations'.                                      ║
+  ╚════════════════════════════════════════════════════════════════════════════╝
+Resolving dependencies...
+The current Dart SDK version is 3.4.0.
+Because taste_smoke_ios requires SDK version ^3.9.0, version solving failed.
+You can try the following suggestion to make the pubspec resolve:
+* Try using the Flutter SDK version: 3.35.2. 
+Error: Process completed with exit code 1.
