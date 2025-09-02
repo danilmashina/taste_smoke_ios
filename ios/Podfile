@@ -37,8 +37,8 @@ target 'Runner' do
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
   
   # Принудительные версии для совместимости Firebase
-  pod 'GoogleUtilities', '~> 7.12.0'
-  pod 'FirebaseCore', '~> 10.25.0'
+  pod 'GoogleUtilities', '~> 8.0'
+  pod 'FirebaseCore', '~> 11.0'
 end
 
 post_install do |installer|

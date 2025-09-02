@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.9.0
+  sdk: '>=3.5.0 <4.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -31,13 +31,13 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # Firebase & Google (совместимые версии для стабильной сборки)
-  firebase_core: ^2.34.0
-  firebase_auth: ^4.21.0
-  cloud_firestore: ^4.17.0
-  firebase_storage: ^11.7.0
-  firebase_remote_config: ^4.4.0
-  # google_sign_in: ^5.4.4
+  # Firebase & Google (последние стабильные версии)
+  firebase_core: ^3.8.0
+  firebase_auth: ^5.3.3
+  cloud_firestore: ^5.5.0
+  firebase_storage: ^12.3.6
+  firebase_remote_config: ^5.1.8
+  # google_sign_in: ^6.2.1
 
   # State Management
   flutter_bloc: ^9.1.1
