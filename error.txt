@@ -1,26 +1,29 @@
-Помоги разобраться с ошибкой CocoaPods при сборке Flutter-проекта на CI:
-
-Я получаю сообщение:
+Столкнулся с ошибкой при сборке Flutter-проекта на CI (GitHub Actions):
 
 text
 [!] CocoaPods could not find compatible versions for pod "cloud_firestore":
   Specs satisfying the `cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)` dependency were found, but they required a higher minimum deployment target.
-Однако у меня в файле ios/Podfile уже стоит:
+Error: Process completed with exit code 1.
+В файле ios/Podfile выставлено:
 
 text
 platform :ios, '14.0'
-Я не работаю на Mac, поэтому не могу вручную выполнить pod install --repo-update или другие pod-команды — всё это делает GitHub Actions.
+Аналогично в ios/Runner.xcconfig, Debug.xcconfig, Release.xcconfig и во всех возможных .xcconfig записано:
 
-Что ещё можно проверить/сделать:
+text
+IPHONEOS_DEPLOYMENT_TARGET = 14.0
+Я не могу запускать pod install вручную — всё выполняется только на GitHub Actions runner.
 
-Какие дополнительные файлы и конфиги могут влиять на deployment target для Pods, помимо Podfile?
+Вопросы:
 
-Как убедиться, что изменения в Podfile учитываются на раннере CI?
+Почему эта ошибка с cloud_firestore не пропадает? Возможна ли ситуация, что свежие версии cloud_firestore и firebase требуют уже не 14.0, а 15.0 или выше?
 
-Какие шаги вне pod install можно предпринять, чтобы избежать ошибок кэша или несовместимости версий Flutter-плагинов?
+Как правильно удостовериться, что CI точно видит мои изменения (Podfile, .xcconfig, pubspec.yaml)?
 
-Могут ли другие плагины или .xcconfig файлы занижать минимальный deployment target, даже если в Podfile он выше?
+Какой best practice для Flutter, если не удаётся понизить cloud_firestore, но устаревшую версию iOS поддерживать не нужно?
 
-Как правильно структурировать CI workflow и проект для гарантированного применения нового deployment target на Mac runner?
+Можно ли найти/увидеть где именно в цепочке зависимостей или Pods прописан заниженный deployment target, и как это сделать средствами CI/текстового поиска?
 
-Дай подробную инструкцию для Windows-разработчика, у которого всё обновление и сборка происходят только через GitHub Actions или аналогичный CI.
+Какие ещё возможные причины этой ошибки, учитывая, что все таргеты и configs уже обновлены до 14.0+?
+
+Нужна подробная инструкция, что ещё попробовать, если переход на 15.0/16.0 deployment target не помог или ломает работу других плагинов.
