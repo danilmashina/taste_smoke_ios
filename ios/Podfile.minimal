@@ -1,7 +1,7 @@
-# Uncomment this line to define a global platform for your project
+# Минимальный Podfile для Flutter iOS (совместим с CocoaPods 1.16+)
 platform :ios, '13.0'
 
-# CocoaPods analytics sends network stats synchronously affecting flutter build latency.
+# Отключение аналитики CocoaPods
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
 # Источник для CocoaPods
@@ -35,30 +35,11 @@ target 'Runner' do
   use_modular_headers!
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
-  
-  # Принудительные версии для совместимости Firebase
-  pod 'GoogleUtilities', '~> 8.0'
-  pod 'FirebaseCore', '~> 11.0'
 end
 
+# Минимальный post_install (только стандартные Flutter настройки)
 post_install do |installer|
-  # Стандартные настройки Flutter (обязательно!)
   installer.pods_project.targets.each do |target|
     flutter_additional_ios_build_settings(target)
-    
-    target.build_configurations.each do |config|
-      # Базовые настройки для AltStore совместимости
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
-      config.build_settings['ENABLE_BITCODE'] = 'NO'
-      
-      # Исправление для симулятора (только если нужно)
-      if target.platform_name == :ios
-        config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
-      end
-      
-      # Подавление предупреждений для стабильной сборки
-      config.build_settings['GCC_WARN_INHIBIT_ALL_WARNINGS'] = 'YES'
-      config.build_settings['CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER'] = 'NO'
-    end
   end
 end

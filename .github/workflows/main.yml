@@ -55,10 +55,25 @@ jobs:
         run: |
           echo "🍎 Настройка CocoaPods..."
           cd ios
+          
           # Обновляем репозиторий CocoaPods
           pod repo update
-          # Устанавливаем зависимости с полной очисткой
-          pod install --repo-update --verbose --clean-install
+          
+          # Пробуем установить с основным Podfile
+          echo "Попытка установки с основным Podfile..."
+          if ! pod install --repo-update --verbose --clean-install; then
+            echo "⚠️ Ошибка с основным Podfile, переключаемся на минимальный..."
+            
+            # Бэкап основного Podfile
+            cp Podfile Podfile.backup
+            
+            # Используем минимальный Podfile
+            cp Podfile.minimal Podfile
+            
+            # Очищаем и пробуем снова
+            rm -rf Pods Podfile.lock
+            pod install --repo-update --verbose --clean-install
+          fi
 
       - name: Check dependencies status
         run: |
