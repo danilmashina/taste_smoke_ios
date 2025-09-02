@@ -1,59 +1,23 @@
-Run flutter build ipa --release --export-options-plist=ios/exportOptions.plist
-  
-Resolving dependencies...
-Downloading packages...
-  _flutterfire_internals 1.3.35 (1.3.61 available)
-  bloc 8.1.4 (9.0.0 available)
-  cached_network_image 3.4.0 (3.4.1 available)
-  cached_network_image_web 1.3.0 (1.3.1 available)
-  characters 1.4.0 (1.4.1 available)
-  cloud_firestore 4.17.5 (6.0.1 available)
-  cloud_firestore_platform_interface 6.2.5 (7.0.1 available)
-  cloud_firestore_web 3.12.5 (5.0.1 available)
-  firebase_auth 4.20.0 (6.0.2 available)
-  firebase_auth_platform_interface 7.3.0 (8.1.1 available)
-  firebase_auth_web 5.12.0 (6.0.2 available)
-  firebase_core 2.32.0 (4.1.0 available)
-  firebase_core_platform_interface 5.4.2 (6.0.0 available)
-  firebase_core_web 2.17.5 (3.1.0 available)
-  firebase_remote_config 4.4.7 (6.0.1 available)
-  firebase_remote_config_platform_interface 1.4.35 (2.0.2 available)
-  firebase_remote_config_web 1.6.7 (1.8.11 available)
-  firebase_storage 11.7.7 (13.0.1 available)
-  firebase_storage_platform_interface 5.1.22 (5.2.12 available)
-  firebase_storage_web 3.9.7 (3.10.19 available)
-  flutter_bloc 8.1.6 (9.1.1 available)
-  go_router 13.2.5 (16.2.1 available)
-  material_color_utilities 0.11.1 (0.13.0 available)
-  meta 1.16.0 (1.17.0 available)
-  test_api 0.7.6 (0.7.7 available)
-  web 0.5.1 (1.1.1 available)
-Got dependencies!
-26 packages have newer versions incompatible with dependency constraints.
-Try `flutter pub outdated` for more information.
-Archiving com.example.tasteSmokeIos...
-════════════════════════════════════════════════════════════════════════════════
-No valid code signing certificates were found
-You can connect to your Apple Developer account by signing in with your Apple ID
-in Xcode and create an iOS Development Certificate as well as a Provisioning 
-Profile for your project by:
-  1- Open the Flutter project's Xcode target with
-       open ios/Runner.xcworkspace
-  2- Select the 'Runner' project in the navigator then the 'Runner' target
-     in the project settings
-  3- Make sure a 'Development Team' is selected under Signing & Capabilities > Team. 
-     You may need to:
-         - Log in with your Apple ID in Xcode first
-         - Ensure you have a valid unique Bundle ID
-         - Register your device with your Apple Developer Account
-         - Let Xcode automatically provision a profile for your app
-  4- Build or run your project again
-  5- Trust your newly created Development Certificate on your iOS device
-     via Settings > General > Device Management > [your new certificate] > Trust
-For more information, please visit:
-  https://developer.apple.com/library/content/documentation/IDEs/Conceptual/
-  AppDistributionGuide/MaintainingCertificates/MaintainingCertificates.html
-Or run on an iOS simulator without code signing
-════════════════════════════════════════════════════════════════════════════════
-No development certificates available to code sign app for device deployment
-Error: Process completed with exit code 1.
+Спасибо за подробное объяснение по поводу подписи и .ipa!
+
+Однако хочу уточнить и скорректировать детали относительно команды flutter build ipa --release --no-codesign:
+
+1. На современных версиях Flutter (начиная с 2.10+, особенно 3.x) команда:
+
+text
+flutter build ipa --release --no-codesign
+— создает НЕ .xcarchive, а именно готовый unsigned .ipa файл в папке build/ios/ipa. Это поведение отличается от традиционного xcodebuild archive --no-codesign, где финальный .ipa действительно отсутствует.
+
+2. Официальная документация Flutter (https://docs.flutter.dev/deployment/ios#create-an-ios-app-without-codesigning) и опыт комьюнити подтверждают, что этот .ipa полностью подходит для загрузки в AltStore через AltServer. Там происходит ручная подпись уже под ваш Apple ID.
+
+3. Этот способ специально реализован для таких сценариев, когда нет желания (или возможности) использовать provisioning profiles, сертификаты или TeamID с привязкой к App Store/Apple Developer.
+
+4. AltServer принимает такой unsigned .ipa, подписывает локально и устанавливает на подключенное устройство. Не требуется development-signed или специально экспортированный ipa через xcodebuild/fastlane gym.
+
+Вопрос:
+Если твоя рекомендация поначалу не позволит получить .ipa без подписи, почему тогда команда выше в свежем Flutter формирует валидный ipa (без профиля) и используется всей комьюнити AltStore?
+Может быть, мы говорим о разных версиях Flutter или не учли современную специфику CLI?
+Буду рад уточнениям или замечаниям по этому поводу!
+
+P.S.
+Если workflow с флагом --no-codesign не выдает .ipa, можно проверить содержимое каталога build/ios/ipa/ сразу после сборки — там должен быть Runner.ipa без подписи, годный для AltStore.
