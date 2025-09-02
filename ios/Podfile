@@ -43,12 +43,15 @@ post_install do |installer|
       # Удаляем флаг -G, который вызывает ошибку clang
       if config.build_settings['OTHER_CFLAGS']
         config.build_settings['OTHER_CFLAGS'] = config.build_settings['OTHER_CFLAGS'].gsub(/-G\s+\S+/, '')
+        config.build_settings['OTHER_CFLAGS'] = config.build_settings['OTHER_CFLAGS'].gsub(/-G\b/, '')
       end
       if config.build_settings['OTHER_CPLUSPLUSFLAGS']
         config.build_settings['OTHER_CPLUSPLUSFLAGS'] = config.build_settings['OTHER_CPLUSPLUSFLAGS'].gsub(/-G\s+\S+/, '')
+        config.build_settings['OTHER_CPLUSPLUSFLAGS'] = config.build_settings['OTHER_CPLUSPLUSFLAGS'].gsub(/-G\b/, '')
       end
       if config.build_settings['OTHER_LDFLAGS']
         config.build_settings['OTHER_LDFLAGS'] = config.build_settings['OTHER_LDFLAGS'].gsub(/-G\s+\S+/, '')
+        config.build_settings['OTHER_LDFLAGS'] = config.build_settings['OTHER_LDFLAGS'].gsub(/-G\b/, '')
       end
     end
   end
