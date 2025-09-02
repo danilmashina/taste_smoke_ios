@@ -1,108 +1,93 @@
-    cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios/Pods
-    
-    Using response file: /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Pods.build/Release-iphoneos/abseil.build/Objects-normal/arm64/82b82416624d2658e5098eb0a28c15c5-common-args.resp
-    
-    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -ivfsstatcache /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache -fmessage-length\=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit\=0 -fno-color-diagnostics -fmodules-prune-interval\=86400 -fmodules-prune-after\=345600 -fbuild-session-file\=/Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -fmodules-validate-once-per-build-session -Wnon-modular-include-in-framework-module -Werror\=non-modular-include-in-framework-module -Wno-trigraphs -Wno-missing-field-initializers -Wno-missing-prototypes -Werror\=return-type -Wdocumentation -Wunreachable-code -Werror\=deprecated-objc-isa-usage -Werror\=objc-root-class -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno
-CompileC /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Pods.build/Release-iphoneos/abseil.build/Objects-normal/arm64/ascii.o /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios/Pods/abseil/absl/strings/ascii.cc normal arm64 c++ com.apple.compilers.llvm.clang.1_0.compiler (in target 'abseil' from project 'Pods')
-    cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios/Pods
-    
-    Using response file: /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Pods.build/Release-iphoneos/abseil.build/Objects-normal/arm64/82b82416624d2658e5098eb0a28c15c5-common-args.resp
-    
-    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -ivfsstatcache /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache -fmessage-length\=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit\=0 -fno-color-diagnostics -fmodules-prune-interval\=86400 -fmodules-prune-after\=345600 -fbuild-session-file\=/Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -fmodules-validate-once-per-build-session -Wnon-modular-include-in-framework-module -Werror\=non-modular-include-in-framework-module -Wno-trigraphs -Wno-missing-field-initializers -Wno-missing-prototypes -Werror\=return-type -Wdocumentation -Wunreachable-code -Werror\=deprecated-objc-isa-usage -Werror\=objc-root-class -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno
-CompileC /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Pods.build/Release-iphoneos/abseil.build/Objects-normal/arm64/arg.o /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios/Pods/abseil/absl/strings/internal/str_format/arg.cc normal arm64 c++ com.apple.compilers.llvm.clang.1_0.compiler (in target 'abseil' from project 'Pods')
-    cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios/Pods
-    
-    Using response file: /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Pods.build/Release-iphoneos/abseil.build/Objects-normal/arm64/82b82416624d2658e5098eb0a28c15c5-common-args.resp
-    
-** BUILD FAILED **
-    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -ivfsstatcache /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache -fmessage-length\=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit\=0 -fno-color-diagnostics -fmodules-prune-interval\=86400 -fmodules-prune-after\=345600 -fbuild-session-file\=/Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -fmodules-validate-once-per-build-session -Wnon-modular-include-in-framework-module -Werror\=non-modular-include-in-framework-module -Wno-trigraphs -Wno-missing-field-initializers -Wno-missing-prototypes -Werror\=return-type -Wdocumentation -Wunreachable-code -Werror\=deprecated-objc-isa-usage -Werror\=objc-root-class -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno
-CompileC /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Pods.build/Release-iphoneos/abseil.build/Objects-normal/arm64/address_is_readable.o /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios/Pods/abseil/absl/debugging/internal/address_is_readable.cc normal arm64 c++ com.apple.compilers.llvm.clang.1_0.compiler (in target 'abseil' from project 'Pods')
-The following build commands failed:
-    cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios/Pods
-	CompileC /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Pods.build/Release-iphoneos/BoringSSL-GRPC.build/Objects-normal/arm64/tls_record.o /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios/Pods/BoringSSL-GRPC/src/ssl/tls_record.cc normal arm64 c++ com.apple.compilers.llvm.clang.1_0.compiler (in target 'BoringSSL-GRPC' from project 'Pods')
-    
-	Building workspace Runner with scheme Runner and configuration Release
-    Using response file: /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Pods.build/Release-iphoneos/abseil.build/Objects-normal/arm64/82b82416624d2658e5098eb0a28c15c5-common-args.resp
-(2 failures)
-    
-    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -ivfsstatcache /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache -fmessage-length\=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit\=0 -fno-color-diagnostics -fmodules-prune-interval\=86400 -fmodules-prune-after\=345600 -fbuild-session-file\=/Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -fmodules-validate-once-per-build-session -Wnon-modular-include-in-framework-module -Werror\=non-modular-include-in-framework-module -Wno-trigraphs -Wno-missing-field-initializers -Wno-missing-prototypes -Werror\=return-type -Wdocumentation -Wunreachable-code -Werror\=deprecated-objc-isa-usage -Werror\=objc-root-class -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno
-CompileC /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Pods.build/Release-iphoneos/BoringSSL-GRPC.build/Objects-normal/arm64/tls_record.o /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios/Pods/BoringSSL-GRPC/src/ssl/tls_record.cc normal arm64 c++ com.apple.compilers.llvm.clang.1_0.compiler (in target 'BoringSSL-GRPC' from project 'Pods')
-    cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios/Pods
-    
-    Using response file: /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Pods.build/Release-iphoneos/BoringSSL-GRPC.build/Objects-normal/arm64/82b82416624d2658e5098eb0a28c15c5-common-args.resp
-    
-    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -ivfsstatcache /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache -fmessage-length\=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit\=0 -fno-color-diagnostics -fmodules-prune-interval\=86400 -fmodules-prune-after\=345600 -fbuild-session-file\=/Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -fmodules-validate-once-per-build-session -Wnon-modular-include-in-framework-module -Werror\=non-modular-include-in-framework-module -Wno-trigraphs -Wno-missing-field-initializers -Wno-missing-prototypes -Werror\=return-type -Wdocumentation -Wunreachable-code -Werror\=deprecated-objc-isa-usage -Werror\=objc-root-class -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno
-clang: error: unsupported option '-G' for target 'arm64-apple-ios14.0'
-CompileC /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Pods.build/Release-iphoneos/BoringSSL-GRPC.build/Objects-normal/arm64/tls_method.o /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios/Pods/BoringSSL-GRPC/src/ssl/tls_method.cc normal arm64 c++ com.apple.compilers.llvm.clang.1_0.compiler (in target 'BoringSSL-GRPC' from project 'Pods')
-    cd /Users/runner/work/taste_smoke_ios/taste_smoke_ios/ios/Pods
-    
-    Using response file: /Users/runner/Library/Developer/Xcode/DerivedData/Runner-gxbkxjyugvzakmaujguimgynyqpl/Build/Intermediates.noindex/Pods.build/Release-iphoneos/BoringSSL-GRPC.build/Objects-normal/arm64/82b82416624d2658e5098eb0a28c15c5-common-args.resp
-    
-    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -ivfsstatcache /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache -fmessage-length\=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit\=0 -fno-color-diagnostics -fmodules-prune-interval\=86400 -fmodules-prune-after\=345600 -fbuild-session-file\=/Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -fmodules-validate-once-per-build-session -Wnon-modular-include-in-framework-module -Werror\=non-modular-include-in-framework-module -Wno-trigraphs -Wno-missing-field-initializers -Wno-missing-prototypes -Werror\=return-type -Wdocumentation -Wunreachable-code -Werror\=deprecated-objc-isa-usage -Werror\=objc-root-class -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'Firebase' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'Flutter' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'Runner' from project 'Runner')
-note: Run script build phase 'Run Script' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'Runner' from project 'Runner')
-note: Run script build phase 'Thin Binary' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'Runner' from project 'Runner')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'Pods-Runner' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'url_launcher_ios-url_launcher_ios_privacy' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'url_launcher_ios' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'sqflite_darwin-sqflite_darwin_privacy' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'sqflite_darwin' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'shared_preferences_foundation-shared_preferences_foundation_privacy' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'shared_preferences_foundation' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'path_provider_foundation-path_provider_foundation_privacy' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'path_provider_foundation' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'nanopb-nanopb_Privacy' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'nanopb' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'leveldb-library-leveldb_Privacy' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'leveldb-library' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'gRPC-Core-grpc' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'gRPC-Core' from project 'Pods')
-warning: Run script build phase 'Create Symlinks to Header Folders' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'gRPC-Core' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'gRPC-C++-grpcpp' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'gRPC-C++-gRPCCertificates-Cpp' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'gRPC-C++' from project 'Pods')
-warning: Run script build phase 'Create Symlinks to Header Folders' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'gRPC-C++' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'firebase_storage' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'firebase_remote_config' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'firebase_core' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'firebase_auth' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'cloud_firestore' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'abseil-xcprivacy' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'abseil' from project 'Pods')
-warning: Run script build phase 'Create Symlinks to Header Folders' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'abseil' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'RecaptchaInterop' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'PromisesObjC-FBLPromises_Privacy' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'PromisesObjC' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'GoogleUtilities-GoogleUtilities_Privacy' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'GoogleUtilities' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'GTMSessionFetcher-GTMSessionFetcher_Core_Privacy' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'GTMSessionFetcher' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'FirebaseStorage' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'FirebaseSharedSwift' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'FirebaseRemoteConfigInterop' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'FirebaseRemoteConfig-FirebaseRemoteConfig_Privacy' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'FirebaseRemoteConfig' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'FirebaseInstallations-FirebaseInstallations_Privacy' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'FirebaseInstallations' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'FirebaseFirestoreInternal-FirebaseFirestoreInternal_Privacy' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'FirebaseFirestoreInternal' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'FirebaseFirestore-FirebaseFirestore_Privacy' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'FirebaseFirestore' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'FirebaseCoreInternal-FirebaseCoreInternal_Privacy' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'FirebaseCoreInternal' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'FirebaseCoreExtension-FirebaseCoreExtension_Privacy' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'FirebaseCoreExtension' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'FirebaseCore-FirebaseCore_Privacy' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'FirebaseCore' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'FirebaseAuthInterop' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'FirebaseAuth-FirebaseAuth_Privacy' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'FirebaseAuth' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'FirebaseAppCheckInterop' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'FirebaseABTesting-FirebaseABTesting_Privacy' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'FirebaseABTesting' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'BoringSSL-GRPC-openssl_grpc' from project 'Pods')
-note: Disabling previews because SWIFT_VERSION is set and SWIFT_OPTIMIZATION_LEVEL=-O, expected -Onone (in target 'BoringSSL-GRPC' from project 'Pods')
-warning: Run script build phase 'Create Symlinks to Header Folders' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'BoringSSL-GRPC' from project 'Pods')
-Error: Process completed with exit code 65.
+Ошибка сборки возникла не из-за подписей, а по следующим причинам:
+
+Основная ошибка — проблемы с сетью на этапе CocoaPods:
+
+В логах есть строчка:
+
+text
+CDN: trunk URL couldn't be downloaded: https://cdn.cocoapods.org/all_pods_versions_0_3_5.txt Response: Error in the HTTP2 framing layer, retries: 4
+Это значит, что runner на GitHub Actions временами не смог получить необходимые спецификации pods из интернета. Иногда оно скачивалось с перезапросом через cdn.jsdelivr.net, но часть зависимостей могла не подгрузиться корректно.
+
+Ошибка сборки exit code 65:
+
+Сразу после сообщений об удачной установке Pod'ов идет Build Xcode, который завершился exit code 65. В логах не было явных ошибок компиляции приложеного к сборке кода, только ошибки при копировании некоторых .h-файлов промисов:
+
+text
+CpHeader .../FBLPromise.h .../FBLPromise Error .h
+По опыту этот код ошибки связан именно с недоступностью/битостью pod'ов или их зависимостей вплоть до завершения сборки, не с самим подписыванием.
+
+Что делать:
+
+Перезапусти workflow: Часто такие сетевые ошибки лечатся простым повтором.
+
+Попробуй добавить в step GitHub Actions:
+
+text
+- name: Setup pod repo retry
+  run: pod repo update --verbose || pod repo update --verbose
+Это даст CocoaPods второй шанс при неудаче.
+
+Проверь что ни один pod не отмечен как “missing” или “broken” — если есть, почисти кэш runner (pod cache clean --all) и еще раз “pod install”.
+
+Если используешь бесплатные раннеры GitHub, бывают временные перебои с cdn.cocoapods.org — попробуй разное время запуска pipeline либо альтернативный mirror.
+
+Если ошибка "PromisesObjC/FBLPromise Error .h" останется, нужно проверить права на эти .h-файлы в Pods (или принудительно пересобрать их) — иногда помогает чистка папки DerivedData.
+
+Подпись никак не нужна при --no-codesign, твоя схема полностью валидна для установки через AltStore. Ошибка именно в скачивании и интеграции pod-зависимостей!
+
+
+
+
+Критичные ошибки из логов:
+
+Сетевая ошибка CocoaPods:
+
+text
+CDN: trunk URL couldn't be downloaded: https://cdn.cocoapods.org/all_pods_versions_0_3_5.txt Response: Error in the HTTP2 framing layer, retries: 4
+GitHub Actions runner не смог скачать часть спецификаций pods из CDN CocoaPods.
+
+Итог — возможна битая или неполная установка зависимостей.
+
+Внутренняя ошибка сборки Pods (PromisesObjC):
+
+text
+CpHeader .../PromisesObjC/FBLPromise Error .h ... (in target 'PromisesObjC' from project 'Pods')
+Ошибка копирования/доступа к заголовочным файлам PromisesObjC. Может быть из-за отсутствия, ошибок прав, неудачной установки Pod'ов или проблем с содержимым DerivedData.
+
+Общий итог:
+
+text
+Process completed with exit code 65
+Стандартный признак сбоя сборки Xcode, связанный с ошибками выше.
+
+Готовый PROMPT для устранения проблемы (можно использовать как инструкцию или прямо для CI/CD):
+
+text
+# 1. Добавить дополнительные попытки и подробный вывод на этапе CocoaPods
+- name: Clean pod cache
+  run: pod cache clean --all
+
+- name: Update CocoaPods repo (double retry)
+  run: pod repo update --verbose || pod repo update --verbose
+
+- name: Install dependencies with retry
+  run: pod install --repo-update --verbose || pod install --repo-update --verbose
+
+# 2. Перед билдом удалить папку DerivedData и Pods, если остаются ошибки с .h файлами
+- name: Clean DerivedData
+  run: rm -rf ~/Library/Developer/Xcode/DerivedData/*
+
+- name: Remove Pods folder and reinstall
+  run: |
+    cd ios
+    rm -rf Pods Podfile.lock
+    pod install --repo-update --verbose
+
+# 3. После этого пробуй снова запускать билд:
+- name: Flutter build iOS (no codesign)
+  run: flutter build ios --no-codesign
+
+# 4. Если еще будут ошибки:
+# - Проверить логи на наличие "missing" или "broken" pod'ов,
+# - Убедиться, что runner действительно скачал все зависимости,
+# - Попробовать сменить раннер (использовать другой type/регион), или ждать когда на CDN pod'ов восстановится стабильная сеть.
