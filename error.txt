@@ -1,29 +1,45 @@
-Столкнулся с ошибкой при сборке Flutter-проекта на CI (GitHub Actions):
+Мой Flutter-проект для iOS на CI (GitHub Actions) валится на этапе pod install с такой ошибкой в логах (фрагмент):
 
 text
-[!] CocoaPods could not find compatible versions for pod "cloud_firestore":
-  Specs satisfying the `cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)` dependency were found, but they required a higher minimum deployment target.
-Error: Process completed with exit code 1.
-В файле ios/Podfile выставлено:
-
-text
-platform :ios, '14.0'
-Аналогично в ios/Runner.xcconfig, Debug.xcconfig, Release.xcconfig и во всех возможных .xcconfig записано:
-
-text
-IPHONEOS_DEPLOYMENT_TARGET = 14.0
-Я не могу запускать pod install вручную — всё выполняется только на GitHub Actions runner.
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-1.16.2/lib/cocoapods/command/install.rb:52:in `run'
+...(длинный stack trace Ruby)
+Process completed with exit code 1.
+В логах нет конкретного сообщения про несовместимость pod'ов — только длинный Ruby-стек в момент post_install.
 
 Вопросы:
 
-Почему эта ошибка с cloud_firestore не пропадает? Возможна ли ситуация, что свежие версии cloud_firestore и firebase требуют уже не 14.0, а 15.0 или выше?
+Какие типовые причины такой ошибки на стадии post_install?
 
-Как правильно удостовериться, что CI точно видит мои изменения (Podfile, .xcconfig, pubspec.yaml)?
+Как проверить, что именно не так с моим Podfile или секцией post_install (например, неправильный синтаксис, конфликтная строка, неправильный плагин)?
 
-Какой best practice для Flutter, если не удаётся понизить cloud_firestore, но устаревшую версию iOS поддерживать не нужно?
+Как временно упростить Podfile до самого минимального рабочего содержания, чтобы отловить ошибку (например, только с flutter_additional_ios_build_settings)?
 
-Можно ли найти/увидеть где именно в цепочке зависимостей или Pods прописан заниженный deployment target, и как это сделать средствами CI/текстового поиска?
+Есть ли практики отладки столь “глубоких” Ruby-стектрейсов на GitHub Actions, чтобы понять причину сбоя?
 
-Какие ещё возможные причины этой ошибки, учитывая, что все таргеты и configs уже обновлены до 14.0+?
+Какие шаги по очистке Pods, кэшей, .symlinks и Podfile.lock рекомендуются при подобных ошибках на CI?
 
-Нужна подробная инструкция, что ещё попробовать, если переход на 15.0/16.0 deployment target не помог или ломает работу других плагинов.
+Опиши best practice/чек-лист для диагностики и минимизации дефектов post_install на CI без Mac (когда вся сборка только на Actions).
+
+Этот промт даст Gemini максимум контекста и приведет к конкретным, практически применимым шагам для диагностики и исправления причины сбоя на этапе pod install/post_install.Вот готовый промт для Gemini:
+
+При сборке Flutter-проекта для iOS на CI в GitHub Actions возникает ошибка при выполнении pod install:
+
+text
+/opt/homebrew/lib/ruby/gems/3.3.0/gems/cocoapods-1.16.2/lib/cocoapods/command/install.rb:52:in `run'
+... (длинный stack trace Ruby)
+Process completed with exit code 1.
+В логах нет явного сообщения о несовместимости pod или о минимальном deployment target — только длинный Ruby traceback, судя по всему на этапе post_install.
+
+Вопросы:
+
+Что чаще всего вызывает такие Ruby-ошибки на этапе pod install/post_install в Flutter-проектах?
+
+Как выглядит минимально рабочий блок post_install для Flutter, чтобы протестировать Podfile на ошибки?
+
+Как быстро диагностировать, в каком месте Podfile происходит сбой и какой плагин или строка вызывает ошибку? Стоит ли запускать pod install --verbose?
+
+Какие есть рекомендации по очищению кэшей, Pods, Podfile.lock, .symlinks при подобных ошибках, если весь процесс контролируется только через GitHub Actions?
+
+Какие шаги предпринять по ускоренной изоляции проблемы и как минимизировать влияние кастомных post_install в будущем?
+
+Дай, пожалуйста, пошаговую инструкцию для Windows/CI (без Mac), чтобы отловить и устранить такие ошибки.
