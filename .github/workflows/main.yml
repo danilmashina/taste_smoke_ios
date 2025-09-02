@@ -14,35 +14,28 @@ jobs:
 
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.22.0' # Версия Flutter, которую мы определили
+          flutter-version: '3.22.0'
           channel: 'stable'
 
       - name: Get Flutter dependencies
         run: flutter pub get
 
-      # 1. Добавить дополнительные попытки и подробный вывод на этапе CocoaPods
-      - name: Clean pod cache
-        run: pod cache clean --all --all-versions
-
-      - name: Update CocoaPods repo (double retry)
-        run: pod repo update --verbose || pod repo update --verbose
-
-      - name: Install dependencies with retry
-        run: |
-          cd ios
-          pod install --repo-update --verbose || pod install --repo-update --verbose
-
-      # 2. Перед билдом удалить папку DerivedData и Pods, если остаются ошибки с .h файлами
-      - name: Clean DerivedData
-        run: rm -rf ~/Library/Developer/Xcode/DerivedData/*
-
-      - name: Remove Pods folder and reinstall (if needed)
+      - name: Hard clean iOS build caches
         run: |
           cd ios
           rm -rf Pods Podfile.lock
+          cd ..
+          rm -rf build
+          rm -rf ios/Flutter/Flutter.framework
+          rm -rf ios/.symlinks
+          rm -rf ~/Library/Developer/Xcode/DerivedData/*
+          flutter clean
+          cd ios
           pod install --repo-update --verbose
 
-      # 3. После этого пробуй снова запускать билд:
+      - name: Enable verbose output
+        run: export NSUnbufferedIO=YES
+
       - name: Flutter build iOS
         run: flutter build ipa --release
 
@@ -50,4 +43,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: app-release-ipa
-          path: build/ios/ipa/*.ipa # Путь, куда Flutter сохраняет IPA
+          path: build/ios/ipa/*.ipa
