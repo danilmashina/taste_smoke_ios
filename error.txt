@@ -57,4 +57,3 @@ Or run on an iOS simulator without code signing
 ════════════════════════════════════════════════════════════════════════════════
 No development certificates available to code sign app for device deployment
 Error: Process completed with exit code 1.
-222
