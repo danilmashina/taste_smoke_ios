@@ -1,0 +1,30 @@
+name: Flutter iOS Build for AltStore
+
+on:
+  push:
+    branches:
+      - main # Убедись, что это имя твоей основной ветки (например, master)
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.22.0' # Версия Flutter, которую мы определили
+          channel: 'stable'
+
+      - name: Get Flutter dependencies
+        run: flutter pub get
+
+      - name: Build iOS IPA
+        run: flutter build ipa --release # Собираем релизную версию IPA
+
+      - name: Upload IPA artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release-ipa
+          path: build/ios/ipa/*.ipa # Путь, куда Flutter сохраняет IPA
