@@ -1,52 +1,17 @@
-Run # Создаем unsigned конфигурацию
+Run cd ios
   
-Resolving dependencies...
-Downloading packages...
-  _flutterfire_internals 1.3.59 (1.3.61 available)
-  characters 1.4.0 (1.4.1 available)
-  cloud_firestore 5.6.12 (6.0.1 available)
-  cloud_firestore_platform_interface 6.6.12 (7.0.1 available)
-  cloud_firestore_web 4.4.12 (5.0.1 available)
-  firebase_auth 5.7.0 (6.0.2 available)
-  firebase_auth_platform_interface 7.7.3 (8.1.1 available)
-  firebase_auth_web 5.15.3 (6.0.2 available)
-  firebase_core 3.15.2 (4.1.0 available)
-  firebase_core_web 2.24.1 (3.1.0 available)
-  firebase_remote_config 5.5.0 (6.0.1 available)
-  firebase_remote_config_platform_interface 2.0.0 (2.0.2 available)
-  firebase_remote_config_web 1.8.9 (1.8.11 available)
-  firebase_storage 12.4.10 (13.0.1 available)
-  firebase_storage_platform_interface 5.2.10 (5.2.12 available)
-  firebase_storage_web 3.10.17 (3.10.19 available)
-  material_color_utilities 0.11.1 (0.13.0 available)
-  meta 1.16.0 (1.17.0 available)
-  test_api 0.7.6 (0.7.7 available)
-Got dependencies!
-19 packages have newer versions incompatible with dependency constraints.
-Try `flutter pub outdated` for more information.
-Warning: Building for device with codesigning disabled. You will have to manually codesign before deploying to device.
-Archiving com.example.tasteSmokeIos...
-Running pod install...                                             15.0s
-Running Xcode build...                                          
-Xcode archive done.                                         422.0s
-Failed to build iOS app
-════════════════════════════════════════════════════════════════════════════════
-Building a deployable iOS app requires a selected Development Team with a 
-Provisioning Profile. Please ensure that a Development Team is selected by:
-  1- Open the Flutter project's Xcode target with
-       open ios/Runner.xcworkspace
-  2- Select the 'Runner' project in the navigator then the 'Runner' target
-     in the project settings
-  3- Make sure a 'Development Team' is selected under Signing & Capabilities > Team. 
-     You may need to:
-         - Log in with your Apple ID in Xcode first
-         - Ensure you have a valid unique Bundle ID
-         - Register your device with your Apple Developer Account
-         - Let Xcode automatically provision a profile for your app
-  4- Build or run your project again
-For more information, please visit:
-  https://flutter.dev/to/ios-development-team
-Or run on an iOS simulator without code signing
-════════════════════════════════════════════════════════════════════════════════
-Encountered error while archiving for device.
+CocoaPods version: 1.16.2
+Using minimal Podfile for stability...
+Updating local specs repositories
+Adding spec repo `trunk` with CDN `https://cdn.cocoapods.org/`
+Analyzing dependencies
+cloud_firestore: Using Firebase SDK version '12.2.0' defined in 'firebase_core'
+firebase_auth: Using Firebase SDK version '12.2.0' defined in 'firebase_core'
+firebase_core: Using Firebase SDK version '12.2.0' defined in 'firebase_core'
+firebase_remote_config: Using Firebase SDK version '12.2.0' defined in 'firebase_core'
+firebase_storage: Using Firebase SDK version '12.2.0' defined in 'firebase_core'
+[!] CocoaPods could not find compatible versions for pod "cloud_firestore":
+  In Podfile:
+    cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
+Specs satisfying the `cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)` dependency were found, but they required a higher minimum deployment target.
 Error: Process completed with exit code 1.
