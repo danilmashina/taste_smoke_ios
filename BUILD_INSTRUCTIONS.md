@@ -58,6 +58,12 @@ powershell -ExecutionPolicy Bypass -File scripts\build_ipa_local.ps1
 
 ### Диагностические скрипты
 ```powershell
+# Диагностика проблем с IPA (новый!)
+powershell -ExecutionPolicy Bypass -File scripts\diagnose_ipa_issues.ps1
+
+# Детальная диагностика с исправлениями
+powershell -ExecutionPolicy Bypass -File scripts\diagnose_ipa_issues.ps1 -Detailed -FixIssues
+
 # Общая диагностика
 powershell -ExecutionPolicy Bypass -File scripts\fix_ios_build.ps1
 

@@ -141,100 +141,256 @@ jobs:
           fi
           
           # Настраиваем код подписи для unsigned сборки
-          echo "Настройка для unsigned сборки..."
+          echo "⚙️ Настройка для unsigned сборки..."
           
           # Создаем временный xcconfig файл для unsigned сборки
-          cat > ios/Flutter/Unsigned.xcconfig << EOF
+          cat > ios/Flutter/Unsigned.xcconfig << 'EOF'
           #include "Generated.xcconfig"
           CODE_SIGN_IDENTITY=
           CODE_SIGNING_REQUIRED=NO
           CODE_SIGNING_ALLOWED=NO
           PROVISIONING_PROFILE_SPECIFIER=
           DEVELOPMENT_TEAM=
+          ENABLE_BITCODE=NO
+          SKIP_INSTALL=NO
           EOF
           
           # Обновляем Release.xcconfig для использования unsigned настроек
           cp ios/Flutter/Release.xcconfig ios/Flutter/Release.xcconfig.backup
           cp ios/Flutter/Unsigned.xcconfig ios/Flutter/Release.xcconfig
           
-          # Запускаем сборку с подробным выводом
-          echo "Запуск flutter build ipa..."
-          if flutter build ipa --release --no-codesign --verbose; then
-            echo "✅ Сборка IPA завершена успешно"
+          echo "📋 Проверка настроек перед сборкой..."
+          echo "Generated.xcconfig содержимое:"
+          cat ios/Flutter/Generated.xcconfig || echo "Generated.xcconfig не найден"
+          echo "Release.xcconfig содержимое:"
+          cat ios/Flutter/Release.xcconfig
+          
+          # Проверяем структуру до сборки
+          echo "📁 Структура до сборки:"
+          ls -la build/ 2>/dev/null || echo "Папка build не существует"
+          
+          # Запускаем сборку с максимальной детализацией
+          echo "🚀 Запуск flutter build ipa с детальным логированием..."
+          
+          # Устанавливаем переменные окружения для отладки
+          export FLUTTER_LOGS_DIR="$PWD/flutter_logs"
+          mkdir -p "$FLUTTER_LOGS_DIR"
+          
+          # Запускаем сборку с перенаправлением вывода
+          set -o pipefail
+          if flutter build ipa --release --no-codesign --verbose 2>&1 | tee "$FLUTTER_LOGS_DIR/flutter_build_ipa.log"; then
+            echo "✅ Команда flutter build ipa завершилась с кодом 0"
+            
+            # Немедленно проверяем результат
+            echo "🔍 Немедленная проверка результата сборки..."
+            echo "Структура build/ после flutter build ipa:"
+            find build/ -type f -name "*.ipa" -o -name "*.app" -o -name "*.xcarchive" 2>/dev/null || echo "Нет архивов или IPA файлов"
+            
+            # Проверяем все возможные локации IPA
+            echo "Поиск IPA файлов во всех локациях:"
+            find . -name "*.ipa" -type f 2>/dev/null || echo "IPA файлы не найдены нигде"
+            
+            # Проверяем, создался ли IPA в ожидаемом месте
+            if [ -f "build/ios/ipa/Runner.ipa" ] || [ -f "build/ios/ipa/taste_smoke_ios.ipa" ] || ls build/ios/ipa/*.ipa 1> /dev/null 2>&1; then
+              echo "✅ IPA файл найден в build/ios/ipa/"
+            else
+              echo "⚠️ IPA не найден в ожидаемом месте, проверяем альтернативные локации..."
+              
+              # Проверяем архивы Xcode
+              echo "Поиск xcarchive файлов:"
+              find build/ -name "*.xcarchive" -type d 2>/dev/null || echo "xcarchive не найдены"
+              
+              # Проверяем, есть ли app bundle
+              echo "Поиск app bundle:"
+              find build/ -name "*.app" -type d 2>/dev/null || echo "app bundle не найдены"
+              
+              echo "❌ flutter build ipa не создал IPA файл, переходим к альтернативному методу"
+              BUILD_IPA_SUCCESS=false
+            fi
           else
-            echo "❌ Ошибка сборки IPA, пробуем альтернативный метод..."
+            echo "❌ Команда flutter build ipa завершилась с ошибкой"
+            BUILD_IPA_SUCCESS=false
+          fi
+          
+          # Альтернативный метод, если основной не сработал
+          if [ "$BUILD_IPA_SUCCESS" = "false" ]; then
+            echo "🔄 Пробуем альтернативный метод сборки..."
             
             # Восстанавливаем оригинальный файл
             cp ios/Flutter/Release.xcconfig.backup ios/Flutter/Release.xcconfig
             
-            # Пробуем сборку iOS app bundle вместо IPA
-            echo "Пробуем сборку iOS app bundle..."
-            if flutter build ios --release --no-codesign --verbose; then
+            # Пробуем сборку iOS app bundle
+            echo "📱 Сборка iOS app bundle..."
+            if flutter build ios --release --no-codesign --verbose 2>&1 | tee "$FLUTTER_LOGS_DIR/flutter_build_ios.log"; then
               echo "✅ Сборка iOS app завершена успешно"
               
-              # Создаем IPA вручную из app bundle
-              echo "Создание IPA из app bundle..."
-              mkdir -p build/ios/ipa
-              cd build/ios/iphoneos
+              # Проверяем результат
+              echo "Структура build/ios/iphoneos после flutter build ios:"
+              ls -la build/ios/iphoneos/ 2>/dev/null || echo "build/ios/iphoneos не существует"
               
-              # Находим .app файл
-              APP_NAME=$(find . -name "*.app" -type d | head -1)
-              if [ -n "$APP_NAME" ]; then
-                echo "Найден app bundle: $APP_NAME"
+              # Создаем IPA вручную из app bundle
+              echo "🔧 Создание IPA из app bundle..."
+              mkdir -p build/ios/ipa
+              
+              if [ -d "build/ios/iphoneos" ]; then
+                cd build/ios/iphoneos
                 
-                # Создаем структуру для IPA
-                mkdir -p Payload
-                cp -r "$APP_NAME" Payload/
-                
-                # Создаем IPA файл
-                zip -r "../ipa/taste_smoke_ios.ipa" Payload/
-                echo "✅ IPA создан вручную"
-                
-                cd ../../..
+                # Находим .app файл
+                APP_NAME=$(find . -name "*.app" -type d | head -1)
+                if [ -n "$APP_NAME" ]; then
+                  echo "✅ Найден app bundle: $APP_NAME"
+                  
+                  # Проверяем содержимое app bundle
+                  echo "Содержимое app bundle:"
+                  ls -la "$APP_NAME"
+                  
+                  # Создаем структуру для IPA
+                  mkdir -p Payload
+                  cp -r "$APP_NAME" Payload/
+                  
+                  # Создаем IPA файл
+                  IPA_NAME="taste_smoke_ios.ipa"
+                  if zip -r "../ipa/$IPA_NAME" Payload/; then
+                    echo "✅ IPA создан вручную: ../ipa/$IPA_NAME"
+                    
+                    # Проверяем созданный IPA
+                    cd ../ipa
+                    echo "Размер созданного IPA: $(du -h "$IPA_NAME" | cut -f1)"
+                    echo "Содержимое IPA:"
+                    unzip -l "$IPA_NAME" | head -10
+                    cd ../../..
+                  else
+                    echo "❌ Ошибка создания ZIP архива"
+                    cd ../../..
+                    exit 1
+                  fi
+                else
+                  echo "❌ App bundle не найден в build/ios/iphoneos"
+                  ls -la build/ios/iphoneos/
+                  cd ../../..
+                  exit 1
+                fi
               else
-                echo "❌ App bundle не найден"
+                echo "❌ Папка build/ios/iphoneos не существует"
                 exit 1
               fi
             else
               echo "❌ Ошибка сборки iOS app"
-              echo "Проверяем структуру проекта..."
-              ls -la ios/
-              ls -la build/ || echo "Папка build не создана"
+              echo "Сохраняем логи для диагностики..."
               exit 1
             fi
           fi
           
-      - name: Verify IPA creation
+          # Финальная проверка
+          echo "🎯 Финальная проверка созданного IPA..."
+          if [ -d "build/ios/ipa" ] && ls build/ios/ipa/*.ipa 1> /dev/null 2>&1; then
+            echo "✅ IPA файл успешно создан!"
+            for ipa in build/ios/ipa/*.ipa; do
+              echo "📱 IPA: $ipa"
+              echo "   Размер: $(du -h "$ipa" | cut -f1)"
+              echo "   Тип файла: $(file "$ipa")"
+            done
+          else
+            echo "❌ IPA файл не был создан ни одним из методов"
+            echo "Полная диагностика:"
+            find build/ -type f 2>/dev/null | head -20
+            exit 1
+          fi
+          
+      - name: Verify IPA creation and validate
         run: |
-          echo "✅ Проверка созданного IPA..."
+          echo "🔍 Детальная проверка и валидация IPA..."
           
           # Проверяем структуру build директории
-          echo "Структура build/:"
-          find build/ -type f -name "*.ipa" -o -name "*.app" 2>/dev/null || echo "Нет IPA или APP файлов"
+          echo "=== Полная структура build/ ==="
+          find build/ -type f 2>/dev/null | sort || echo "Папка build пуста или не существует"
           
+          echo ""
+          echo "=== Поиск всех IPA файлов ==="
+          find . -name "*.ipa" -type f 2>/dev/null || echo "IPA файлы не найдены нигде в проекте"
+          
+          echo ""
+          echo "=== Проверка папки build/ios/ipa ==="
           if [ -d "build/ios/ipa" ]; then
-            echo "Папка IPA найдена:"
+            echo "✅ Папка build/ios/ipa существует"
             ls -la build/ios/ipa/
             
             if ls build/ios/ipa/*.ipa 1> /dev/null 2>&1; then
-              echo "IPA файлы найдены:"
+              echo ""
+              echo "✅ IPA файлы найдены! Детальная проверка:"
+              
               for ipa in build/ios/ipa/*.ipa; do
-                echo "Файл: $ipa"
-                file "$ipa"
-                echo "Размер: $(du -h "$ipa" | cut -f1)"
+                echo ""
+                echo "📱 Анализ IPA: $ipa"
+                echo "   📏 Размер: $(du -h "$ipa" | cut -f1)"
+                echo "   🔍 Тип файла: $(file "$ipa")"
                 
-                # Проверяем содержимое IPA
-                echo "Содержимое IPA:"
-                unzip -l "$ipa" | head -20
+                # Проверяем, что это действительно ZIP архив
+                if file "$ipa" | grep -q "Zip archive"; then
+                  echo "   ✅ Корректный ZIP архив"
+                  
+                  # Проверяем содержимое IPA
+                  echo "   📦 Содержимое IPA (первые 15 файлов):"
+                  unzip -l "$ipa" | head -20 | tail -15
+                  
+                  # Проверяем наличие обязательных компонентов
+                  echo "   🔍 Проверка обязательных компонентов:"
+                  
+                  if unzip -l "$ipa" | grep -q "Payload/.*\.app/"; then
+                    echo "   ✅ App bundle найден в Payload/"
+                  else
+                    echo "   ❌ App bundle не найден в Payload/"
+                  fi
+                  
+                  if unzip -l "$ipa" | grep -q "Payload/.*\.app/Info.plist"; then
+                    echo "   ✅ Info.plist найден"
+                  else
+                    echo "   ❌ Info.plist не найден"
+                  fi
+                  
+                  if unzip -l "$ipa" | grep -q "Payload/.*\.app/.*"; then
+                    APP_BUNDLE=$(unzip -l "$ipa" | grep "Payload/.*\.app/" | head -1 | awk '{print $4}' | cut -d'/' -f2)
+                    echo "   📱 Имя app bundle: $APP_BUNDLE"
+                  fi
+                  
+                  # Проверяем размер - должен быть больше 1MB для реального приложения
+                  SIZE_BYTES=$(stat -f%z "$ipa" 2>/dev/null || stat -c%s "$ipa" 2>/dev/null || echo "0")
+                  SIZE_MB=$((SIZE_BYTES / 1024 / 1024))
+                  
+                  if [ "$SIZE_MB" -gt 1 ]; then
+                    echo "   ✅ Размер IPA корректный: ${SIZE_MB}MB"
+                  else
+                    echo "   ⚠️ IPA слишком маленький: ${SIZE_MB}MB (возможно, неполный)"
+                  fi
+                  
+                else
+                  echo "   ❌ Файл не является корректным ZIP архивом"
+                  echo "   🔍 Содержимое файла (первые 100 байт):"
+                  hexdump -C "$ipa" | head -5
+                fi
               done
+              
+              echo ""
+              echo "🎉 Проверка завершена успешно!"
+              
             else
-              echo "❌ IPA файлы не найдены в папке"
+              echo "❌ IPA файлы не найдены в папке build/ios/ipa"
+              echo "Содержимое папки:"
+              ls -la build/ios/ipa/ || echo "Не удается прочитать содержимое папки"
               exit 1
             fi
           else
             echo "❌ Папка build/ios/ipa не существует"
+            echo ""
+            echo "=== Диагностика отсутствия IPA ==="
+            echo "Возможные причины:"
+            echo "1. flutter build ipa не завершился успешно"
+            echo "2. Проблемы с настройками подписи кода"
+            echo "3. Ошибки в Info.plist или bundle identifier"
+            echo "4. Недостаточно места на диске"
+            echo ""
             echo "Полная структура build/:"
-            find build/ -type f 2>/dev/null || echo "Папка build пуста или не существует"
+            find build/ -type f 2>/dev/null | head -30 || echo "Папка build не существует"
             exit 1
           fi
 
@@ -271,6 +427,15 @@ jobs:
           echo "=== Последние логи сборки ==="
           find . -name "*.log" -mtime -1 2>/dev/null | head -5 | xargs tail -50 2>/dev/null || echo "Логи не найдены"
 
+      - name: Upload Flutter build logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: flutter-build-logs
+          path: |
+            flutter_logs/
+          retention-days: 7
+
       - name: Upload build logs (on failure)
         if: failure()
         uses: actions/upload-artifact@v4
@@ -282,4 +447,5 @@ jobs:
             ios/Flutter/
             ios/Runner.xcodeproj/
             ios/Podfile*
+            flutter_logs/
           retention-days: 7
