@@ -51,46 +51,147 @@ jobs:
           echo "🔍 Анализ кода..."
           flutter analyze --no-fatal-infos || echo "⚠️ Есть предупреждения в коде, но это не критично для сборки"
 
-      - name: Setup CocoaPods
+      - name: Setup CocoaPods with enhanced error handling
         run: |
-          echo "🍎 Настройка CocoaPods..."
+          echo "🍎 Настройка CocoaPods с улучшенной обработкой ошибок..."
           cd ios
           
-          # Проверяем версию CocoaPods
-          echo "Версия CocoaPods: $(pod --version)"
+          # Проверяем версию CocoaPods и Ruby
+          echo "=== ENVIRONMENT CHECK ==="
+          echo "CocoaPods версия: $(pod --version)"
+          echo "Ruby версия: $(ruby --version)"
+          echo "Gem версия: $(gem --version)"
+          
+          # Проверяем Podfile на синтаксические ошибки
+          echo "=== PODFILE VALIDATION ==="
+          echo "Проверка синтаксиса Podfile..."
+          if ruby -c Podfile > /dev/null 2>&1; then
+            echo "✅ Podfile синтаксически корректен"
+          else
+            echo "❌ Ошибка синтаксиса в Podfile"
+            ruby -c Podfile
+            exit 1
+          fi
+          
+          # Очистка перед установкой
+          echo "=== CLEANUP ==="
+          rm -rf Pods Podfile.lock .symlinks
           
           # Обновляем репозиторий CocoaPods
+          echo "=== REPO UPDATE ==="
           echo "Обновление репозитория CocoaPods..."
-          pod repo update
+          pod repo update --silent
           
-          # Пробуем установить с основным Podfile
+          # Попытка установки с основным Podfile
+          echo "=== PRIMARY PODFILE INSTALL ==="
           echo "Попытка установки с основным Podfile..."
-          if pod install --repo-update --verbose --clean-install; then
+          
+          # Запуск с детальным логированием ошибок
+          if pod install --repo-update --verbose --clean-install 2>&1 | tee ../pod_install.log; then
             echo "✅ Основной Podfile установлен успешно"
+            PODFILE_SUCCESS=true
           else
-            echo "⚠️ Ошибка с основным Podfile, переключаемся на минимальный..."
+            echo "❌ Ошибка с основным Podfile"
+            PODFILE_SUCCESS=false
+            
+            # Анализ ошибки
+            echo "=== ERROR ANALYSIS ==="
+            echo "Последние 20 строк лога pod install:"
+            tail -20 ../pod_install.log
+            
+            echo "Поиск ключевых ошибок:"
+            grep -i "error\|exception\|abort" ../pod_install.log | head -5 || echo "Специфические ошибки не найдены"
+          fi
+          
+          # Fallback на минимальный Podfile
+          if [ "$PODFILE_SUCCESS" = "false" ]; then
+            echo "=== FALLBACK TO MINIMAL PODFILE ==="
+            echo "Переключение на минимальный Podfile..."
             
             # Бэкап основного Podfile
             cp Podfile Podfile.backup
+            
+            # Проверяем наличие минимального Podfile
+            if [ ! -f "Podfile.minimal" ]; then
+              echo "❌ Podfile.minimal не найден, создаем базовый..."
+              cat > Podfile.minimal << 'EOF'
+          platform :ios, '13.0'
+          ENV['COCOAPODS_DISABLE_STATS'] = 'true'
+          source 'https://cdn.cocoapods.org/'
+          
+          project 'Runner', {
+            'Debug' => :debug,
+            'Profile' => :release,
+            'Release' => :release,
+          }
+          
+          def flutter_root
+            generated_xcode_build_settings_path = File.expand_path(File.join('..', 'Flutter', 'Generated.xcconfig'), __FILE__)
+            unless File.exist?(generated_xcode_build_settings_path)
+              raise "Generated.xcconfig must exist. If you're running pod install manually, make sure flutter pub get is executed first"
+            end
+          
+            File.foreach(generated_xcode_build_settings_path) do |line|
+              matches = line.match(/FLUTTER_ROOT=(.*)/)
+              return matches[1].strip if matches
+            end
+            raise "FLUTTER_ROOT not found in Generated.xcconfig"
+          end
+          
+          require File.expand_path(File.join('packages', 'flutter_tools', 'bin', 'podhelper'), flutter_root)
+          
+          flutter_ios_podfile_setup
+          
+          target 'Runner' do
+            use_frameworks!
+            use_modular_headers!
+            flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+          end
+          
+          post_install do |installer|
+            installer.pods_project.targets.each do |target|
+              flutter_additional_ios_build_settings(target)
+            end
+          end
+          EOF
+            fi
             
             # Используем минимальный Podfile
             cp Podfile.minimal Podfile
             
             # Очищаем и пробуем снова
-            rm -rf Pods Podfile.lock
+            rm -rf Pods Podfile.lock .symlinks
             
             echo "Установка с минимальным Podfile..."
-            if pod install --repo-update --verbose --clean-install; then
+            if pod install --repo-update --verbose --clean-install 2>&1 | tee ../pod_install_minimal.log; then
               echo "✅ Минимальный Podfile установлен успешно"
             else
               echo "❌ Ошибка даже с минимальным Podfile"
+              echo "Лог минимальной установки:"
+              tail -30 ../pod_install_minimal.log
               exit 1
             fi
           fi
           
           # Проверяем результат
+          echo "=== INSTALLATION VERIFICATION ==="
           echo "Проверка установленных pods:"
-          ls -la Pods/ | head -10
+          if [ -d "Pods" ]; then
+            echo "✅ Папка Pods создана"
+            echo "Количество установленных pods: $(ls Pods/ | wc -l)"
+            ls -la Pods/ | head -10
+          else
+            echo "❌ Папка Pods не создана"
+            exit 1
+          fi
+          
+          # Проверяем workspace
+          if [ -f "Runner.xcworkspace/contents.xcworkspacedata" ]; then
+            echo "✅ Workspace создан корректно"
+          else
+            echo "❌ Workspace не создан или поврежден"
+            exit 1
+          fi
 
       - name: Check dependencies status
         run: |
