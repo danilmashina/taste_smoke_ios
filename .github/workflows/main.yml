@@ -107,45 +107,14 @@ jobs:
           echo "🔨 Создание архива Xcode..."
           flutter build ipa --release --no-codesign
 
-      - name: Create ExportOptions.plist
+      - name: Manually package IPA
         run: |
-          echo "📜 Создание ExportOptions.plist..."
-          cat > ExportOptions.plist <<EOL
-          <?xml version="1.0" encoding="UTF-8"?>
-          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-          <plist version="1.0">
-          <dict>
-              <key>method</key>
-              <string>debugging</string>
-              <key>signingStyle</key>
-              <string>manual</string>
-              <key>provisioningProfiles</key>
-              <dict>
-                  <key>com.example.tasteSmokeIos</key>
-                  <string></string>
-              </dict>
-              <key>signingCertificate</key>
-              <string>iOS Development</string>
-              <key>teamID</key>
-              <string>V87YS9U282</string>
-              <key>destination</key>
-              <string>export</string>
-              <key>compileBitcode</key>
-              <false/>
-          </dict>
-          </plist>
-          EOL
-          echo "✅ ExportOptions.plist создан."
-          cat ExportOptions.plist
-
-      - name: Export IPA from Archive
-        run: |
-          echo "📦 Экспорт .ipa из архива..."
-          xcodebuild -exportArchive \
-            -archivePath build/ios/archive/Runner.xcarchive \
-            -exportPath build/ios/ipa \
-            -exportOptionsPlist ExportOptions.plist \
-            -allowProvisioningUpdates
+          echo "📦 Ручная упаковка .ipa..."
+          cd build/ios/archive
+          mkdir -p Payload
+          cp -r Runner.xcarchive/Products/Applications/Runner.app Payload/
+          zip -r ../ipa/Runner.ipa Payload
+          echo "✅ .ipa создан вручную."
 
       - name: Upload IPA artifact
         uses: actions/upload-artifact@v4
