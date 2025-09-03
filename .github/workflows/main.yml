@@ -57,8 +57,7 @@ jobs:
           # Проверяем Podfile на синтаксические ошибки
           echo "=== PODFILE VALIDATION ==="
           echo "Проверка синтаксиса Podfile..."
-          if ruby -c Podfile > /dev/null 2>&1;
-            then
+          if ruby -c Podfile > /dev/null 2>&1; then
             echo "✅ Podfile синтаксически корректен"
           else
             echo "❌ Ошибка синтаксиса в Podfile"
@@ -80,8 +79,7 @@ jobs:
           echo "Попытка установки с основным Podfile..."
           
           # Запуск с детальным логированием ошибок
-          if pod install --repo-update --verbose --clean-install 2>&1 | tee ../pod_install.log;
-            then
+          if pod install --repo-update --verbose --clean-install 2>&1 | tee ../pod_install.log; then
             echo "✅ Основной Podfile установлен успешно"
             PODFILE_SUCCESS=true
           else
@@ -157,8 +155,7 @@ jobs:
             rm -rf Pods Podfile.lock .symlinks
             
             echo "Установка с минимальным Podfile..."
-            if pod install --repo-update --verbose --clean-install 2>&1 | tee ../pod_install_minimal.log;
-              then
+            if pod install --repo-update --verbose --clean-install 2>&1 | tee ../pod_install_minimal.log; then
               echo "✅ Минимальный Podfile установлен успешно"
             else
               echo "❌ Ошибка даже с минимальным Podfile"
@@ -357,8 +354,7 @@ jobs:
           
           # Проверка успешности основной сборки
           IPA_FOUND=false
-          if [ -f "build/ios/ipa/Runner.ipa" ] || [ -f "build/ios/ipa/taste_smoke_ios.ipa" ] || ls build/ios/ipa/*.ipa 1> /dev/null 2>&1;
-            then
+          if [ -f "build/ios/ipa/Runner.ipa" ] || [ -f "build/ios/ipa/taste_smoke_ios.ipa" ] || ls build/ios/ipa/*.ipa 1> /dev/null 2>&1; then
             echo "✅ IPA файл найден в build/ios/ipa/"
             IPA_FOUND=true
           fi
@@ -483,12 +479,10 @@ EOF
           # ФИНАЛЬНАЯ ПРОВЕРКА И ВАЛИДАЦИЯ
           echo "🎯 FINAL VALIDATION"
           
-          if [ "$IPA_FOUND" = "true" ] && [ -d "build/ios/ipa" ] && ls build/ios/ipa/*.ipa 1> /dev/null 2>&1;
-            then
+          if [ "$IPA_FOUND" = "true" ] && [ -d "build/ios/ipa" ] && ls build/ios/ipa/*.ipa 1> /dev/null 2>&1; then
             echo "✅ IPA ФАЙЛ УСПЕШНО СОЗДАН!"
             
-            for ipa in build/ios/ipa/*.ipa;
-              do
+            for ipa in build/ios/ipa/*.ipa; do
               echo "📱 IPA: $ipa"
               echo "   Размер: $(du -h "$ipa" | cut -f1)"
               echo "   Тип файла: $(file "$ipa")"
@@ -536,13 +530,11 @@ EOF
             echo "✅ Папка build/ios/ipa существует"
             ls -la build/ios/ipa/
             
-            if ls build/ios/ipa/*.ipa 1> /dev/null 2>&1;
-              then
+            if ls build/ios/ipa/*.ipa 1> /dev/null 2>&1; then
               echo ""
               echo "✅ IPA файлы найдены! Детальная проверка:"
               
-              for ipa in build/ios/ipa/*.ipa;
-                do
+              for ipa in build/ios/ipa/*.ipa; do
                 echo ""
                 echo "📱 Анализ IPA: $ipa"
                 echo "   📏 Размер: $(du -h "$ipa" | cut -f1)"

@@ -1,17 +1,16 @@
-Run cd ios
-  
-CocoaPods version: 1.16.2
-Using minimal Podfile for stability...
-Updating local specs repositories
-Adding spec repo `trunk` with CDN `https://cdn.cocoapods.org/`
-Analyzing dependencies
-cloud_firestore: Using Firebase SDK version '12.2.0' defined in 'firebase_core'
-firebase_auth: Using Firebase SDK version '12.2.0' defined in 'firebase_core'
-firebase_core: Using Firebase SDK version '12.2.0' defined in 'firebase_core'
-firebase_remote_config: Using Firebase SDK version '12.2.0' defined in 'firebase_core'
-firebase_storage: Using Firebase SDK version '12.2.0' defined in 'firebase_core'
-[!] CocoaPods could not find compatible versions for pod "cloud_firestore":
-  In Podfile:
-    cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
-Specs satisfying the `cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)` dependency were found, but they required a higher minimum deployment target.
-Error: Process completed with exit code 1.
+Вы правы — использование Podfile.minimal дало только предсказуемую ошибку по минимальной версии iOS (13.0) и теперь больше не диагностирует настоящую причину, мешающую сборке с моим основным Podfile.
+
+Прошу:
+
+Игнорировать Podfile.minimal.
+
+Использовать для диагностики и ответа только мой актуальный (оригинальный) Podfile без любых временных, минимальных, модифицированных версий.
+
+Все шаги и анализ строить исключительно по логам, полученным при попытке собрать проект с исходным Podfile.
+
+Дайте рекомендации, как до конца выяснить настоящую root-cause и добиться успешного подбора и установки всех зависимостей и успешной сборки для iOS (AltStore).
+
+Если нужны мои исходные Podfile/xcconfig/pubspec.yaml — скажите, я пришлю их содержимое.
+
+Кратко:
+Подчеркну, что работа идёт дальше только по оригинальному Podfile, логам по нему и полной, «невырезанной» диагностике.
