@@ -1,9 +1,0 @@
-(TasteSmokeTest) PS C:\testsmoke\TasteSmokeTest1\taste_smoke_ios> git status
-On branch main
-Your branch is up to date with 'origin/main'.
-
-nothing to commit, working tree clean
-(TasteSmokeTest) PS C:\testsmoke\TasteSmokeTest1\taste_smoke_ios> git log -1
-commit 08dcf1406cc7148850964b9b1d8d7e56ac89942c (HEAD -> main, origin/main, origin/HEAD)
-Author: DANIL <belie_master@mail.ru>
-Date:   Wed Sep 3 21:58:20 2025 +0300
