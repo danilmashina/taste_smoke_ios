@@ -4,14 +4,8 @@ import 'package:go_router/go_router.dart';
 import './blocs/auth_bloc.dart';
 import './blocs/auth_state.dart';
 import './ui/screens/auth_screen.dart';
-import './ui/screens/home_screen.dart';
-import './ui/screens/categories_screen.dart';
-import './ui/screens/favorites_screen.dart';
-import './ui/screens/profile_screen.dart';
-import './ui/screens/search_screen.dart';
-import './ui/screens/category_detail_screen.dart';
-import './ui/screens/create_mix_screen.dart';
-import './ui/screens/my_mixes_screen.dart';
+import './ui/screens/simple_home_screen.dart';
+import './ui/screens/simple_screens.dart';
 import './ui/main_scaffold.dart';
 
 class AppRouter {
@@ -34,13 +28,13 @@ class AppRouter {
               GoRoute(
                 path: '/',
                 builder: (BuildContext context, GoRouterState state) =>
-                    const HomeScreen(),
+                    const SimpleHomeScreen(),
                 routes: <RouteBase>[
                   // Add search screen as a sub-route of home
                   GoRoute(
                     path: 'search',
                     builder: (BuildContext context, GoRouterState state) =>
-                        const SearchScreen(),
+                        const SimpleSearchScreen(),
                   ),
                 ],
               ),
@@ -52,13 +46,13 @@ class AppRouter {
               GoRoute(
                 path: '/categories',
                 builder: (BuildContext context, GoRouterState state) =>
-                    const CategoriesScreen(),
+                    const SimpleCategoriesScreen(),
                 routes: <RouteBase>[
                   GoRoute(
                     path: ':categoryName',
                     builder: (BuildContext context, GoRouterState state) {
                       final categoryName = state.pathParameters['categoryName']!;
-                      return CategoryDetailScreen(categoryName: categoryName);
+                      return SimpleCategoryDetailScreen(categoryName: categoryName);
                     },
                   ),
                 ],
@@ -71,7 +65,7 @@ class AppRouter {
               GoRoute(
                 path: '/favorites',
                 builder: (BuildContext context, GoRouterState state) =>
-                    const FavoritesScreen(),
+                    const SimpleFavoritesScreen(),
               ),
             ],
           ),
@@ -81,7 +75,7 @@ class AppRouter {
               GoRoute(
                 path: '/profile',
                 builder: (BuildContext context, GoRouterState state) =>
-                    const ProfileScreen(),
+                    const SimpleProfileScreen(),
               ),
             ],
           ),
@@ -94,11 +88,11 @@ class AppRouter {
       ),
       GoRoute(
         path: '/create-mix',
-        builder: (BuildContext context, GoRouterState state) => const CreateMixScreen(),
+        builder: (BuildContext context, GoRouterState state) => const SimpleCreateMixScreen(),
       ),
       GoRoute(
         path: '/my-mixes',
-        builder: (BuildContext context, GoRouterState state) => const MyMixesScreen(),
+        builder: (BuildContext context, GoRouterState state) => const SimpleMyMixesScreen(),
       ),
     ],
     redirect: (BuildContext context, GoRouterState state) {
