@@ -56,12 +56,18 @@ jobs:
           echo "🍎 Настройка CocoaPods..."
           cd ios
           
+          # Проверяем версию CocoaPods
+          echo "Версия CocoaPods: $(pod --version)"
+          
           # Обновляем репозиторий CocoaPods
+          echo "Обновление репозитория CocoaPods..."
           pod repo update
           
           # Пробуем установить с основным Podfile
           echo "Попытка установки с основным Podfile..."
-          if ! pod install --repo-update --verbose --clean-install; then
+          if pod install --repo-update --verbose --clean-install; then
+            echo "✅ Основной Podfile установлен успешно"
+          else
             echo "⚠️ Ошибка с основным Podfile, переключаемся на минимальный..."
             
             # Бэкап основного Podfile
@@ -72,25 +78,102 @@ jobs:
             
             # Очищаем и пробуем снова
             rm -rf Pods Podfile.lock
-            pod install --repo-update --verbose --clean-install
+            
+            echo "Установка с минимальным Podfile..."
+            if pod install --repo-update --verbose --clean-install; then
+              echo "✅ Минимальный Podfile установлен успешно"
+            else
+              echo "❌ Ошибка даже с минимальным Podfile"
+              exit 1
+            fi
           fi
+          
+          # Проверяем результат
+          echo "Проверка установленных pods:"
+          ls -la Pods/ | head -10
 
       - name: Check dependencies status
         run: |
           echo "📊 Проверка зависимостей..."
           flutter pub outdated || true
           cd ios && pod outdated || true
+          
+      - name: Verify iOS project structure
+        run: |
+          echo "🔍 Проверка структуры iOS проекта..."
+          
+          # Проверяем ключевые файлы
+          echo "Проверка ключевых файлов:"
+          ls -la ios/Runner.xcodeproj/project.pbxproj && echo "✅ project.pbxproj найден" || echo "❌ project.pbxproj отсутствует"
+          ls -la ios/Runner/Info.plist && echo "✅ Info.plist найден" || echo "❌ Info.plist отсутствует"
+          ls -la ios/Pods/ && echo "✅ Pods установлены" || echo "❌ Pods отсутствуют"
+          
+          # Проверяем Firebase конфигурацию
+          echo "Проверка Firebase конфигурации:"
+          if [ -f "ios/Runner/GoogleService-Info.plist" ]; then
+            echo "✅ GoogleService-Info.plist найден"
+          else
+            echo "⚠️ GoogleService-Info.plist отсутствует, копируем из корня..."
+            if [ -f "google-service-info.json" ]; then
+              cp google-service-info.json ios/Runner/GoogleService-Info.plist
+              echo "✅ GoogleService-Info.plist скопирован"
+            else
+              echo "❌ Файл Firebase конфигурации не найден"
+            fi
+          fi
+          
+          # Проверяем Flutter конфигурацию
+          echo "Проверка Flutter конфигурации:"
+          ls -la ios/Flutter/Generated.xcconfig && echo "✅ Generated.xcconfig найден" || echo "❌ Generated.xcconfig отсутствует"
+          
+          # Проверяем workspace
+          echo "Проверка workspace:"
+          ls -la ios/Runner.xcworkspace/ && echo "✅ Workspace найден" || echo "❌ Workspace отсутствует"
 
       - name: Build iOS IPA (unsigned for AltStore)
         run: |
           echo "🔨 Сборка IPA для AltStore..."
-          flutter build ipa --release --no-codesign --verbose
+          
+          # Проверяем, что все готово к сборке
+          if [ ! -d "ios/Pods" ]; then
+            echo "❌ Ошибка: CocoaPods не установлены"
+            exit 1
+          fi
+          
+          # Запускаем сборку с подробным выводом
+          if flutter build ipa --release --no-codesign --verbose; then
+            echo "✅ Сборка IPA завершена успешно"
+          else
+            echo "❌ Ошибка сборки IPA"
+            echo "Проверяем структуру проекта..."
+            ls -la ios/
+            ls -la build/ || echo "Папка build не создана"
+            exit 1
+          fi
           
       - name: Verify IPA creation
         run: |
           echo "✅ Проверка созданного IPA..."
-          ls -la build/ios/ipa/
-          file build/ios/ipa/*.ipa
+          
+          if [ -d "build/ios/ipa" ]; then
+            echo "Папка IPA найдена:"
+            ls -la build/ios/ipa/
+            
+            if ls build/ios/ipa/*.ipa 1> /dev/null 2>&1; then
+              echo "IPA файлы найдены:"
+              file build/ios/ipa/*.ipa
+              echo "Размер файлов:"
+              du -h build/ios/ipa/*.ipa
+            else
+              echo "❌ IPA файлы не найдены в папке"
+              exit 1
+            fi
+          else
+            echo "❌ Папка build/ios/ipa не существует"
+            echo "Структура build/:"
+            ls -la build/ || echo "Папка build не существует"
+            exit 1
+          fi
 
       - name: Upload IPA artifact
         uses: actions/upload-artifact@v4

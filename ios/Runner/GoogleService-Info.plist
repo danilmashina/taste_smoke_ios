@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>751259560292-1koui73pq5qftkv2081npl5sud9gags1.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.751259560292-1koui73pq5qftkv2081npl5sud9gags1</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>751259560292-5vqvfl8d7lnb446rj06n68t2cndhkh39.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCGz0AX8BK86-Px-udmqjRdoP0BfLeV46o</string>
+	<key>GCM_SENDER_ID</key>
+	<string>751259560292</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.tastesmokeios</string>
+	<key>PROJECT_ID</key>
+	<string>tastesmoketest</string>
+	<key>STORAGE_BUCKET</key>
+	<string>tastesmoketest.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:751259560292:ios:2b4b0874fe963cd32cf271</string>
+</dict>
+</plist>
