@@ -116,7 +116,7 @@ jobs:
           <plist version="1.0">
           <dict>
               <key>method</key>
-              <string>ad-hoc</string>
+              <string>development</string>
               <key>signingStyle</key>
               <string>manual</string>
               <key>provisioningProfiles</key>
@@ -125,7 +125,7 @@ jobs:
                   <string></string>
               </dict>
               <key>signingCertificate</key>
-              <string></string>
+              <string>Apple Development</string>
               <key>teamID</key>
               <string>V87YS9U282</string>
               <key>destination</key>
