@@ -56,8 +56,10 @@ jobs:
           # Проверяем результат
           ls -la Pods/ | head -5
 
-      - name: Build iOS IPA (Simple)
+      - name: Build iOS app and create IPA manually
         run: |
+          echo "🔨 Building iOS app without code signing..."
+          
           # Создаем unsigned конфигурацию
           cat > ios/Flutter/Unsigned.xcconfig << 'EOF'
           #include "Generated.xcconfig"
@@ -74,40 +76,62 @@ jobs:
           cp ios/Flutter/Release.xcconfig ios/Flutter/Release.xcconfig.backup
           cp ios/Flutter/Unsigned.xcconfig ios/Flutter/Release.xcconfig
           
-          # Простая сборка IPA
-          flutter build ipa --release --no-codesign
+          # Сборка iOS app (НЕ IPA - избегаем проблем с подписью)
+          echo "Building iOS app bundle..."
+          flutter build ios --release --no-codesign
           
-          # Проверяем результат
-          if ls build/ios/ipa/*.ipa 1> /dev/null 2>&1; then
-            echo "✅ IPA created successfully"
-            ls -lh build/ios/ipa/*.ipa
-          else
-            echo "❌ IPA not found, trying alternative method..."
+          # Проверяем результат сборки
+          if [ -d "build/ios/iphoneos" ]; then
+            echo "✅ iOS app build successful"
             
-            # Альтернативный метод
-            flutter build ios --release --no-codesign
+            cd build/ios/iphoneos
+            APP_NAME=$(find . -name "*.app" -type d | head -1)
             
-            if [ -d "build/ios/iphoneos" ]; then
-              cd build/ios/iphoneos
-              APP_NAME=$(find . -name "*.app" -type d | head -1)
+            if [ -n "$APP_NAME" ]; then
+              echo "Found app bundle: $APP_NAME"
               
-              if [ -n "$APP_NAME" ]; then
-                mkdir -p ../ipa/Payload
-                cp -r "$APP_NAME" ../ipa/Payload/
-                cd ../ipa
-                zip -r "taste_smoke_ios.ipa" Payload/
-                echo "✅ IPA created manually"
-                ls -lh *.ipa
-                cd ../../..
+              # Создаем структуру IPA
+              mkdir -p ../ipa/Payload
+              cp -r "$APP_NAME" ../ipa/Payload/
+              
+              cd ../ipa
+              
+              # Создаем IPA файл
+              zip -r "taste_smoke_ios.ipa" Payload/
+              
+              if [ -f "taste_smoke_ios.ipa" ]; then
+                echo "✅ IPA created successfully!"
+                echo "IPA size: $(du -h taste_smoke_ios.ipa | cut -f1)"
+                
+                # Проверяем содержимое IPA
+                echo "IPA contents:"
+                unzip -l taste_smoke_ios.ipa | head -10
+              else
+                echo "❌ Failed to create IPA"
+                exit 1
               fi
+              
+              cd ../../..
+            else
+              echo "❌ No .app bundle found"
+              ls -la build/ios/iphoneos/
+              exit 1
             fi
+          else
+            echo "❌ iOS build failed - no iphoneos directory"
+            exit 1
+          fi
+          
+          # Восстанавливаем оригинальную конфигурацию
+          if [ -f "ios/Flutter/Release.xcconfig.backup" ]; then
+            cp ios/Flutter/Release.xcconfig.backup ios/Flutter/Release.xcconfig
           fi
 
       - name: Upload IPA artifact
         uses: actions/upload-artifact@v4
         with:
           name: taste-smoke-ios-simple
-          path: build/ios/ipa/*.ipa
+          path: build/ios/ipa/taste_smoke_ios.ipa
           retention-days: 30
 
       - name: Upload logs on failure

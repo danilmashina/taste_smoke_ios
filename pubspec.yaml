@@ -32,11 +32,11 @@ dependencies:
     sdk: flutter
 
   # Firebase & Google (последние стабильные версии)
-  firebase_core: ^3.8.0
-  firebase_auth: ^5.3.3
-  cloud_firestore: ^5.5.0
-  firebase_storage: ^12.3.6
-  firebase_remote_config: ^5.1.8
+  firebase_core: ^4.1.0
+  firebase_auth: ^6.0.2
+  cloud_firestore: ^6.0.1
+  firebase_storage: ^13.0.1
+  firebase_remote_config: ^6.0.1
   # google_sign_in: ^6.2.1
 
   # State Management
