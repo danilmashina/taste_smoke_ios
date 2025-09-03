@@ -1,4 +1,4 @@
-# Ультра-минимальный Podfile для Flutter iOS (временно для диагностики)
+# Ультра-минимальный Podfile для Flutter iOS
 platform :ios, '13.0'
 
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'

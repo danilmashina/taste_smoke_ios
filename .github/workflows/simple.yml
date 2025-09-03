@@ -1,0 +1,121 @@
+name: Simple Flutter iOS Build
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.35.2'
+          channel: 'stable'
+          cache: true
+
+      - name: Flutter Doctor
+        run: flutter doctor -v
+
+      - name: Clean project
+        run: |
+          flutter clean
+          rm -rf build
+          rm -rf ios/Pods 
+          rm -rf ios/Podfile.lock
+          
+      - name: Get Flutter dependencies
+        run: flutter pub get
+
+      - name: Setup CocoaPods (Simple)
+        run: |
+          cd ios
+          
+          # Проверяем версию CocoaPods
+          echo "CocoaPods version: $(pod --version)"
+          
+          # Используем минимальный Podfile сразу
+          if [ -f "Podfile.minimal" ]; then
+            echo "Using minimal Podfile for stability..."
+            cp Podfile Podfile.backup
+            cp Podfile.minimal Podfile
+          fi
+          
+          # Простая установка
+          pod install --repo-update --clean-install
+          
+          # Проверяем результат
+          ls -la Pods/ | head -5
+
+      - name: Build iOS IPA (Simple)
+        run: |
+          # Создаем unsigned конфигурацию
+          cat > ios/Flutter/Unsigned.xcconfig << 'EOF'
+          #include "Generated.xcconfig"
+          CODE_SIGN_IDENTITY=
+          CODE_SIGNING_REQUIRED=NO
+          CODE_SIGNING_ALLOWED=NO
+          PROVISIONING_PROFILE_SPECIFIER=
+          DEVELOPMENT_TEAM=
+          ENABLE_BITCODE=NO
+          SKIP_INSTALL=NO
+          EOF
+          
+          # Бэкап и замена Release.xcconfig
+          cp ios/Flutter/Release.xcconfig ios/Flutter/Release.xcconfig.backup
+          cp ios/Flutter/Unsigned.xcconfig ios/Flutter/Release.xcconfig
+          
+          # Простая сборка IPA
+          flutter build ipa --release --no-codesign
+          
+          # Проверяем результат
+          if ls build/ios/ipa/*.ipa 1> /dev/null 2>&1; then
+            echo "✅ IPA created successfully"
+            ls -lh build/ios/ipa/*.ipa
+          else
+            echo "❌ IPA not found, trying alternative method..."
+            
+            # Альтернативный метод
+            flutter build ios --release --no-codesign
+            
+            if [ -d "build/ios/iphoneos" ]; then
+              cd build/ios/iphoneos
+              APP_NAME=$(find . -name "*.app" -type d | head -1)
+              
+              if [ -n "$APP_NAME" ]; then
+                mkdir -p ../ipa/Payload
+                cp -r "$APP_NAME" ../ipa/Payload/
+                cd ../ipa
+                zip -r "taste_smoke_ios.ipa" Payload/
+                echo "✅ IPA created manually"
+                ls -lh *.ipa
+                cd ../../..
+              fi
+            fi
+          fi
+
+      - name: Upload IPA artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: taste-smoke-ios-simple
+          path: build/ios/ipa/*.ipa
+          retention-days: 30
+
+      - name: Upload logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-logs-simple
+          path: |
+            ios/Pods/
+            build/
+          retention-days: 7
