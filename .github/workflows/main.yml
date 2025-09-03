@@ -105,7 +105,7 @@ jobs:
       - name: Build Xcode Archive
         run: |
           echo "🔨 Создание архива Xcode..."
-          flutter build ipa --release --no-codesign --archive="build/ios/archive/Runner.xcarchive"
+          flutter build ipa --release --no-codesign
 
       - name: Create ExportOptions.plist
         run: |
