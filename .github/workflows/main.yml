@@ -102,10 +102,50 @@ jobs:
           flutter pub outdated || true
           cd ios && pod outdated || true
           
-      - name: Build IPA
+      - name: Build Xcode Archive
         run: |
-          echo "🔨 Сборка IPA..."
-          flutter build ipa --release --no-codesign
+          echo "🔨 Создание архива Xcode..."
+          flutter build ipa --release --no-codesign --archive="build/ios/archive/Runner.xcarchive"
+
+      - name: Create ExportOptions.plist
+        run: |
+          echo "📜 Создание ExportOptions.plist..."
+          cat > ExportOptions.plist <<EOL
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+              <key>method</key>
+              <string>ad-hoc</string>
+              <key>signingStyle</key>
+              <string>manual</string>
+              <key>provisioningProfiles</key>
+              <dict>
+                  <key>com.example.tasteSmokeIos</key>
+                  <string></string>
+              </dict>
+              <key>signingCertificate</key>
+              <string></string>
+              <key>teamID</key>
+              <string>V87YS9U282</string>
+              <key>destination</key>
+              <string>export</string>
+              <key>compileBitcode</key>
+              <false/>
+          </dict>
+          </plist>
+          EOL
+          echo "✅ ExportOptions.plist создан."
+          cat ExportOptions.plist
+
+      - name: Export IPA from Archive
+        run: |
+          echo "📦 Экспорт .ipa из архива..."
+          xcodebuild -exportArchive \
+            -archivePath build/ios/archive/Runner.xcarchive \
+            -exportPath build/ios/ipa \
+            -exportOptionsPlist ExportOptions.plist \
+            -allowProvisioningUpdates
 
       - name: Upload IPA artifact
         uses: actions/upload-artifact@v4
