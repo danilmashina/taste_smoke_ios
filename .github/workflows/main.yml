@@ -104,7 +104,7 @@ jobs:
           require 'xcodeproj'
 
           project_path = 'ios/Runner.xcodeproj'
-          file_to_add_path = 'ios/Runner/GoogleService-Info.plist'
+          file_to_add_path = 'Runner/GoogleService-Info.plist'
           target_name = 'Runner'
 
           project = Xcodeproj::Project.open(project_path)
