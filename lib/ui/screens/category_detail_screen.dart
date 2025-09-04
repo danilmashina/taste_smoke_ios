@@ -5,6 +5,7 @@ import '../../blocs/mixes_by_category_event.dart';
 import '../../blocs/mixes_by_category_state.dart';
 import '../components/mix_detail_dialog.dart';
 
+
 class CategoryDetailScreen extends StatelessWidget {
   final String categoryName;
 

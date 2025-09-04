@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../data/models/mix.dart';
+import 'package:taste_smoke_ios/data/public_mix.dart';
 
 class MixDetailDialog extends StatelessWidget {
-  final Mix mix;
+  final PublicMix mix;
 
   const MixDetailDialog({super.key, required this.mix});
 

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../blocs/popular_mixes_bloc.dart';
-import '../../blocs/popular_mixes_event.dart';
 import '../../blocs/popular_mixes_state.dart';
 import 'mix_detail_dialog.dart';
 
