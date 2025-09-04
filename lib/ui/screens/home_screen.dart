@@ -1,246 +1,103 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import '../../blocs/auth_bloc.dart';
 import '../../blocs/auth_event.dart';
-import '../../blocs/popular_mixes_bloc.dart';
-import '../../blocs/popular_mixes_event.dart';
-import '../../blocs/popular_mixes_state.dart';
-import '../../blocs/ads_bloc.dart';
-import '../../blocs/ads_event.dart';
-import '../../blocs/ads_state.dart';
-import '../../blocs/categories_bloc.dart';
-import '../../blocs/categories_event.dart';
-import '../../blocs/categories_state.dart';
-import '../components/mix_detail_dialog.dart';
+import '../theme.dart';
+import 'main_home_screen.dart';
+import 'categories_screen.dart';
+import 'favorites_screen.dart';
+import 'profile_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _currentIndex = 0;
+
+  void _onTabTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+  Widget _getCurrentPage() {
+    switch (_currentIndex) {
+      case 0:
+        return const MainHomeScreen();
+      case 1:
+        return const CategoriesScreen();
+      case 2:
+        return const FavoritesScreen();
+      case 3:
+        return const ProfileScreen();
+      default:
+        return const MainHomeScreen();
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => PopularMixesBloc()..add(FetchPopularMixes()),
-        ),
-        BlocProvider(
-          create: (context) => AdsBloc()..add(FetchAds()),
-        ),
-        BlocProvider(
-          create: (context) => CategoriesBloc()..add(FetchCategories()),
-        ),
-      ],
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Миксы для кальяна'),
-          centerTitle: false, // To match original app
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.logout),
-              onPressed: () {
-                context.read<AuthBloc>().add(SignOutRequested());
-              },
-            ),
-          ],
-        ),
-        body: ListView(
-          children: [
-            // Search Bar
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-              child: GestureDetector(
-                onTap: () => context.go('/search'),
-                child: const AbsorbPointer(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Поиск микса...',
-                      prefixIcon: Icon(Icons.search),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            const CategoriesSection(),
-            const SizedBox(height: 12),
-            const AdsSection(),
-            const SizedBox(height: 12),
-            const PopularMixesSection(),
-          ],
-        ),
-        // TODO: Add BottomNavigationBar
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(_getAppBarTitle()),
+        backgroundColor: darkBackground,
+        elevation: 0,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () {
+              context.read<AuthBloc>().add(SignOutRequested());
+            },
+          ),
+        ],
+      ),
+      body: _getCurrentPage(),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: _onTabTapped,
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: cardBackground,
+        selectedItemColor: accentPink,
+        unselectedItemColor: secondaryText,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Главная',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.category),
+            label: 'Категории',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: 'Избранное',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Профиль',
+          ),
+        ],
       ),
     );
   }
-}
 
-class CategoriesSection extends StatelessWidget {
-  const CategoriesSection({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8.0),
-          child: Text(
-            'Категории',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-        ),
-        const SizedBox(height: 8),
-        BlocBuilder<CategoriesBloc, CategoriesState>(
-          builder: (context, state) {
-            if (state is CategoriesLoaded) {
-              return SizedBox(
-                height: 44,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: state.categories.length,
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  itemBuilder: (context, index) {
-                    final category = state.categories[index];
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                      child: RawChip(
-                        label: Text(category.name),
-                        onPressed: () {
-                          context.go('/categories/${category.name}');
-                        },
-                        shape: const StadiumBorder(),
-                        side: BorderSide(color: Theme.of(context).colorScheme.primary),
-                      ),
-                    );
-                  },
-                ),
-              );
-            }
-            return const SizedBox.shrink(); // Initial or loading state
-          },
-        ),
-      ],
-    );
-  }
-}
-
-class AdsSection extends StatelessWidget {
-  const AdsSection({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<AdsBloc, AdsState>(
-      builder: (context, state) {
-        if (state is AdsLoading) {
-          return const Center(child: CircularProgressIndicator());
-        }
-        if (state is AdsLoaded) {
-          if (state.ads.isEmpty) return const SizedBox.shrink();
-          return SizedBox(
-            height: 150,
-            child: PageView.builder(
-              itemCount: state.ads.length,
-              itemBuilder: (context, index) {
-                final ad = state.ads[index];
-                return Card(
-                  margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
-                  clipBehavior: Clip.antiAlias,
-                  child: Image.network(ad.imageUrl, fit: BoxFit.cover),
-                );
-              },
-            ),
-          );
-        }
-        if (state is AdsError) {
-          return Center(child: Text(state.message));
-        }
-        return const SizedBox.shrink(); // Initial state
-      },
-    );
-  }
-}
-
-class PopularMixesSection extends StatelessWidget {
-  const PopularMixesSection({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Text(
-            'Популярные миксы недели',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-        ),
-        BlocBuilder<PopularMixesBloc, PopularMixesState>(
-          builder: (context, state) {
-            if (state is PopularMixesLoading) {
-              return const Center(child: CircularProgressIndicator());
-            }
-            if (state is PopularMixesLoaded) {
-              if (state.mixes.isEmpty) {
-                return const Center(child: Text('Популярных миксов пока нет.'));
-              }
-              return SizedBox(
-                height: 200,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: state.mixes.length,
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  itemBuilder: (context, index) {
-                    final mix = state.mixes[index];
-                    return GestureDetector(
-                      onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (_) => MixDetailDialog(mix: mix),
-                        );
-                      },
-                      child: Card(
-                        margin: const EdgeInsets.all(8.0),
-                        child: SizedBox(
-                          width: 150,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              if (mix.image != null)
-                                Expanded(
-                                  child: Center(
-                                    child: Image.network(
-                                      mix.image!,
-                                      fit: BoxFit.cover,
-                                      width: double.infinity,
-                                    ),
-                                  ),
-                                ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  mix.name,
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: const TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              );
-            }
-            if (state is PopularMixesError) {
-              return Center(child: Text(state.message));
-            }
-            return const SizedBox.shrink(); // Initial state
-          },
-        ),
-      ],
-    );
+  String _getAppBarTitle() {
+    switch (_currentIndex) {
+      case 0:
+        return 'TasteSmoke';
+      case 1:
+        return 'Категории';
+      case 2:
+        return 'Избранное';
+      case 3:
+        return 'Профиль';
+      default:
+        return 'TasteSmoke';
+    }
   }
 }

@@ -4,9 +4,11 @@ import 'package:go_router/go_router.dart';
 import './blocs/auth_bloc.dart';
 import './blocs/auth_state.dart';
 import './ui/screens/auth_screen.dart';
-import './ui/screens/simple_home_screen.dart';
-import './ui/screens/simple_screens.dart';
-import './ui/main_scaffold.dart';
+import './ui/screens/home_screen.dart';
+import './ui/screens/create_mix_screen.dart';
+import './ui/screens/my_mixes_screen.dart';
+import './ui/screens/category_detail_screen.dart';
+import './ui/screens/search_screen.dart';
 
 class AppRouter {
   final AuthBloc authBloc;
@@ -14,109 +16,58 @@ class AppRouter {
   AppRouter(this.authBloc);
 
   late final GoRouter router = GoRouter(
-    initialLocation: '/login',
+    initialLocation: '/',
     routes: <RouteBase>[
-      // The main app navigation shell
-      StatefulShellRoute.indexedStack(
-        builder: (context, state, navigationShell) {
-          return MainScaffold(navigationShell: navigationShell);
-        },
-        branches: <StatefulShellBranch>[
-          // Branch for the Home tab
-          StatefulShellBranch(
-            routes: <RouteBase>[
-              GoRoute(
-                path: '/',
-                builder: (BuildContext context, GoRouterState state) =>
-                    const SimpleHomeScreen(),
-                routes: <RouteBase>[
-                  // Add search screen as a sub-route of home
-                  GoRoute(
-                    path: 'search',
-                    builder: (BuildContext context, GoRouterState state) =>
-                        const SimpleSearchScreen(),
-                  ),
-                ],
-              ),
-            ],
+      GoRoute(
+        path: '/',
+        builder: (BuildContext context, GoRouterState state) =>
+            const HomeScreen(),
+        routes: <RouteBase>[
+          GoRoute(
+            path: 'search',
+            builder: (BuildContext context, GoRouterState state) =>
+                const SearchScreen(),
           ),
-          // Branch for the Categories tab
-          StatefulShellBranch(
-            routes: <RouteBase>[
-              GoRoute(
-                path: '/categories',
-                builder: (BuildContext context, GoRouterState state) =>
-                    const SimpleCategoriesScreen(),
-                routes: <RouteBase>[
-                  GoRoute(
-                    path: ':categoryName',
-                    builder: (BuildContext context, GoRouterState state) {
-                      final categoryName = state.pathParameters['categoryName']!;
-                      return SimpleCategoryDetailScreen(categoryName: categoryName);
-                    },
-                  ),
-                ],
-              ),
-            ],
+          GoRoute(
+            path: 'categories/:categoryName',
+            builder: (BuildContext context, GoRouterState state) {
+              final categoryName = state.pathParameters['categoryName']!;
+              return CategoryDetailScreen(categoryName: categoryName);
+            },
           ),
-          // Branch for the Favorites tab
-          StatefulShellBranch(
-            routes: <RouteBase>[
-              GoRoute(
-                path: '/favorites',
-                builder: (BuildContext context, GoRouterState state) =>
-                    const SimpleFavoritesScreen(),
-              ),
-            ],
+          GoRoute(
+            path: 'create-mix',
+            builder: (BuildContext context, GoRouterState state) => const CreateMixScreen(),
           ),
-          // Branch for the Profile tab
-          StatefulShellBranch(
-            routes: <RouteBase>[
-              GoRoute(
-                path: '/profile',
-                builder: (BuildContext context, GoRouterState state) =>
-                    const SimpleProfileScreen(),
-              ),
-            ],
+          GoRoute(
+            path: 'my-mixes',
+            builder: (BuildContext context, GoRouterState state) => const MyMixesScreen(),
           ),
         ],
       ),
-      // The login screen, which is not part of the shell
       GoRoute(
         path: '/login',
         builder: (BuildContext context, GoRouterState state) => const AuthScreen(),
-      ),
-      GoRoute(
-        path: '/create-mix',
-        builder: (BuildContext context, GoRouterState state) => const SimpleCreateMixScreen(),
-      ),
-      GoRoute(
-        path: '/my-mixes',
-        builder: (BuildContext context, GoRouterState state) => const SimpleMyMixesScreen(),
       ),
     ],
     redirect: (BuildContext context, GoRouterState state) {
       final bool loggedIn = authBloc.state is Authenticated;
       final bool loggingIn = state.matchedLocation == '/login';
 
-      // if the user is not logged in, they need to login
       if (!loggedIn) {
         return '/login';
       }
 
-      // if the user is logged in but still on the login page, send them to
-      // the home page
       if (loggingIn) {
         return '/';
       }
 
-      return null; // do not redirect
+      return null;
     },
     refreshListenable: GoRouterRefreshStream(authBloc.stream),
   );
 }
 
-// This class is needed to make GoRouter listen to Bloc stream changes
 class GoRouterRefreshStream extends ChangeNotifier {
   GoRouterRefreshStream(Stream<dynamic> stream) {
     notifyListeners();
