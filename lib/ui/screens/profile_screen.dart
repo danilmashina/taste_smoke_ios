@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -11,8 +12,62 @@ import '../components/additional_info_dialog.dart';
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
+  // Методы для определения размеров в зависимости от экрана
+  double _getButtonHeight(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final diagonalInches = 
+      sqrt(pow(size.width / MediaQuery.of(context).devicePixelRatio, 2) + 
+           pow(size.height / MediaQuery.of(context).devicePixelRatio, 2)) / 
+      160; // Приблизительное количество пикселей на дюйм
+    
+    if (diagonalInches < 5.0) return 44.0; // Маленькие экраны
+    if (diagonalInches < 6.5) return 56.0; // Стандартные экраны
+    return 64.0; // Большие экраны
+  }
+  
+  double _getHorizontalPadding(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final diagonalInches = 
+      sqrt(pow(size.width / MediaQuery.of(context).devicePixelRatio, 2) + 
+           pow(size.height / MediaQuery.of(context).devicePixelRatio, 2)) / 
+      160;
+    
+    if (diagonalInches < 5.0) return 12.0;
+    if (diagonalInches < 6.5) return 16.0;
+    return 20.0;
+  }
+  
+  double _getVerticalSpacing(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final diagonalInches = 
+      sqrt(pow(size.width / MediaQuery.of(context).devicePixelRatio, 2) + 
+           pow(size.height / MediaQuery.of(context).devicePixelRatio, 2)) / 
+      160;
+    
+    if (diagonalInches < 5.0) return 8.0;
+    if (diagonalInches < 6.5) return 12.0;
+    return 16.0;
+  }
+  
+  double _getTextSize(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final diagonalInches = 
+      sqrt(pow(size.width / MediaQuery.of(context).devicePixelRatio, 2) + 
+           pow(size.height / MediaQuery.of(context).devicePixelRatio, 2)) / 
+      160;
+    
+    if (diagonalInches < 5.0) return 14.0;
+    if (diagonalInches < 6.5) return 16.0;
+    return 18.0;
+  }
+
   @override
   Widget build(BuildContext context) {
+    final buttonHeight = _getButtonHeight(context);
+    final horizontalPadding = _getHorizontalPadding(context);
+    final verticalSpacing = _getVerticalSpacing(context);
+    final textSize = _getTextSize(context);
+    
     return BlocProvider(
       create: (context) => ProfileBloc()..add(LoadProfile()),
       child: Scaffold(
@@ -24,7 +79,7 @@ class ProfileScreen extends StatelessWidget {
             if (state is ProfileLoaded) {
               final profile = state.userProfile;
               return SingleChildScrollView(
-                padding: const EdgeInsets.all(16.0),
+                padding: EdgeInsets.all(horizontalPadding),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -52,36 +107,67 @@ class ProfileScreen extends StatelessWidget {
                         _buildStatColumn('Following', profile.followingCount.toString()),
                       ],
                     ),
-                    const SizedBox(height: 32),
-                    ElevatedButton(
-                      onPressed: () {
-                        context.go('/create-mix');
-                      },
-                      child: const Text('Создать микс'),
+                    SizedBox(height: verticalSpacing * 2),
+                    SizedBox(
+                      width: double.infinity,
+                      height: buttonHeight,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          context.go('/create-mix');
+                        },
+                        child: Text(
+                          'Создать микс',
+                          style: TextStyle(fontSize: textSize),
+                        ),
+                      ),
                     ),
-                    const SizedBox(height: 12),
-                    ElevatedButton(
-                      onPressed: () {
-                        context.go('/my-mixes');
-                      },
-                      child: const Text('Мои миксы'),
+                    SizedBox(height: verticalSpacing),
+                    SizedBox(
+                      width: double.infinity,
+                      height: buttonHeight,
+                      child: OutlinedButton(
+                        onPressed: () {
+                          context.go('/my-mixes');
+                        },
+                        child: Text(
+                          'Мои миксы',
+                          style: TextStyle(fontSize: textSize),
+                        ),
+                      ),
                     ),
-                    const SizedBox(height: 12),
-                    ElevatedButton(
-                      onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (context) => AdditionalInfoDialog(),
-                        );
-                      },
-                      child: const Text('Дополнительная информация'),
+                    SizedBox(height: verticalSpacing),
+                    SizedBox(
+                      width: double.infinity,
+                      height: buttonHeight,
+                      child: OutlinedButton(
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) => AdditionalInfoDialog(),
+                          );
+                        },
+                        child: Text(
+                          'Дополнительная информация',
+                          style: TextStyle(fontSize: textSize),
+                        ),
+                      ),
                     ),
-                    const SizedBox(height: 32),
-                    TextButton(
-                      onPressed: () {
-                        context.read<AuthBloc>().add(SignOutRequested());
-                      },
-                      child: const Text('Выйти'),
+                    SizedBox(height: verticalSpacing * 2),
+                    SizedBox(
+                      width: double.infinity,
+                      height: buttonHeight,
+                      child: TextButton(
+                        onPressed: () {
+                          context.read<AuthBloc>().add(SignOutRequested());
+                        },
+                        child: Text(
+                          'Выйти',
+                          style: TextStyle(
+                            fontSize: textSize,
+                            color: Colors.redAccent,
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),

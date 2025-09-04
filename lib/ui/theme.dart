@@ -72,6 +72,15 @@ final appTheme = ThemeData(
       padding: const EdgeInsets.symmetric(vertical: 16.0),
     ),
   ),
+  outlinedButtonTheme: OutlinedButtonThemeData(
+    style: OutlinedButton.styleFrom(
+      foregroundColor: primaryText,
+      side: const BorderSide(color: accentPink),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16.0),
+      ),
+    ),
+  ),
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
       foregroundColor: accentPink,
