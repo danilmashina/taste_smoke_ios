@@ -110,6 +110,7 @@ jobs:
       - name: Manually package IPA
         run: |
           echo "📦 Ручная упаковка .ipa..."
+          mkdir -p build/ios/ipa
           cd build/ios/archive
           mkdir -p Payload
           cp -r Runner.xcarchive/Products/Applications/Runner.app Payload/
