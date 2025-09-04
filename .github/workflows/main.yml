@@ -96,6 +96,28 @@ jobs:
             exit 1 # Останавливаем сборку здесь, чтобы увидеть ошибку
           fi
 
+      - name: Add GoogleService-Info.plist to Xcode project
+        run: |
+          echo "📝 Добавление GoogleService-Info.plist в проект Xcode..."
+          sudo gem install xcodeproj
+          ruby - <<EOL
+          require 'xcodeproj'
+
+          project_path = 'ios/Runner.xcodeproj'
+          file_to_add_path = 'ios/Runner/GoogleService-Info.plist'
+          target_name = 'Runner'
+
+          project = Xcodeproj::Project.open(project_path)
+          target = project.targets.find { |t| t.name == target_name }
+          group = project.main_group.find_subpath('Runner', true)
+
+          file_reference = group.new_file(file_to_add_path)
+          target.add_file_references([file_reference])
+          project.save
+
+          puts "✅ GoogleService-Info.plist добавлен в проект."
+          EOL
+
       - name: Check dependencies status
         run: |
           echo "📊 Проверка зависимостей..."
