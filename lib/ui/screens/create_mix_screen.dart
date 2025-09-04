@@ -80,7 +80,7 @@ class CreateMixScreen extends StatelessWidget {
                       child: const Text('Сохранить свой микс'),
                     ),
                   const SizedBox(height: 12),
-                  ElevatedButton(
+                  OutlinedButton(
                     onPressed: state.isFormValid
                         ? () {
                             // In a real app, you'd show a dialog to select a category

@@ -27,7 +27,7 @@ class HelpBottomSheetContent extends StatelessWidget {
           _buildHelpSection('Условия публикации', 'Описание: минимум 10 символов, максимум 135; до 4 строк. Ненормативная лексика запрещена.'),
           _buildHelpSection('Фильтр мата и модерация', 'Мы автоматически блокируем тексты с матом. Нарушения могут приводить к скрытию публикаций.'),
           const SizedBox(height: 16),
-          ElevatedButton(
+          OutlinedButton(
             onPressed: () => Navigator.of(context).pop(),
             child: const Text('Понятно'),
           ),

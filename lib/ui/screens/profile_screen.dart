@@ -2,12 +2,14 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../../blocs/profile_bloc.dart';
 import '../../blocs/profile_event.dart';
 import '../../blocs/profile_state.dart';
 import '../../blocs/auth_bloc.dart';
 import '../../blocs/auth_event.dart';
 import '../components/additional_info_dialog.dart';
+import '../theme.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -67,7 +69,8 @@ class ProfileScreen extends StatelessWidget {
     final horizontalPadding = _getHorizontalPadding(context);
     final verticalSpacing = _getVerticalSpacing(context);
     final textSize = _getTextSize(context);
-    
+    final String? email = FirebaseAuth.instance.currentUser?.email;
+
     return BlocProvider(
       create: (context) => ProfileBloc()..add(LoadProfile()),
       child: Scaffold(
@@ -81,63 +84,124 @@ class ProfileScreen extends StatelessWidget {
               return SingleChildScrollView(
                 padding: EdgeInsets.all(horizontalPadding),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    const SizedBox(height: 20),
-                    CircleAvatar(
-                      radius: 60,
-                      backgroundImage: profile.photoUrl != null
-                          ? NetworkImage(profile.photoUrl!)
-                          : null,
-                      child: profile.photoUrl == null
-                          ? const Icon(Icons.person, size: 60)
-                          : null,
-                    ),
                     const SizedBox(height: 16),
-                    Text(
-                      profile.nickname,
-                      style: Theme.of(context).textTheme.headlineSmall,
+                    // Profile Card (as in Android)
+                    Card(
+                      color: cardBackground,
+                      elevation: 6,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            const SizedBox(height: 8),
+                            Center(
+                              child: CircleAvatar(
+                                radius: 48,
+                                backgroundImage: profile.photoUrl != null && profile.photoUrl!.isNotEmpty
+                                    ? NetworkImage(profile.photoUrl!)
+                                    : null,
+                                child: (profile.photoUrl == null || profile.photoUrl!.isEmpty)
+                                    ? const Icon(Icons.person, size: 48)
+                                    : null,
+                              ),
+                            ),
+                            const SizedBox(height: 12),
+                            Center(
+                              child: Text(
+                                profile.nickname,
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                  color: primaryText,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 16),
+                            // Level row with progress
+                            Row(
+                              children: [
+                                const Icon(Icons.celebration, color: accentPink, size: 18),
+                                const SizedBox(width: 8),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        'Уровень: Начинающий (+2)',
+                                        style: TextStyle(color: primaryText, fontSize: 12),
+                                      ),
+                                      const SizedBox(height: 6),
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(4),
+                                        child: LinearProgressIndicator(
+                                          value: 0.4,
+                                          minHeight: 6,
+                                          backgroundColor: Colors.white10,
+                                          valueColor: const AlwaysStoppedAnimation<Color>(accentPink),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 12),
+                            // Stats with icons stacked vertically as rows
+                            _statRow(Icons.favorite, 'Лайки', profile.totalLikes.toString()),
+                            const SizedBox(height: 6),
+                            _statRow(Icons.group, 'Подписчики', profile.followersCount.toString()),
+                            const SizedBox(height: 6),
+                            _statRow(Icons.person_add, 'Подписки', profile.followingCount.toString()),
+                            const SizedBox(height: 12),
+                            const Divider(color: Colors.white24),
+                            const SizedBox(height: 8),
+                            Center(
+                              child: Text(
+                                email != null && email.isNotEmpty
+                                    ? 'Вы вошли как: $email'
+                                    : 'Вы вошли',
+                                style: const TextStyle(color: secondaryText, fontSize: 12),
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                          ],
+                        ),
+                      ),
                     ),
-                    const SizedBox(height: 24),
+                    SizedBox(height: verticalSpacing),
+                    // Buttons: two side-by-side (Создать микс - primary filled, Мои миксы - outlined)
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        _buildStatColumn('Likes', profile.totalLikes.toString()),
-                        _buildStatColumn('Followers', profile.followersCount.toString()),
-                        _buildStatColumn('Following', profile.followingCount.toString()),
+                        Expanded(
+                          child: SizedBox(
+                            height: buttonHeight,
+                            child: ElevatedButton(
+                              onPressed: () => context.go('/create-mix'),
+                              child: Text('Создать микс', style: TextStyle(fontSize: textSize)),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: SizedBox(
+                            height: buttonHeight,
+                            child: OutlinedButton(
+                              onPressed: () => context.go('/my-mixes'),
+                              child: Text('Мои миксы', style: TextStyle(fontSize: textSize)),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
-                    SizedBox(height: verticalSpacing * 2),
-                    SizedBox(
-                      width: double.infinity,
-                      height: buttonHeight,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          context.go('/create-mix');
-                        },
-                        child: Text(
-                          'Создать микс',
-                          style: TextStyle(fontSize: textSize),
-                        ),
-                      ),
-                    ),
                     SizedBox(height: verticalSpacing),
+                    // Additional info (full width outlined)
                     SizedBox(
-                      width: double.infinity,
-                      height: buttonHeight,
-                      child: OutlinedButton(
-                        onPressed: () {
-                          context.go('/my-mixes');
-                        },
-                        child: Text(
-                          'Мои миксы',
-                          style: TextStyle(fontSize: textSize),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: verticalSpacing),
-                    SizedBox(
-                      width: double.infinity,
                       height: buttonHeight,
                       child: OutlinedButton(
                         onPressed: () {
@@ -146,29 +210,19 @@ class ProfileScreen extends StatelessWidget {
                             builder: (context) => AdditionalInfoDialog(),
                           );
                         },
-                        child: Text(
-                          'Дополнительная информация',
-                          style: TextStyle(fontSize: textSize),
-                        ),
+                        child: Text('Дополнительная информация', style: TextStyle(fontSize: textSize)),
                       ),
                     ),
-                    SizedBox(height: verticalSpacing * 2),
+                    SizedBox(height: verticalSpacing),
+                    // Logout (full width text red - destructive)
                     SizedBox(
-                      width: double.infinity,
                       height: buttonHeight,
                       child: TextButton(
-                        onPressed: () {
-                          context.read<AuthBloc>().add(SignOutRequested());
-                        },
-                        child: Text(
-                          'Выйти',
-                          style: TextStyle(
-                            fontSize: textSize,
-                            color: Colors.redAccent,
-                          ),
-                        ),
+                        onPressed: () => context.read<AuthBloc>().add(SignOutRequested()),
+                        child: Text('Выйти', style: TextStyle(fontSize: textSize, color: Colors.redAccent)),
                       ),
                     ),
+                    const SizedBox(height: 12),
                   ],
                 ),
               );
@@ -192,6 +246,22 @@ class ProfileScreen extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         Text(title),
+      ],
+    );
+  }
+
+  // Helper for stat rows with icon and label to match Android design
+  Widget _statRow(IconData icon, String label, String value) {
+    return Row(
+      children: [
+        Icon(icon, color: Colors.white, size: 18),
+        const SizedBox(width: 8),
+        Expanded(
+          child: Text(
+            '$label: $value',
+            style: const TextStyle(fontSize: 14, color: primaryText),
+          ),
+        ),
       ],
     );
   }

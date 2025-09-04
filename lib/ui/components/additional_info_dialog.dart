@@ -14,7 +14,7 @@ class AdditionalInfoDialog extends StatelessWidget {
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          ElevatedButton(
+          OutlinedButton(
             onPressed: () async {
               final url = Uri.parse('https://danilmashina.github.io/Mysite/mobile-app.html');
               if (await launchUrl(url)) {
@@ -26,7 +26,7 @@ class AdditionalInfoDialog extends StatelessWidget {
             child: const Text('Официальный сайт'),
           ),
           const SizedBox(height: 8),
-          ElevatedButton(
+          OutlinedButton(
             onPressed: () {
               Navigator.of(context).pop(); // Close current dialog
               showDialog(
@@ -37,7 +37,7 @@ class AdditionalInfoDialog extends StatelessWidget {
             child: const Text('Условия использования'),
           ),
           const SizedBox(height: 8),
-          ElevatedButton(
+          OutlinedButton(
             onPressed: () {
               Navigator.of(context).pop(); // Close current dialog
               showDialog(
@@ -48,7 +48,7 @@ class AdditionalInfoDialog extends StatelessWidget {
             child: const Text('О приложении'),
           ),
           const SizedBox(height: 8),
-          ElevatedButton(
+          OutlinedButton(
             onPressed: () {
               Navigator.of(context).pop(); // Close current dialog
               showModalBottomSheet(
