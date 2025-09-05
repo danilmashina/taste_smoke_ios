@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import './blocs/auth_bloc.dart';
 import './app_router.dart';
@@ -16,6 +17,18 @@ void main() async {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
+    // Гарантируем авторизацию для правил Firestore (требуется request.auth != null)
+    try {
+      final auth = FirebaseAuth.instance;
+      if (auth.currentUser == null) {
+        final cred = await auth.signInAnonymously();
+        print('✅ Вход выполнен анонимно. UID: ${cred.user?.uid}');
+      } else {
+        print('ℹ️ Уже авторизован. UID: ${auth.currentUser?.uid}');
+      }
+    } catch (e) {
+      print('❌ Ошибка анонимного входа в FirebaseAuth: $e');
+    }
     print('✅ Firebase инициализирован успешно');
   } catch (e) {
     print('❌ Ошибка инициализации Firebase: $e');
