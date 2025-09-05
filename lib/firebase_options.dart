@@ -60,24 +60,24 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyCGz0AX8BK86-Px-udmqjRdoP0BfLeV46o',
-    appId: '1:751259560292:ios:62423ec1e8db25cf2cf271',
+    appId: '1:751259560292:ios:2b4b0874fe963cd32cf271',
     messagingSenderId: '751259560292',
     projectId: 'tastesmoketest',
     storageBucket: 'tastesmoketest.firebasestorage.app',
     androidClientId: '751259560292-5vqvfl8d7lnb446rj06n68t2cndhkh39.apps.googleusercontent.com',
-    iosClientId: '751259560292-at8d29d7770vndo0headdvqc149ud3gf.apps.googleusercontent.com',
-    iosBundleId: 'com.example.tasteSmokeIos',
+    iosClientId: '751259560292-1koui73pq5qftkv2081npl5sud9gags1.apps.googleusercontent.com',
+    iosBundleId: 'com.example.tastesmokeios',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyCGz0AX8BK86-Px-udmqjRdoP0BfLeV46o',
-    appId: '1:751259560292:ios:62423ec1e8db25cf2cf271',
+    appId: '1:751259560292:ios:2b4b0874fe963cd32cf271',
     messagingSenderId: '751259560292',
     projectId: 'tastesmoketest',
     storageBucket: 'tastesmoketest.firebasestorage.app',
     androidClientId: '751259560292-5vqvfl8d7lnb446rj06n68t2cndhkh39.apps.googleusercontent.com',
-    iosClientId: '751259560292-at8d29d7770vndo0headdvqc149ud3gf.apps.googleusercontent.com',
-    iosBundleId: 'com.example.tasteSmokeIos',
+    iosClientId: '751259560292-1koui73pq5qftkv2081npl5sud9gags1.apps.googleusercontent.com',
+    iosBundleId: 'com.example.tastesmokeios',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(

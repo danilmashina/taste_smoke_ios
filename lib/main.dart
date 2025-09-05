@@ -5,6 +5,7 @@ import './blocs/auth_bloc.dart';
 import './app_router.dart';
 import './blocs/auth_event.dart';
 import './ui/theme.dart';
+import 'firebase_options.dart';
 
 void main() async {
   // Обеспечиваем инициализацию Flutter
@@ -12,7 +13,9 @@ void main() async {
   
   try {
     // Инициализируем Firebase с обработкой ошибок
-    await Firebase.initializeApp();
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
     print('✅ Firebase инициализирован успешно');
   } catch (e) {
     print('❌ Ошибка инициализации Firebase: $e');

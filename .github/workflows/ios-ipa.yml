@@ -1,0 +1,66 @@
+name: iOS IPA (AltStore)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: taste_smoke_ios
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.35.2
+
+      - name: Flutter doctor
+        run: flutter doctor -v
+
+      - name: Clean project
+        run: |
+          echo "🧹 Cleaning..."
+          flutter clean
+          rm -rf build
+          rm -rf ios/Pods ios/Podfile.lock ios/.symlinks ios/Flutter/Flutter.framework
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Install CocoaPods
+        run: |
+          cd ios
+          pod repo update --silent
+          pod install --verbose
+
+      - name: Build unsigned IPA (no codesign)
+        env:
+          COCOAPODS_DISABLE_STATS: 'true'
+        run: |
+          echo "🚀 Building IPA (unsigned)..."
+          flutter build ipa --release --no-codesign
+          echo "✅ Build finished"
+
+      - name: Locate IPA
+        id: locate
+        shell: bash
+        run: |
+          set -euo pipefail
+          IPA_PATH=$(ls -1 build/ios/ipa/*.ipa | head -n 1)
+          echo "ipa_path=$IPA_PATH" >> $GITHUB_OUTPUT
+          echo "Found: $IPA_PATH"
+
+      - name: Upload IPA artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-ipa-unsigned
+          path: ${{ steps.locate.outputs.ipa_path }}
+          if-no-files-found: error
