@@ -42,9 +42,20 @@ jobs:
         env:
           COCOAPODS_DISABLE_STATS: 'true'
         run: |
-          echo "🚀 Building IPA (unsigned)..."
-          flutter build ipa --release --no-codesign
-          echo "✅ Build finished"
+          echo "🚀 Building iOS app (unsigned)..."
+          # Собираем .app без подписи
+          flutter build ios --release --no-codesign
+          echo "📦 Packaging into IPA..."
+          APP_PATH="build/ios/iphoneos/Runner.app"
+          if [ ! -d "$APP_PATH" ]; then
+            echo "Runner.app not found at $APP_PATH" >&2
+            exit 1
+          fi
+          mkdir -p build/ios/ipa/Payload
+          rm -rf build/ios/ipa/Payload/*
+          cp -R "$APP_PATH" build/ios/ipa/Payload/Runner.app
+          (cd build/ios/ipa && zip -r Runner-unsigned.ipa Payload >/dev/null)
+          echo "✅ IPA packaged: build/ios/ipa/Runner-unsigned.ipa"
 
       - name: Locate IPA
         id: locate
