@@ -19,6 +19,15 @@ jobs:
           channel: stable
           flutter-version: 3.35.2
 
+      - name: Cache Pub (Dart/Flutter packages)
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.pub-cache
+          key: pub-${{ runner.os }}-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            pub-${{ runner.os }}-
+
       - name: Flutter doctor
         run: flutter doctor -v
 
@@ -32,11 +41,39 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
 
+      - name: Cache CocoaPods
+        uses: actions/cache@v4
+        with:
+          path: |
+            ios/Pods
+            ios/Podfile.lock
+          key: pods-${{ runner.os }}-${{ hashFiles('ios/Podfile.lock') }}
+          restore-keys: |
+            pods-${{ runner.os }}-
+
       - name: Install CocoaPods
         run: |
+          set -e
           cd ios
-          pod repo update --silent
-          pod install --verbose
+          echo "🔁 Running pod repo update with retries (Cloudflare/CDN can be flaky)..."
+          n=0
+          until [ $n -ge 5 ]
+          do
+            pod repo update --silent && break
+            n=$((n+1))
+            echo "pod repo update failed (attempt $n). Sleeping 10s and retrying..."
+            sleep 10
+          done
+
+          echo "🔁 Running pod install with retries..."
+          n=0
+          until [ $n -ge 5 ]
+          do
+            pod install --verbose && break
+            n=$((n+1))
+            echo "pod install failed (attempt $n). Sleeping 10s and retrying..."
+            sleep 10
+          done
 
       - name: Build unsigned IPA (no codesign)
         env:
