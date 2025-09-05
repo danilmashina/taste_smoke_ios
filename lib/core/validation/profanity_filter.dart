@@ -27,6 +27,7 @@ class ProfanityFilter {
   static String _normalize(String input) {
     final Map<String, String> leetMap = {
       '0': 'o',
+      '1': 'i',
       '3': 'e',
       '4': 'a',
       '5': 's',
@@ -37,7 +38,8 @@ class ProfanityFilter {
 
     final lower = input.toLowerCase();
     final buf = StringBuffer();
-    final punctuation = RegExp(r"[\s\t\n\.,\-_'`!\?\:\;\"\(\)\[\]\{\}\|]");
+    // Используем обычную строку с экранированием, чтобы включить и двойную, и одинарную кавычки
+    final punctuation = RegExp("[\\s\\t\\n\\.,\\-_'`!\\?\\:;\"\\(\\)\\[\\]\\{\\}\\|]");
     String? prevChar;
     for (final rune in lower.runes) {
       final ch = String.fromCharCode(rune);
