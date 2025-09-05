@@ -88,11 +88,16 @@ class _TobaccoIngredientsEditorState extends State<TobaccoIngredientsEditor> {
                     child: AbsorbPointer(
                       child: TextFormField(
                         readOnly: true,
+                        maxLines: 2,
                         decoration: const InputDecoration(
+                          isDense: true,
+                          contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                           labelText: 'Марка *',
                           suffixIcon: Icon(Icons.arrow_drop_down),
                         ),
-                        controller: TextEditingController(text: ingredient.tobacco.isNotEmpty ? ingredient.tobacco : ''),
+                        controller: TextEditingController(
+                          text: ingredient.tobacco.isNotEmpty ? ingredient.tobacco : '',
+                        ),
                       ),
                     ),
                   ),
@@ -114,11 +119,16 @@ class _TobaccoIngredientsEditorState extends State<TobaccoIngredientsEditor> {
                     child: AbsorbPointer(
                       child: TextFormField(
                         readOnly: true,
+                        maxLines: 2,
                         decoration: const InputDecoration(
+                          isDense: true,
+                          contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                           labelText: 'Вкус *',
                           suffixIcon: Icon(Icons.arrow_drop_down),
                         ),
-                        controller: TextEditingController(text: ingredient.flavor.isNotEmpty ? ingredient.flavor : ''),
+                        controller: TextEditingController(
+                          text: ingredient.flavor.isNotEmpty ? ingredient.flavor : '',
+                        ),
                       ),
                     ),
                   ),
@@ -128,7 +138,11 @@ class _TobaccoIngredientsEditorState extends State<TobaccoIngredientsEditor> {
                   width: 60,
                   child: TextFormField(
                     initialValue: ingredient.percentage.toString(),
-                    decoration: const InputDecoration(labelText: '% *'),
+                    decoration: const InputDecoration(
+                      isDense: true,
+                      contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                      labelText: '% *',
+                    ),
                     keyboardType: TextInputType.number,
                     onChanged: (value) {
                       final percentage = int.tryParse(value) ?? 0;
@@ -145,10 +159,17 @@ class _TobaccoIngredientsEditorState extends State<TobaccoIngredientsEditor> {
           );
         }).toList(),
         const SizedBox(height: 8),
-        ElevatedButton.icon(
-          onPressed: _ingredients.length >= widget.maxCount ? null : _addIngredient,
-          icon: const Icon(Icons.add),
-          label: const Text('Добавить ингредиент'),
+        SizedBox(
+          width: double.infinity,
+          height: 48,
+          child: ElevatedButton.icon(
+            onPressed: _ingredients.length >= widget.maxCount ? null : _addIngredient,
+            icon: const Icon(Icons.add),
+            label: const FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text('Добавить ингредиент'),
+            ),
+          ),
         ),
       ],
     );

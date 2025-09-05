@@ -104,6 +104,8 @@ class ProfileScreen extends StatelessWidget {
     final horizontalPadding = _getHorizontalPadding(context);
     final verticalSpacing = _getVerticalSpacing(context);
     final textSize = _getTextSize(context);
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isNarrow = screenWidth < 360; // iPhone SE/узкие экраны
     final String? email = FirebaseAuth.instance.currentUser?.email;
 
     return BlocProvider(
@@ -210,30 +212,74 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: verticalSpacing),
-                    // Buttons: two side-by-side (Создать микс - primary filled, Мои миксы - outlined)
-                    Row(
-                      children: [
-                        Expanded(
-                          child: SizedBox(
-                            height: buttonHeight,
-                            child: ElevatedButton(
-                              onPressed: () => context.go('/create-mix'),
-                              child: Text('Создать микс', style: TextStyle(fontSize: textSize)),
-                            ),
+                    // Buttons responsive: wrap to vertical on narrow screens to avoid clipping
+                    if (isNarrow) ...[
+                      SizedBox(
+                        height: buttonHeight,
+                        child: ElevatedButton(
+                          onPressed: () => context.go('/create-mix'),
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: Size.fromHeight(buttonHeight),
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                          ),
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text('Создать микс', style: TextStyle(fontSize: textSize)),
                           ),
                         ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: SizedBox(
-                            height: buttonHeight,
-                            child: OutlinedButton(
-                              onPressed: () => context.go('/my-mixes'),
-                              child: Text('Мои миксы', style: TextStyle(fontSize: textSize)),
-                            ),
+                      ),
+                      const SizedBox(height: 12),
+                      SizedBox(
+                        height: buttonHeight,
+                        child: OutlinedButton(
+                          onPressed: () => context.go('/my-mixes'),
+                          style: OutlinedButton.styleFrom(
+                            minimumSize: Size.fromHeight(buttonHeight),
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                          ),
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text('Мои миксы', style: TextStyle(fontSize: textSize)),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ] else ...[
+                      Row(
+                        children: [
+                          Expanded(
+                            child: SizedBox(
+                              height: buttonHeight,
+                              child: ElevatedButton(
+                                onPressed: () => context.go('/create-mix'),
+                                style: ElevatedButton.styleFrom(
+                                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                                ),
+                                child: FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  child: Text('Создать микс', style: TextStyle(fontSize: textSize)),
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: SizedBox(
+                              height: buttonHeight,
+                              child: OutlinedButton(
+                                onPressed: () => context.go('/my-mixes'),
+                                style: OutlinedButton.styleFrom(
+                                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                                ),
+                                child: FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  child: Text('Мои миксы', style: TextStyle(fontSize: textSize)),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                     SizedBox(height: verticalSpacing),
                     // Additional info (full width outlined)
                     SizedBox(
