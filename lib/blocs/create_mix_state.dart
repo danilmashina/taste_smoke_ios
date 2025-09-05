@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import '../../data/tobacco_ingredient.dart';
+import '../../core/validation/profanity_filter.dart';
 
 enum FormStatus { initial, invalid, valid, submissionInProgress, submissionSuccess, submissionFailure }
 
@@ -18,8 +19,13 @@ class CreateMixState extends Equatable {
     this.errorMessage,
   });
 
+  bool get hasProfanity => ProfanityFilter.contains(description);
+  int get descriptionLength => description.length;
+
   bool get isFormValid =>
-      description.length >= 10 &&
+      descriptionLength >= 10 &&
+      descriptionLength <= 135 &&
+      !hasProfanity &&
       strength.isNotEmpty &&
       ingredients.isNotEmpty &&
       ingredients.every((i) => i.tobacco.isNotEmpty && i.flavor.isNotEmpty && i.percentage > 0);

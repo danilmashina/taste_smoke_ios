@@ -26,6 +26,41 @@ class ProfileScreen extends StatelessWidget {
     if (diagonalInches < 6.5) return 56.0; // Стандартные экраны
     return 64.0; // Большие экраны
   }
+
+  // ----- Dynamic level helpers -----
+  // Levels based on totalLikes thresholds:
+  // 0-9: Начинающий, 10-49: Новичок, 50-99: Любитель, 100-149: Эксперт, 150+: Мастер
+  String _levelLabel(int likes) {
+    if (likes < 10) {
+      return 'Уровень: Начинающий (+${10 - likes})';
+    } else if (likes < 50) {
+      return 'Уровень: Новичок (+${50 - likes})';
+    } else if (likes < 100) {
+      return 'Уровень: Любитель (+${100 - likes})';
+    } else if (likes < 150) {
+      return 'Уровень: Эксперт (+${150 - likes})';
+    } else {
+      return 'Уровень: Мастер (макс)';
+    }
+  }
+
+  double _levelProgress(int likes) {
+    int start = 0;
+    int end = 10;
+    if (likes < 10) {
+      start = 0; end = 10;
+    } else if (likes < 50) {
+      start = 10; end = 50;
+    } else if (likes < 100) {
+      start = 50; end = 100;
+    } else if (likes < 150) {
+      start = 100; end = 150;
+    } else {
+      return 1.0;
+    }
+    final progress = (likes - start) / (end - start);
+    return progress.clamp(0.0, 1.0);
+  }
   
   double _getHorizontalPadding(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -123,7 +158,7 @@ class ProfileScreen extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(height: 16),
-                            // Level row with progress
+                            // Level row with progress (dynamic from totalLikes)
                             Row(
                               children: [
                                 const Icon(Icons.celebration, color: accentPink, size: 18),
@@ -132,15 +167,15 @@ class ProfileScreen extends StatelessWidget {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      const Text(
-                                        'Уровень: Начинающий (+2)',
-                                        style: TextStyle(color: primaryText, fontSize: 12),
+                                      Text(
+                                        _levelLabel(profile.totalLikes),
+                                        style: const TextStyle(color: primaryText, fontSize: 12),
                                       ),
                                       const SizedBox(height: 6),
                                       ClipRRect(
                                         borderRadius: BorderRadius.circular(4),
                                         child: LinearProgressIndicator(
-                                          value: 0.4,
+                                          value: _levelProgress(profile.totalLikes),
                                           minHeight: 6,
                                           backgroundColor: Colors.white10,
                                           valueColor: const AlwaysStoppedAnimation<Color>(accentPink),
